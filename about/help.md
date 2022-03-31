@@ -1,0 +1,1 @@
+https://www.raymondcamden.com/2018/02/08/building-table-sorting-and-pagination-in-vuejs
