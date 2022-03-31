@@ -5,12 +5,15 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="card-component">
+  <div class="card-ui">
     <div v-if="props.title" class="header-block">
       <h3 class="title">{{ props.title }}</h3>
     </div>
     <div class="body-slot">
       <slot name="body"></slot>
+    </div>
+    <div class="footer-slot">
+      <slot name="footer"></slot>
     </div>
   </div>
 </template>
