@@ -1,0 +1,27 @@
+{
+    "Vue3 TS Default": {
+        "prefix": "ts vue3 component",
+        "body": [
+            "<script setup lang=\"ts\">",
+            "import { reactive, onMounted } from \"vue\";",
+            "",
+            "const data = reactive({});",
+            "",
+            "onMounted(() => {",
+            "  // faça alguma coisa!",
+            "  console.log(data);",
+            "});",
+            "</script>",
+            "",
+            "<template>",
+            "  <h2>${1:ComponentName}</h2>",
+            "</template>",
+            "",
+            "<style lang=\"sass\" scoped>",
+            "@import \"./${1:ComponentName}.sass\"",
+            "</style>",
+            ""
+        ],
+        "description": "Vue3 TS Default"
+    }
+}
