@@ -6,7 +6,12 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: () => import("../views/TimeRecordView.vue"),
+      component: () => import("../pages/RecordFormPage.vue"),
+    },
+    {
+      path: "/status",
+      name: "status",
+      component: () => import("../pages/record-list/RecordListPage.vue"),
     },
   ],
 });

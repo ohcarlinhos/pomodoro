@@ -7,7 +7,9 @@ import { RouterView } from "vue-router";
 </template>
 
 <style>
+@import "@/assets/reset.css";
 @import "@/assets/base.css";
+
 #app {
   display: flex;
   min-height: 100vh;

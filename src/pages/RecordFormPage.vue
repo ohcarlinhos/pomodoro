@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import DefaultTemplate from "@/templates/DefaultTemplate.vue";
-import TimeRecordForm from "@/components/form/time-record-form/TimeRecordForm.vue";
+import RecordForm from "@/components/form/record/RecordForm.vue";
 </script>
 
 <template>
   <DefaultTemplate>
     <template #body>
-      <div class="time-record-body">
-        <TimeRecordForm />
+      <div class="page">
+        <RecordForm />
       </div>
     </template>
   </DefaultTemplate>
@@ -15,7 +15,7 @@ import TimeRecordForm from "@/components/form/time-record-form/TimeRecordForm.vu
 
 <style scoped lang="sass">
 @media (min-width: 1024px)
-  .time-record-body
+  .page
     height: 100%
     width: 100%
     display: flex
