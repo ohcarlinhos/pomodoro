@@ -122,8 +122,8 @@ onMounted(() => {
     <template #footer>
       <ButtonUI
         label="Criar Registro"
-        design="full"
         :disabled="!canSubmit"
+        full
         @click="submit"
       />
     </template>

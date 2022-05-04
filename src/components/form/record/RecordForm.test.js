@@ -1,11 +1,11 @@
 import { describe, it, expect } from "vitest";
 
 import { mount } from "@vue/test-utils";
-import TimeRecordForm from "./TimeRecordForm.vue";
+import RecordForm from "./RecordForm.vue";
 
-describe("TimeRecordForm", () => {
+describe("RecordForm", () => {
   it("renders properly", () => {
-    const wrapper = mount(TimeRecordForm);
+    const wrapper = mount(RecordForm);
     expect(wrapper.text()).toContain("Cadastro de Registro de Tempo");
   });
 });

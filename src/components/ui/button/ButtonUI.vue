@@ -1,19 +1,34 @@
 <script setup lang="ts">
-defineProps({
-  label: String,
-  design: {
-    type: String,
-    default: "",
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
+import { computed } from "vue";
+
+export type ButtonUIProps = {
+  label: string;
+  design?: string;
+  full?: boolean;
+  disabled?: boolean;
+};
+
+const props = withDefaults(defineProps<ButtonUIProps>(), {
+  design: "",
+  full: false,
+  disabled: false,
+});
+
+const computedClass = computed(() => {
+  return {
+    disabled: props.disabled,
+    full: props.full,
+  };
 });
 </script>
 
 <template>
-  <button :class="design" :disabled="disabled" class="button-ui">
+  <button
+    :disabled="disabled"
+    class="button-ui"
+    :class="{ ...computedClass, [props.design]: true }"
+    data-test="button-ui"
+  >
     {{ label }}
   </button>
 </template>

@@ -1,0 +1,11 @@
+// Vitest Snapshot v1
+
+exports[`ButtonUI > should match a snapshot 1`] = `
+<button
+  class="button-ui full"
+  data-test="button-ui"
+  data-v-a4d02f90=""
+>
+  Little Button
+</button>
+`;

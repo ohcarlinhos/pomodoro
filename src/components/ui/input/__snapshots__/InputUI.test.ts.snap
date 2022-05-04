@@ -1,0 +1,20 @@
+// Vitest Snapshot v1
+
+exports[`InputUI > should match a snapshot 1`] = `
+<div
+  class="input-ui"
+  data-v-fd244164=""
+>
+  <label
+    class="label"
+    data-v-fd244164=""
+  >
+    Little Input
+  </label>
+  <input
+    class="input"
+    data-v-fd244164=""
+    type="text"
+  />
+</div>
+`;
