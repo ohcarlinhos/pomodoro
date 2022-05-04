@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import * as Styled from "./ButtonUI.styles";
 import { computed } from "vue";
 
 export type ButtonUIProps = {
@@ -15,22 +16,19 @@ const props = withDefaults(defineProps<ButtonUIProps>(), {
 });
 
 const computedClass = computed(() => {
-  return {
-    disabled: props.disabled,
-    full: props.full,
-  };
+  const { disabled, full, design } = props;
+  return { design, disabled, full };
 });
 </script>
 
 <template>
-  <button
+  <Styled.Button
+    :class="computedClass"
     :disabled="disabled"
-    class="button-ui"
-    :class="{ ...computedClass, [props.design]: true }"
     data-test="button-ui"
   >
     {{ label }}
-  </button>
+  </Styled.Button>
 </template>
 
 <style lang="sass" scoped>

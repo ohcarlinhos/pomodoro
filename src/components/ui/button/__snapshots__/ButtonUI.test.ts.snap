@@ -2,7 +2,7 @@
 
 exports[`ButtonUI > should match a snapshot 1`] = `
 <button
-  class="button-ui full"
+  class="cJTTMW full full"
   data-test="button-ui"
   data-v-a4d02f90=""
 >
