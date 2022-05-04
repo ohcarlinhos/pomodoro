@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   label: String,
   design: {
     type: String,
@@ -13,8 +13,8 @@ const props = defineProps({
 </script>
 
 <template>
-  <button :class="props.design" :disabled="props.disabled" class="button-ui">
-    {{ props.label }}
+  <button :class="design" :disabled="disabled" class="button-ui">
+    {{ label }}
   </button>
 </template>
 

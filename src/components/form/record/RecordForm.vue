@@ -5,7 +5,6 @@ import ButtonUI from "@/components/ui/button/ButtonUI.vue";
 import SelectUI from "@/components/ui/select/SelectUI.vue";
 
 import { computed, onMounted, reactive } from "vue";
-import api from "@/services/api";
 
 import type { RecordForm, RecordFormOptions } from "./RecordForm.types";
 import { categoriesOptions, tagsOptions } from "./RecordForm.util";
@@ -15,6 +14,7 @@ const formDefault = (): RecordForm => ({
   name: "",
   category: "",
   day: "",
+  whenFinished: "",
   registerTime: 0,
   tags: "",
 });
@@ -36,6 +36,7 @@ const requestBody = computed(() => {
     category: form.category,
     day: form.day,
     registerTime: form.registerTime,
+    whenFinished: form.whenFinished,
     tags: form.tags,
   };
 });
@@ -77,28 +78,38 @@ onMounted(() => {
           label="Nome do Registro:"
         />
 
-        <SelectUI
-          v-model="form.category"
-          :options="options.categories"
-          id="category"
-          label="Categoria:"
-          select-first
-        />
-
-        <SelectUI
-          v-model="form.tags"
-          :options="options.tags"
-          id="tags"
-          label="Tags:"
-        />
-
         <div class="col">
+          <SelectUI
+            v-model="form.category"
+            :options="options.categories"
+            id="category"
+            label="Categoria:"
+            select-first
+          />
+
+          <SelectUI
+            v-model="form.tags"
+            :options="options.tags"
+            id="tags"
+            label="Tags:"
+          />
+        </div>
+
+        <div class="col-tree">
           <InputUI
             v-model="form.day"
             id="day"
             type="date"
             label="Data do Registro:"
           />
+
+          <InputUI
+            v-model="form.whenFinished"
+            id="day"
+            type="time"
+            label="Finalizado às:"
+          />
+
           <InputUI
             v-model="form.registerTime"
             id="time"

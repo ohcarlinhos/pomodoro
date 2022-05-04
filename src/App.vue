@@ -6,13 +6,7 @@ import { RouterView } from "vue-router";
   <RouterView />
 </template>
 
-<style>
-@import "@/assets/reset.css";
-@import "@/assets/base.css";
-
-#app {
-  display: flex;
-  min-height: 100vh;
-  min-width: 100vw;
-}
+<style lang="sass">
+@import "../src/assets/reset.sass"
+@import "../src/assets/base.sass"
 </style>

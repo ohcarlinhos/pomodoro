@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import type { SelectUIOption } from "./SelectUI.types";
 import { computed } from "vue";
+import type { SelectUIOption } from "./SelectUI.types";
 
-interface SelectUIProps {
+type SelectUIProps = {
   modelValue: string | number | null;
   id: string;
   label: string;
   type?: string;
   options: SelectUIOption[];
   optionText?: string;
-}
+};
 
 const props = withDefaults(defineProps<SelectUIProps>(), {
   modelValue: "",

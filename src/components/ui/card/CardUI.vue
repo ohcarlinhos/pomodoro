@@ -1,13 +1,13 @@
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   title: String,
 });
 </script>
 
 <template>
   <div class="card-ui">
-    <div v-if="props.title" class="header-block">
-      <h3 class="title">{{ props.title }}</h3>
+    <div v-if="title" class="header-block">
+      <h3 class="title">{{ title }}</h3>
     </div>
     <div class="body-slot">
       <slot name="body"></slot>

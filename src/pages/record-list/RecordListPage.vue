@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, reactive } from "vue";
-import DefaultTemplate from "@/templates/DefaultTemplate.vue";
+import CenterTemplate from "@/templates/center/CenterTemplate.vue";
 import TableUI from "@/components/ui/table/TableUI.vue";
 import type {
   TableUIColumn,
@@ -35,28 +35,13 @@ onMounted(async () => {
 </script>
 
 <template>
-  <DefaultTemplate>
-    <template #body>
-      <div class="page">
-        <div class="table">
-          <TableUI :columns="table.columns" :lines="table.lines" />
-        </div>
-      </div>
-    </template>
-  </DefaultTemplate>
+  <CenterTemplate>
+    <div class="table">
+      <TableUI :columns="table.columns" :lines="table.lines" />
+    </div>
+  </CenterTemplate>
 </template>
 
 <style scoped lang="sass">
-@media (min-width: 1024px)
-  .page
-    height: 100%
-    width: 100%
-    display: flex
-    align-items: center
-    justify-content: center
-    filter: drop-shadow(0px 4px 19px rgba(0, 0, 0, 0.1))
-
-    .table
-      width: 100%
-      max-width: 1000px
+@import "./RecordListPage"
 </style>

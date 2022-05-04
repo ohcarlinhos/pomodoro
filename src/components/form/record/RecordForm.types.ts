@@ -4,6 +4,7 @@ export interface RecordForm {
   name: string;
   category: string;
   day: string;
+  whenFinished: string;
   registerTime: number;
   tags: string;
 }
