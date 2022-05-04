@@ -23,14 +23,10 @@ const computedClass = computed(() => {
 
 <template>
   <Styled.Button
-    :class="computedClass"
+    :class="{ ...computedClass, [props.design]: true }"
     :disabled="disabled"
     data-test="button-ui"
   >
     {{ label }}
   </Styled.Button>
 </template>
-
-<style lang="sass" scoped>
-@import "./ButtonUI.sass"
-</style>

@@ -39,3 +39,5 @@ export const Button = styled.button`
     }
   `}
 `;
+
+Button.name = "StyledButton";

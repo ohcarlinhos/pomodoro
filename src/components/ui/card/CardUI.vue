@@ -1,23 +1,28 @@
 <script setup lang="ts">
+import { useSlots } from "vue";
+import * as Styled from "./CardUI.styles";
+
 defineProps({
   title: String,
 });
+
+const slots = useSlots();
 </script>
 
 <template>
-  <div class="card-ui">
-    <div v-if="title" class="header-block">
-      <h3 class="title">{{ title }}</h3>
-    </div>
-    <div class="body-slot">
-      <slot name="body"></slot>
-    </div>
-    <div class="footer-slot">
-      <slot name="footer"></slot>
-    </div>
-  </div>
-</template>
+  <Styled.CardContainer v-if="title || slots['body'] || slots['footer']">
+    <Styled.Header>
+      <Styled.Title v-if="title">
+        {{ title }}
+      </Styled.Title>
+    </Styled.Header>
 
-<style lang="sass" scoped>
-@import "./CardUI.sass"
-</style>
+    <Styled.BodySlot v-if="slots['body']">
+      <slot name="body"></slot>
+    </Styled.BodySlot>
+
+    <Styled.FooterSlot v-if="slots['footer']">
+      <slot name="footer"></slot>
+    </Styled.FooterSlot>
+  </Styled.CardContainer>
+</template>
