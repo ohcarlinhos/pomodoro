@@ -1,7 +1,7 @@
 import ButtonUI from "./ButtonUI.vue";
 
 export default {
-  title: "ButtonUI",
+  title: "UI / ButtonUI",
   component: ButtonUI,
   args: {
     label: "Just a simple button...",
@@ -17,7 +17,7 @@ export default {
   },
 };
 
-export const Template = (args) => ({
+export const Component = (args) => ({
   components: { ButtonUI },
   setup() {
     return { args };

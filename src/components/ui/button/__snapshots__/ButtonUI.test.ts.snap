@@ -4,7 +4,6 @@ exports[`ButtonUI > should match a snapshot 1`] = `
 <button
   class="cJTTMW full full"
   data-test="button-ui"
-  data-v-a4d02f90=""
 >
   Little Button
 </button>

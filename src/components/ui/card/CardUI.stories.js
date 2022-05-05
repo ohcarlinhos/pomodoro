@@ -1,29 +1,31 @@
 import CardUI from "./CardUI.vue";
 import ButtonUI from "../button/ButtonUI.vue";
+import InputUI from "../input/InputUI.vue";
 
 export default {
-  title: "CardUI",
+  title: "UI / CardUI",
   component: CardUI,
   args: {
     title: "Hi! I'm a Title Card",
     body: "Mussum Ipsum, cacilds vidis litro abertis. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis!",
-    footer: "The Foter.",
+    footer: "The Footer.",
   },
   argTypes: {
     title: { type: "string" },
     body: { type: "string" },
+    footer: { type: "string" },
   },
 };
 
 import "./CardUI.css";
 
-export const Template = (args) => ({
+export const Component = (args) => ({
   components: { CardUI },
   setup() {
     return { args };
   },
   template: `
-    <div class="storybook">
+    <div class="card-ui--storybook">
       <CardUI v-bind="args">
         <template v-if="args.body" #body>{{args.body}}</template>
         <template v-if="args.footer" #footer>{{args.footer}}</template>
@@ -33,19 +35,35 @@ export const Template = (args) => ({
 });
 
 export const Example = (args) => ({
-  components: { CardUI, ButtonUI },
+  components: { CardUI, ButtonUI, InputUI },
   argTypes: {},
 
   setup() {
-    args = { ...args, title: "Formulário de Registro" };
-    const button = { label: "Enviar Solicitação", full: true };
-    return { args, button };
+    args = { ...args, title: "Formulário de Acesso" };
+    const button = { label: "Solicitar Acesso", full: true };
+    const inputList = [
+      {
+        id: "user",
+        label: "Usuário",
+        placeholder: "Digite seu usuário.",
+        type: "text",
+      },
+      {
+        id: "password",
+        label: "Senha",
+        placeholder: "Digite sua senha.",
+        type: "password",
+      },
+    ];
+    return { args, inputList, button };
   },
   template: `
-    <div class="storybook">
+    <div class="card-ui--storybook">
       <CardUI v-bind="args">
         <template v-if="args.body" #body>
-          {{args.body}}
+          <div class="grid-inputs">
+            <InputUI v-for="i in inputList" :key="i.id" v-bind="i" />
+          </div>
         </template>
         <template v-if="args.footer" #footer>
           <ButtonUI v-bind="button"/>

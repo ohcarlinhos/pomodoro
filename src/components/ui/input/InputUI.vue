@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import * as Styled from "./InputUI.styles";
 import { computed } from "vue";
 
 const props = defineProps({
@@ -8,6 +9,10 @@ const props = defineProps({
   type: {
     type: String,
     default: "text",
+  },
+  placeholder: {
+    type: String,
+    default: "",
   },
 });
 
@@ -23,14 +28,10 @@ const inputValue = computed({
 </script>
 
 <template>
-  <div class="input-ui">
-    <label v-if="props.label" :for="props.id" class="label">{{
-      props.label
-    }}</label>
-    <input class="input" :id="props.id" :type="type" v-model="inputValue" />
-  </div>
+  <Styled.InputContainer>
+    <Styled.Label v-if="props.label" :for="props.id">
+      {{ props.label }}
+    </Styled.Label>
+    <Styled.Input v-bind="props" v-model="inputValue" />
+  </Styled.InputContainer>
 </template>
-
-<style lang="sass" scoped>
-@import "./InputUI.sass"
-</style>

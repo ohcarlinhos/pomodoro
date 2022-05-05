@@ -1,9 +1,9 @@
 import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
-import { provide } from "@/styles/theme";
 
 import ButtonUI from "./ButtonUI.vue";
 
+import { provide } from "@/styles/theme";
 const mock = { label: "Little Button" };
 
 describe("ButtonUI", () => {

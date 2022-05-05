@@ -2,18 +2,17 @@
 
 exports[`InputUI > should match a snapshot 1`] = `
 <div
-  class="input-ui"
-  data-v-fd244164=""
+  class="lleXOl"
 >
   <label
-    class="label"
-    data-v-fd244164=""
+    class="lphNqp"
   >
     Little Input
   </label>
   <input
-    class="input"
-    data-v-fd244164=""
+    class="hDLKVh"
+    label="Little Input"
+    placeholder=""
     type="text"
   />
 </div>
