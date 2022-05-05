@@ -17,7 +17,7 @@ export default {
   },
 };
 
-export const Component = (args) => ({
+export const Component = (args: unknown) => ({
   components: { InputUI },
   setup() {
     return { args };

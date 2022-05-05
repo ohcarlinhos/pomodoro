@@ -19,7 +19,7 @@ export default {
 
 import "./CardUI.css";
 
-export const Component = (args) => ({
+export const Component = (args: unknown) => ({
   components: { CardUI },
   setup() {
     return { args };
@@ -34,10 +34,8 @@ export const Component = (args) => ({
   `,
 });
 
-export const Example = (args) => ({
+export const Example = (args: { title: string }) => ({
   components: { CardUI, ButtonUI, InputUI },
-  argTypes: {},
-
   setup() {
     args = { ...args, title: "Formulário de Acesso" };
     const button = { label: "Solicitar Acesso", full: true };

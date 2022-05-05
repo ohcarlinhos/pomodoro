@@ -25,7 +25,7 @@ describe("ButtonUI", () => {
 
   it("should match a snapshot", () => {
     const w = mount(ButtonUI, {
-      props: { label: mock.label, full: true },
+      props: { label: mock.label, full: true, disabled: false },
       provide,
     });
     expect(w.element).toMatchSnapshot();

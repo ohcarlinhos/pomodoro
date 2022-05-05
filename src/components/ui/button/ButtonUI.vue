@@ -23,8 +23,8 @@ const computedClass = computed(() => {
 
 <template>
   <Styled.Button
+    v-bind="props"
     :class="{ ...computedClass, [props.design]: true }"
-    :disabled="disabled"
     data-test="button-ui"
   >
     {{ label }}

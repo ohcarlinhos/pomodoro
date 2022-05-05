@@ -15,7 +15,7 @@ export default {
   argTypes: {},
 };
 
-export const Component = (args) => ({
+export const Component = (args: unknown) => ({
   components: { TableUI },
   setup() {
     return { args };
