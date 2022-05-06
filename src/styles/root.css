@@ -33,6 +33,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   display: flex;
   position: relative;
+  padding: 0 !important;
 }
 
 a {

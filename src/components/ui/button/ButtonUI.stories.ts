@@ -1,4 +1,5 @@
 import ButtonUI from "./ButtonUI.vue";
+import "./util/storybook.css";
 
 export default {
   title: "UI / ButtonUI",
@@ -15,6 +16,11 @@ export default {
     disabled: { type: "boolean" },
     full: { type: "boolean" },
   },
+  parameters: {
+    backgrounds: {
+      default: "light",
+    },
+  },
 };
 
 export const Component = (args: unknown) => ({
@@ -22,5 +28,9 @@ export const Component = (args: unknown) => ({
   setup() {
     return { args };
   },
-  template: '<ButtonUI v-bind="args" />',
+  template: `
+    <div class="button-ui--storybook">  
+      <ButtonUI v-bind="args" />
+    </div>
+  `,
 });

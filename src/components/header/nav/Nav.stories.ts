@@ -1,5 +1,6 @@
 import Nav from "./Nav.vue";
 import { navLinks } from "./util/mock";
+import "./util/storybook.css";
 
 export default {
   title: "NAV / Nav",
@@ -13,6 +14,11 @@ export default {
   argTypes: {
     label: "string",
     a: "boolean",
+  },
+  parameters: {
+    backgrounds: {
+      default: "light",
+    },
   },
 };
 
@@ -30,5 +36,9 @@ export const Component = (args: {
       },
     };
   },
-  template: '<Nav v-bind="args" />',
+  template: `
+    <div class="nav--storybook">  
+      <Nav v-bind="args" />
+    </div>
+  `,
 });

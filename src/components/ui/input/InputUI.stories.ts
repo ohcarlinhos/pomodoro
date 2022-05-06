@@ -15,6 +15,11 @@ export default {
     label: { type: "string" },
     type: { type: "string" },
   },
+  parameters: {
+    backgrounds: {
+      default: "light",
+    },
+  },
 };
 
 export const Component = (args: unknown) => ({

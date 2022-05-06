@@ -1,4 +1,5 @@
 import Link from "./Link.vue";
+import "./util/storybook.css";
 
 export default {
   title: "NAV / Link",
@@ -16,6 +17,11 @@ export default {
     a: { type: "boolean" },
     disabled: { type: "boolean" },
   },
+  parameters: {
+    backgrounds: {
+      default: "light",
+    },
+  },
 };
 
 export const Component = (args: unknown) => ({
@@ -23,5 +29,9 @@ export const Component = (args: unknown) => ({
   setup() {
     return { args };
   },
-  template: '<Link v-bind="args" />',
+  template: `
+    <div class="link--storybook">  
+      <Link v-bind="args" />
+    </div>
+  `,
 });

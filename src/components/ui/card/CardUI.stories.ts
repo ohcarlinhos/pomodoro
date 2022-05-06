@@ -15,6 +15,11 @@ export default {
     body: { type: "string" },
     footer: { type: "string" },
   },
+  parameters: {
+    backgrounds: {
+      default: "light",
+    },
+  },
 };
 
 import "./CardUI.css";
