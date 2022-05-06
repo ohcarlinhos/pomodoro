@@ -13,6 +13,11 @@ export default {
     desing: "",
   },
   argTypes: {},
+  parameters: {
+    backgrounds: {
+      default: "light",
+    },
+  },
 };
 
 export const Component = (args: unknown) => ({
@@ -22,7 +27,15 @@ export const Component = (args: unknown) => ({
   },
   template: `
     <div class="table-ui--storybook">
-      <TableUI v-bind="args" />
+      <div class="table">
+        <TableUI v-bind="args" />
+      </div>
     </div>
   `,
 });
+
+export const Empty = Component.bind({});
+
+Empty.args = {
+  lines: [],
+};

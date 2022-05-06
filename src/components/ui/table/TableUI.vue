@@ -18,25 +18,24 @@ withDefaults(defineProps<TableUIProps>(), {
 </script>
 
 <template>
-  <Styled.Table>
-    <Styled.Row :options="options">
-      <Styled.Header
-        v-for="column in columns"
-        :key="column.label"
-        :options="options"
-      >
-        {{ column.label }}
-      </Styled.Header>
+  <Styled.Container>
+    <Styled.Table>
+      <Styled.Row>
+        <Styled.Header v-for="column in columns" :key="column.label">
+          {{ column.label }}
+        </Styled.Header>
+        <Styled.Header v-if="options" class="options"> ... </Styled.Header>
+      </Styled.Row>
 
-      <Styled.Header v-if="options"> ... </Styled.Header>
-    </Styled.Row>
-
-    <Styled.Row :options="options" v-for="line in lines" :key="line.label">
-      <Styled.Cell v-for="column in line.columns" :key="column.label">
-        {{ column.label }}
-      </Styled.Cell>
-
-      <Styled.Cell v-if="options"> ... </Styled.Cell>
-    </Styled.Row>
-  </Styled.Table>
+      <Styled.Row v-for="line in lines" :key="line.label">
+        <Styled.Cell v-for="column in line.columns" :key="column.label">
+          {{ column.label }}
+        </Styled.Cell>
+        <Styled.Cell v-if="options" class="options"> ... </Styled.Cell>
+      </Styled.Row>
+    </Styled.Table>
+    <Styled.EmptyText v-if="lines.length == 0">
+      Nenhum registro encontrado.
+    </Styled.EmptyText>
+  </Styled.Container>
 </template>

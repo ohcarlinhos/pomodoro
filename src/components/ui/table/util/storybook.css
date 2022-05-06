@@ -1,3 +1,10 @@
 .table-ui--storybook {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-ui--storybook .table {
   width: 800px;
 }
