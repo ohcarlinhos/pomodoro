@@ -41,6 +41,16 @@ const page = reactive({
   </DefaultTemplate>
 </template>
 
-<style lang="sass" scoped>
-@import "./CenterTemplate.sass"
+<style scoped>
+@media (min-width: 1024px) {
+  .page {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+  }
+}
 </style>
