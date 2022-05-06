@@ -1,17 +1,14 @@
 <script setup lang="ts">
-import NavLink, { type NavLinkProps } from "../nav-link/NavLink.vue";
+import * as Styled from "./Nav.styles";
+import Link, { type LinkProps } from "../link/Link.vue";
 
-withDefaults(defineProps<{ links: NavLinkProps[] }>(), {
+withDefaults(defineProps<{ links: LinkProps[] }>(), {
   links: () => [],
 });
 </script>
 
 <template>
-  <nav v-if="links.length" class="nav-link">
-    <NavLink v-for="link of links" :key="link.id" v-bind="link" />
-  </nav>
+  <Styled.Nav v-if="links.length" class="nav-grid">
+    <Link v-for="link of links" :key="link.id" v-bind="link" />
+  </Styled.Nav>
 </template>
-
-<style lang="sass" scoped>
-@import "./Nav.sass"
-</style>

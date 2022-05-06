@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { NavLinkProps } from "../nav-link/NavLink.vue";
+import type { LinkProps } from "../link/Link.vue";
 import Nav from "../nav/Nav.vue";
 
 export type MenuProps = {
   title: string;
-  links?: NavLinkProps[];
+  links?: LinkProps[];
 };
 
 withDefaults(defineProps<MenuProps>(), {
