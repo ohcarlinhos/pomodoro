@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import * as Styled from "./InputUI.styles";
+import { maska } from "maska";
 import { computed } from "vue";
 
 const props = defineProps({
@@ -14,7 +14,17 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  mask: {
+    type: [Array, String],
+    default: () => [],
+  },
+  required: {
+    type: Boolean,
+    default: false,
+  },
 });
+
+const vMaska = maska;
 
 const emit = defineEmits(["update:modelValue"]);
 const inputValue = computed({
@@ -28,10 +38,22 @@ const inputValue = computed({
 </script>
 
 <template>
-  <Styled.InputContainer>
-    <Styled.Label v-if="props.label" :for="props.id">
+  <div class="input__container">
+    <label v-if="props.label" :for="props.id">
       {{ props.label }}
-    </Styled.Label>
-    <Styled.Input v-bind="props" v-model="inputValue" />
-  </Styled.InputContainer>
+    </label>
+    <input
+      v-if="mask.length"
+      v-bind="props"
+      v-maska="mask"
+      v-model="inputValue"
+      :required="required"
+    />
+
+    <input v-else v-bind="props" v-model="inputValue" :required="required" />
+  </div>
 </template>
+
+<style lang="scss" scoped>
+@import "./InputUI.scss";
+</style>

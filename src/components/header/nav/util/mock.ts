@@ -1,4 +1,4 @@
-import type { LinkProps } from "../../link/Link.vue";
+import type { LinkProps } from "../../link/TheLink.vue";
 
 export const navLinks = (text = "Link", num = 5, a = false): LinkProps[] => {
   const columns: LinkProps[] = [];

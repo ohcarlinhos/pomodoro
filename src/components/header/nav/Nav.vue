@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import * as Styled from "./Nav.styles";
-import Link, { type LinkProps } from "../link/Link.vue";
+import TheLink, { type LinkProps } from "../link/TheLink.vue";
 
 withDefaults(defineProps<{ links: LinkProps[] }>(), {
   links: () => [],
@@ -8,7 +7,14 @@ withDefaults(defineProps<{ links: LinkProps[] }>(), {
 </script>
 
 <template>
-  <Styled.Nav v-if="links.length" class="nav-grid">
-    <Link v-for="link of links" :key="link.id" v-bind="link" />
-  </Styled.Nav>
+  <nav v-if="links.length" class="nav-grid">
+    <TheLink v-for="link of links" :key="link.id" v-bind="link" />
+  </nav>
 </template>
+
+<style lang="scss" scoped>
+nav {
+  display: flex;
+  gap: 10px;
+}
+</style>

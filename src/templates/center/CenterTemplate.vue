@@ -2,7 +2,6 @@
 import { reactive } from "vue";
 
 import DefaultTemplate from "@/templates/DefaultTemplate.vue";
-import Menu from "@/components/header/menu/Menu.vue";
 import Footer from "@/components/footer/Footer.vue";
 
 const page = reactive({
@@ -29,7 +28,6 @@ const page = reactive({
   <DefaultTemplate>
     <template #body>
       <div class="page">
-        <Menu :title="page.title" :links="page.links" />
         <slot> </slot>
         <Footer
           :copy="page.copy"

@@ -34,8 +34,13 @@ export const Component = (args: unknown) => ({
   `,
 });
 
-export const Empty = Component.bind({});
-
-Empty.args = {
-  lines: [],
-};
+export const EmptyText = () => ({
+  components: { TableUI },
+  template: `
+    <div class="table-ui--storybook">
+      <div class="table">
+        <TableUI v-bind="args" />
+      </div>
+    </div>
+  `,
+});

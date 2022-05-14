@@ -1,9 +1,8 @@
-import Link from "./Link.vue";
-import "./util/storybook.css";
+import TheLink from "./TheLink.vue";
 
 export default {
-  title: "NAV / Link",
-  component: Link,
+  title: "NAV / TheLink",
+  component: TheLink,
   args: {
     id: "link",
     label: "Just a simple link...",
@@ -25,13 +24,13 @@ export default {
 };
 
 export const Component = (args: unknown) => ({
-  components: { Link },
+  components: { TheLink },
   setup() {
     return { args };
   },
   template: `
-    <div class="link--storybook">  
-      <Link v-bind="args" />
+    <div class="default--storybook">  
+      <TheLink v-bind="args" />
     </div>
   `,
 });

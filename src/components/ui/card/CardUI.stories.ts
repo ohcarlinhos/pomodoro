@@ -2,6 +2,8 @@ import CardUI from "./CardUI.vue";
 import ButtonUI from "../button/ButtonUI.vue";
 import InputUI from "../input/InputUI.vue";
 
+import "./util/storybook.css";
+
 export default {
   title: "UI / CardUI",
   component: CardUI,
@@ -21,8 +23,6 @@ export default {
     },
   },
 };
-
-import "./CardUI.css";
 
 export const Component = (args: unknown) => ({
   components: { CardUI },

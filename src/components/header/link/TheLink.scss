@@ -1,0 +1,18 @@
+.link {
+  text-decoration: none;
+  color: #2c3e50;
+
+  &:hover {
+    color: #605bff;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+
+    &:hover {
+      color: inherit;
+      opacity: 0.6;
+    }
+  }
+}

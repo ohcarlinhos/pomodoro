@@ -48,6 +48,6 @@ const selectValue = computed({
   </div>
 </template>
 
-<style lang="sass" scoped>
-@import "./SelectUI.sass"
+<style lang="scss" scoped>
+@import "./SelectUI.scss";
 </style>

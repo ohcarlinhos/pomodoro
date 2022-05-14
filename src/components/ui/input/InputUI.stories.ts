@@ -1,5 +1,4 @@
 import InputUI from "./InputUI.vue";
-import "./util/storybook.css";
 
 export default {
   title: "UI / InputUI",
@@ -9,11 +8,13 @@ export default {
     label: "Look this Input:",
     placeholder: "Bla, bla, bla... Placeholder.",
     type: "text",
+    mask: "(##)  ####-####, (##) # ####-####",
   },
   argTypes: {
     id: { type: "string" },
     label: { type: "string" },
     type: { type: "string" },
+    mask: { type: "string" },
   },
   parameters: {
     backgrounds: {
@@ -22,13 +23,21 @@ export default {
   },
 };
 
-export const Component = (args: unknown) => ({
+export const Component = (args: { mask: string }) => ({
   components: { InputUI },
   setup() {
-    return { args };
+    return {
+      args: {
+        ...args,
+        mask: args.mask
+          .trim()
+          .split(",")
+          .map((i) => i.trim()),
+      },
+    };
   },
   template: `
-    <div class="input-ui--storybook">
+    <div class="default--storybook w-400">
       <InputUI v-bind="args" />
     </div>
   `,

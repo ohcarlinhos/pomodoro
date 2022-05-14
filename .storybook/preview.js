@@ -8,15 +8,16 @@ export const parameters = {
   },
 };
 
-import { provide } from "../src/styles/theme";
-
-import "../src/styles/reset.css";
-import "../src/styles/root.css";
+import "../src/assets/reset.css";
+import "../src/assets/root.css";
+import "../src/assets/storybook.css";
 
 export const decorators = [
   (story) => ({
     components: { story },
-    provide,
-    template: `<story />`,
+    template: `
+      <div class="storybook--root">
+        <story />
+      </div>`,
   }),
 ];

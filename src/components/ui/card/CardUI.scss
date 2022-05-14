@@ -1,0 +1,29 @@
+.card__container {
+  width: 450px;
+  border-radius: 15px;
+  background-color: #fff;
+  border: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: column;
+}
+
+.card__header {
+  padding: 20px 30px;
+
+  .title {
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+}
+
+.card__body {
+  border-top: 1px solid #eaeaea;
+  padding: 30px;
+}
+
+.card__footer {
+  padding: 20px 30px;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  gap: 10px;
+}

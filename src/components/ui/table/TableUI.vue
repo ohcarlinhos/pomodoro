@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import * as Styled from "./TableUI.styles";
 import type { TableUIColumn, TableUILine } from "./TableUI.types";
 
 type TableUIProps = {
@@ -18,24 +17,28 @@ withDefaults(defineProps<TableUIProps>(), {
 </script>
 
 <template>
-  <Styled.Container>
-    <Styled.Table>
-      <Styled.Row>
-        <Styled.Header v-for="column in columns" :key="column.label">
+  <div class="table__containter">
+    <table class="table__table" v-if="columns.length || lines.length">
+      <tr>
+        <th v-for="column in columns" :key="column.label">
           {{ column.label }}
-        </Styled.Header>
-        <Styled.Header v-if="options" class="options"> ... </Styled.Header>
-      </Styled.Row>
+        </th>
+        <th v-if="options" class="options">...</th>
+      </tr>
 
-      <Styled.Row v-for="line in lines" :key="line.label">
-        <Styled.Cell v-for="column in line.columns" :key="column.label">
+      <tr v-for="line in lines" :key="line.label">
+        <td v-for="column in line.columns" :key="column.label">
           {{ column.label }}
-        </Styled.Cell>
-        <Styled.Cell v-if="options" class="options"> ... </Styled.Cell>
-      </Styled.Row>
-    </Styled.Table>
-    <Styled.EmptyText v-if="lines.length == 0">
+        </td>
+        <td v-if="options" class="options">...</td>
+      </tr>
+    </table>
+    <div class="empty__text" v-if="lines.length == 0">
       Nenhum registro encontrado.
-    </Styled.EmptyText>
-  </Styled.Container>
+    </div>
+  </div>
 </template>
+
+<style lang="scss" scoped>
+@import "./TableUI.scss";
+</style>

@@ -17,8 +17,8 @@
             "  <h2>${1:ComponentName}</h2>",
             "</template>",
             "",
-            "<style lang=\"sass\" scoped>",
-            "@import \"./${1:ComponentName}.sass\"",
+            "<style lang=\"scss\" scoped>",
+            "@import \"./${1:ComponentName}.scss\"",
             "</style>",
             ""
         ],

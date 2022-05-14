@@ -3,17 +3,16 @@ import { mount } from "@vue/test-utils";
 
 import InputUI from "./InputUI.vue";
 
-import { provide } from "@/styles/theme";
 const mock = { id: 1, label: "Little Input" };
 
 describe("InputUI", () => {
   it("should render a input with label", () => {
-    const w = mount(InputUI, { props: { label: mock.label }, provide });
+    const w = mount(InputUI, { props: { label: mock.label } });
     expect(w.get("label").text()).toContain(mock.label);
   });
 
   it("should emit a event when change input value", () => {
-    const w = mount(InputUI, { props: { label: mock.label }, provide });
+    const w = mount(InputUI, { props: { label: mock.label } });
 
     const input = w.get("input");
     const inputValue = "Input Value";
@@ -24,7 +23,7 @@ describe("InputUI", () => {
   });
 
   it("should match a snapshot", () => {
-    const w = mount(InputUI, { props: { label: mock.label }, provide });
+    const w = mount(InputUI, { props: { label: mock.label } });
     expect(w.element).toMatchSnapshot();
   });
 });

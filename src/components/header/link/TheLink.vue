@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import * as Styled from "./Link.styles";
 
 export type LinkProps = {
   id: string | number;
@@ -23,7 +22,7 @@ const ariaLink = computed(() => ({
 </script>
 
 <template>
-  <Styled.Link :disabled="disabled">
+  <span :class="{ disabled }">
     <span v-if="disabled" class="link" :aria-label="ariaLink.disable">
       {{ label }}
     </span>
@@ -40,5 +39,5 @@ const ariaLink = computed(() => ({
     >
       {{ label }}
     </RouterLink>
-  </Styled.Link>
+  </span>
 </template>

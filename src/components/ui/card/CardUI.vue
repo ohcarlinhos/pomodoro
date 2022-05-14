@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useSlots } from "vue";
-import * as Styled from "./CardUI.styles";
 
 defineProps({
   title: String,
@@ -10,19 +9,23 @@ const slots = useSlots();
 </script>
 
 <template>
-  <Styled.CardContainer v-if="title || slots['body'] || slots['footer']">
-    <Styled.Header>
-      <Styled.Title v-if="title">
+  <div class="card__container" v-if="title || slots['body'] || slots['footer']">
+    <div class="card__header">
+      <div class="title" v-if="title">
         {{ title }}
-      </Styled.Title>
-    </Styled.Header>
+      </div>
+    </div>
 
-    <Styled.BodySlot v-if="slots['body']">
+    <div class="card__body" v-if="slots['body']">
       <slot name="body"></slot>
-    </Styled.BodySlot>
+    </div>
 
-    <Styled.FooterSlot v-if="slots['footer']">
+    <div class="card__footer" v-if="slots['footer']">
       <slot name="footer"></slot>
-    </Styled.FooterSlot>
-  </Styled.CardContainer>
+    </div>
+  </div>
 </template>
+
+<style lang="scss">
+@import "./CardUI.scss";
+</style>
