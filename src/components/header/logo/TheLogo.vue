@@ -43,6 +43,8 @@ withDefaults(defineProps<LogoProps>(), {
   display: flex;
 }
 .logo__title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
   font-size: 3.5rem;
   line-height: 3.5rem;
   font-weight: 900;

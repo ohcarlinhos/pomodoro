@@ -18,7 +18,11 @@ withDefaults(defineProps<TableUIProps>(), {
 
 <template>
   <div class="table__containter">
-    <table class="table__table" v-if="columns.length || lines.length">
+    <table
+      v-if="columns.length || lines.length"
+      class="table__table"
+      :class="{ 'no-lines': lines.length == 0 }"
+    >
       <tr>
         <th v-for="column in columns" :key="column.label">
           {{ column.label }}
@@ -33,7 +37,11 @@ withDefaults(defineProps<TableUIProps>(), {
         <td v-if="options" class="options">...</td>
       </tr>
     </table>
-    <div class="empty__text" v-if="lines.length == 0">
+    <div
+      class="empty__text"
+      v-if="lines.length == 0"
+      :class="{ 'no-table': columns.length == 0 }"
+    >
       Nenhum registro encontrado.
     </div>
   </div>

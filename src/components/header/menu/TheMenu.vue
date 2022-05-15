@@ -18,13 +18,6 @@ defineEmits(["menu:open-favorite", "menu:open-cart"]);
 <template>
   <div class="menu__container">
     <TheLogo v-bind="logo" />
-    <a
-      href="https://youtu.be/-PlAg8R9TG4"
-      class="link__surprise"
-      target="_blank"
-    >
-      Clique aqui!
-    </a>
     <div v-if="userImage" class="menu__user">
       <ImageBoxUI :url="userImage" radius="20px" min-height="40px" />
     </div>
@@ -46,9 +39,5 @@ defineEmits(["menu:open-favorite", "menu:open-cart"]);
 .menu__user {
   height: 100%;
   width: 40px;
-}
-
-.link__surprise {
-  color: #fff;
 }
 </style>

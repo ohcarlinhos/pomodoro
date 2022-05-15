@@ -22,6 +22,14 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  size: {
+    type: String,
+    default: "",
+  },
+  rounded: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const vMaska = maska;
@@ -48,9 +56,16 @@ const inputValue = computed({
       v-maska="mask"
       v-model="inputValue"
       :required="required"
+      :class="{ [size]: size, rounded }"
     />
 
-    <input v-else v-bind="props" v-model="inputValue" :required="required" />
+    <input
+      v-else
+      v-bind="props"
+      v-model="inputValue"
+      :required="required"
+      :class="{ [size]: size, rounded }"
+    />
   </div>
 </template>
 

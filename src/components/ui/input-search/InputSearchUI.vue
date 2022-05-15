@@ -3,10 +3,18 @@ import { ref, computed } from "vue";
 import InputUI from "../input/InputUI.vue";
 import { SearchIcon } from "../../icons";
 
-defineProps({
+const props = defineProps({
   placeholder: {
     type: String,
     default: "Pesquisa",
+  },
+  size: {
+    type: String,
+    default: "",
+  },
+  rounded: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -27,7 +35,7 @@ const search = () => {
       v-model="inputSearch"
       class="input-search__input"
       type="search"
-      :placeholder="placeholder"
+      v-bind="props"
       @keydown.enter="search"
     />
 

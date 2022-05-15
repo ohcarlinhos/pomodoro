@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import "../src/assets/reset.css";
-import "../src/assets/root.css";
-
-import { RouterView } from "vue-router";
+import GeneralPages from "./pages/GeneralPages.vue";
 </script>
 
 <template>
-  <RouterView />
+  <GeneralPages />
 </template>
 
 <style>
+@import "../src/assets/reset.css";
+@import "../src/assets/root.css";
+
 #app {
   display: flex;
   min-height: 100vh;

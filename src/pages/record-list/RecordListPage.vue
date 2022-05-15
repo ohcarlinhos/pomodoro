@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { onMounted, reactive } from "vue";
-import CenterTemplate from "@/templates/center/CenterTemplate.vue";
+
 import TableUI from "@/components/ui/table/TableUI.vue";
+
 import type {
   TableUIColumn,
   TableUILine,
 } from "@/components/ui/table/TableUI.types";
 import { makeColumnsByRecords } from "./RecordListPage.util";
+
 import { recordsAPI } from "@/services";
+import InputSearchUI from "../../components/ui/input-search/InputSearchUI.vue";
 
 interface TableData {
   columns: TableUIColumn[];
@@ -35,13 +38,24 @@ onMounted(async () => {
 </script>
 
 <template>
-  <CenterTemplate>
-    <div class="table">
+  <div class="record__container">
+    <InputSearchUI size="lg" rounded />
+
+    <div class="form__area">
       <TableUI :columns="table.columns" :lines="table.lines" />
     </div>
-  </CenterTemplate>
+  </div>
 </template>
 
-<style scoped lang="sass">
-@import "./RecordListPage"
+<style lang="scss" scoped>
+.record__container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.form__area {
+  width: 100%;
+}
 </style>

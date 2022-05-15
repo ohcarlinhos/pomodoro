@@ -112,8 +112,8 @@ onMounted(() => {
 
           <InputUI
             v-model="form.registerTime"
+            mask="###"
             id="time"
-            type="number"
             label="Tempo:"
           />
         </div>
@@ -130,6 +130,6 @@ onMounted(() => {
   </CardUI>
 </template>
 
-<style lang="sass" scoped>
-@import "./RecordForm.sass"
+<style lang="scss" scoped>
+@import "./RecordForm.scss";
 </style>

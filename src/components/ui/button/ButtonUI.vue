@@ -41,7 +41,8 @@ const computedClass = computed(() => {
   border: none;
   color: #fff;
   transition: all 0.1s ease-in-out;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
   border-radius: 10px;
 }
 

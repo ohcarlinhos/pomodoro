@@ -6,11 +6,6 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: () => import("../pages/record-form/RecordFormPage.vue"),
-    },
-    {
-      path: "/status",
-      name: "status",
       component: () => import("../pages/record-list/RecordListPage.vue"),
     },
   ],
