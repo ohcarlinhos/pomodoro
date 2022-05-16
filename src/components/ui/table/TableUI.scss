@@ -1,20 +1,18 @@
 .table__containter {
-  display: flex;
-  flex-flow: column;
+  display: block;
+  overflow-x: auto;
+  border: 1px solid #ededf9;
 }
 
-.table__table {
+table {
   width: 100%;
   font-size: 1.4rem;
   line-height: 1.4rem;
   border-collapse: inherit;
-  border: 1px solid #ededf9;
   background-color: #fff;
   border-radius: 20px;
-
-  &.no-lines {
-    border-radius: 20px 20px 0 0;
-  }
+  display: table;
+  vertical-align: center;
 
   tr {
     &:nth-child(even) {
@@ -27,33 +25,18 @@
 
     &:last-of-type {
       td {
-        border-bottom: 0px;
-
-        &:first-of-type {
-          border-radius: 0 0 0 20px;
-        }
-
-        &:last-of-type {
-          border-radius: 0 0 20px 0;
-        }
+        border-bottom: 0;
       }
     }
 
     th {
+      min-width: 100px;
       font-size: 1.4rem;
       line-height: 1.6rem;
       padding: 20px;
       text-align: left;
       font-weight: 500;
       background: #f7f8fd;
-
-      &:first-of-type {
-        border-radius: 20px 0 0 0;
-      }
-
-      &:last-of-type {
-        border-radius: 0 20px 0 0;
-      }
     }
 
     td {
@@ -62,22 +45,43 @@
     }
   }
 
-  .options {
-    width: 60px;
-    text-align: center;
+  .actions {
+    text-align: right;
+    display: flex;
+    justify-content: right;
+
+    button {
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      border: none;
+      margin: 0 5px;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+
+    .action__icon {
+      width: 15px;
+      opacity: 0.5;
+      transition: all 0.25s ease;
+      cursor: pointer;
+
+      svg {
+        fill: #545466;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 }
 
 .empty__text {
   padding: 25px;
-  border: 1px solid #ededf9;
   border-top: 0;
   text-align: center;
   background-color: #fff;
-  border-radius: 0 0 20px 20px;
-
-  &.no-table {
-    border: 1px solid #ededf9;
-    border-radius: 20px;
-  }
 }

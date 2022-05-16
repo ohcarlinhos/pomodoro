@@ -1,13 +1,13 @@
 import TableUI from "./TableUI.vue";
 
 import "./util/storybook.css";
-import { tableLines, tableColumns } from "./util/mock";
+import { tableLines, tableColumns, tableActions } from "./util/mock";
 
 export default {
   title: "UI / TableUI",
   component: TableUI,
   args: {
-    options: false,
+    actions: tableActions(),
     columns: tableColumns(),
     lines: tableLines(),
     desing: "",

@@ -5,6 +5,7 @@ import SearchIcon from "./SearchIcon.vue";
 import CartIcon from "./CartIcon.vue";
 import TrashIcon from "./TrashIcon.vue";
 import CloseIcon from "./CloseIcon.vue";
+import EditIcon from "./EditIcon.vue";
 
 export {
   HeartIcon,
@@ -14,4 +15,5 @@ export {
   CartIcon,
   TrashIcon,
   CloseIcon,
+  EditIcon,
 };

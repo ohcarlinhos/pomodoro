@@ -1,47 +1,90 @@
 <script setup lang="ts">
-import type { TableUIColumn, TableUILine } from "./TableUI.types";
+import { defineAsyncComponent } from "vue";
+import type {
+  TableUIColumn,
+  TableUILine,
+  TableUIActions,
+} from "./TableUI.types";
 
-type TableUIProps = {
-  options?: boolean;
+export interface TableUIProps {
+  actions?: TableUIActions[];
   columns: TableUIColumn[];
   lines: TableUILine[];
   design?: string;
-};
+}
 
 withDefaults(defineProps<TableUIProps>(), {
-  options: false,
+  actions: () => [],
   columns: () => [],
   lines: () => [],
   desing: "",
 });
+
+const emit = defineEmits(["table:action"]);
+
+const iconList = [
+  {
+    name: "edit",
+    component: defineAsyncComponent({
+      loader: () => import("../../icons/EditIcon.vue"),
+    }),
+  },
+  {
+    name: "delete",
+    component: defineAsyncComponent({
+      loader: () => import("../../icons/TrashIcon.vue"),
+    }),
+  },
+];
+
+const findComponent = (iconName: string) => {
+  return iconList.find((list) => list.name == iconName)?.component;
+};
+
+const handleAction = (line: TableUILine) => {
+  emit("table:action", line);
+};
 </script>
 
 <template>
   <div class="table__containter">
-    <table
-      v-if="columns.length || lines.length"
-      class="table__table"
-      :class="{ 'no-lines': lines.length == 0 }"
-    >
-      <tr>
-        <th v-for="column in columns" :key="column.label">
-          {{ column.label }}
-        </th>
-        <th v-if="options" class="options">...</th>
-      </tr>
+    <table v-if="columns.length || lines.length">
+      <tbody>
+        <tr>
+          <th
+            v-for="column in columns"
+            :key="column.label"
+            :style="{ minWidth: column.minWidth }"
+          >
+            {{ column.label }}
+          </th>
+          <th v-if="actions.length" class="actions">...</th>
+        </tr>
 
-      <tr v-for="line in lines" :key="line.label">
-        <td v-for="column in line.columns" :key="column.label">
-          {{ column.label }}
-        </td>
-        <td v-if="options" class="options">...</td>
-      </tr>
+        <tr v-for="line in lines" :key="line.label">
+          <td v-for="column in line.columns" :key="column.label">
+            {{ column.label }}
+          </td>
+          <td v-if="actions.length" class="actions">
+            <button
+              v-for="action in actions"
+              :key="action.id"
+              :title="action.label"
+            >
+              <div v-if="action.icon" class="action__icon">
+                <Component
+                  :is="findComponent(action.icon)"
+                  @click="handleAction(line)"
+                />
+              </div>
+              <span v-else>{{ action.label }}</span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
     </table>
-    <div
-      class="empty__text"
-      v-if="lines.length == 0"
-      :class="{ 'no-table': columns.length == 0 }"
-    >
+
+    <div class="empty__text" v-if="lines.length == 0">
       Nenhum registro encontrado.
     </div>
   </div>
