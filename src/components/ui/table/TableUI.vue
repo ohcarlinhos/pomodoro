@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { computed, defineAsyncComponent } from "vue";
+import { computed } from "vue";
 import type {
   TableUIColumn,
   TableUILine,
-  TableUIActions,
+  TableUIAction,
+  TableUIOrder,
 } from "./TableUI.types";
 import PaginationUI from "../pagination/PaginationUI.vue";
+import { iconList } from "./icons";
 
 export interface TableUIProps {
-  actions?: TableUIActions[];
+  actions?: TableUIAction[];
   columns: TableUIColumn[];
   lines: TableUILine[];
   design?: string;
@@ -31,22 +33,7 @@ const props = withDefaults(defineProps<TableUIProps>(), {
   },
 });
 
-const emit = defineEmits(["table:action"]);
-
-const iconList = [
-  {
-    name: "edit",
-    component: defineAsyncComponent({
-      loader: () => import("../../icons/EditIcon.vue"),
-    }),
-  },
-  {
-    name: "delete",
-    component: defineAsyncComponent({
-      loader: () => import("../../icons/TrashIcon.vue"),
-    }),
-  },
-];
+const emit = defineEmits(["table:action", "table:order"]);
 
 const findComponent = (iconName: string) => {
   return iconList.find((list) => list.name == iconName)?.component;
@@ -54,6 +41,10 @@ const findComponent = (iconName: string) => {
 
 const handleAction = (payload: { action: string; line: TableUILine }) => {
   emit("table:action", payload);
+};
+
+const handleOrder = (payload: TableUIOrder) => {
+  emit("table:order", payload);
 };
 
 const filterLines = computed(() => {
@@ -75,13 +66,21 @@ const filterLines = computed(() => {
   <div class="table__containter">
     <table v-if="columns.length || lines.length">
       <tbody>
-        <tr>
+        <tr class="table__header">
           <th
             v-for="column in columns"
             :key="column.label"
-            :style="{ minWidth: column.minWidth }"
+            :width="column.width"
           >
-            {{ column.label }}
+            <div class="filters">
+              <span>{{ column.label }}</span>
+              <div v-if="column.sort" class="column__filter">
+                <Component
+                  :is="findComponent(column.order == 'desc' ? 'desc' : 'asc')"
+                  @click="handleOrder({ order: column.order!, column })"
+                />
+              </div>
+            </div>
           </th>
           <th v-if="actions.length" class="actions">...</th>
         </tr>

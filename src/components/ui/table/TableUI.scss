@@ -1,7 +1,7 @@
 .table__containter {
   display: block;
   overflow-x: auto;
-  border: 1px solid #ededf9;
+  border: 1px solid #eaeaea;
 }
 
 table {
@@ -14,6 +14,8 @@ table {
   vertical-align: center;
 
   tr {
+    box-sizing: border-box;
+
     &:nth-child(even) {
       background: #fff;
     }
@@ -29,7 +31,7 @@ table {
     }
 
     th {
-      min-width: 100px;
+      box-sizing: border-box;
       font-size: 1.4rem;
       line-height: 1.6rem;
       padding: 20px;
@@ -40,8 +42,12 @@ table {
 
     td {
       padding: 1.5rem 2rem;
-      border-bottom: 1px solid #ededf9;
+      border-bottom: 1px solid #eaeaea;
     }
+  }
+
+  .table__header {
+    background: #f7f8fd;
   }
 
   .actions {
@@ -60,21 +66,32 @@ table {
         margin-right: 0;
       }
     }
+  }
 
-    .action__icon {
-      width: 15px;
-      opacity: 0.5;
-      transition: all 0.25s ease;
-      cursor: pointer;
+  .filters {
+    display: flex;
+    gap: 5px;
+  }
 
-      svg {
-        fill: #545466;
-      }
+  .column__filter,
+  .action__icon {
+    width: 15px;
+    opacity: 0.5;
+    transition: all 0.15s ease;
+    cursor: pointer;
 
-      &:hover {
-        opacity: 1;
-      }
+    svg {
+      fill: #545466;
     }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .column__filter {
+    width: 1.4rem;
+    height: 1.6rem;
   }
 }
 

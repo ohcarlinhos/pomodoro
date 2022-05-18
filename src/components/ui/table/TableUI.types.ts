@@ -1,6 +1,9 @@
 export interface TableUIColumn {
   label: string;
   minWidth?: string;
+  width?: string;
+  sort?: boolean;
+  order?: string;
 }
 
 export interface TableUILine {
@@ -9,11 +12,16 @@ export interface TableUILine {
   columns: TableUIColumn[];
 }
 
-export interface TableUIActions {
+export interface TableUIAction {
   id: number;
   label: string;
   action: string;
   icon?: string;
   color?: string;
   disabled?: boolean;
+}
+
+export interface TableUIOrder {
+  order: string;
+  column: TableUIColumn;
 }

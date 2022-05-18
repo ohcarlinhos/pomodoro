@@ -8,7 +8,7 @@ import TheMenu from "@/components/header/menu/TheMenu.vue";
 const page = reactive({
   menu: {
     logo: {
-      title: "Salva meu Tempo!",
+      title: "S.M.Tempo!",
       logoImage: "",
       uppercase: true,
       url: "home",

@@ -1,7 +1,7 @@
 import type {
   TableUIColumn,
   TableUILine,
-  TableUIActions,
+  TableUIAction,
 } from "../TableUI.types";
 
 export const tableLines = (
@@ -29,14 +29,18 @@ export const tableColumns = (text = "Coluna", num = 5): TableUIColumn[] => {
 
   for (let c = 1; c <= num; c++) {
     const column: TableUIColumn = { label: `${text} ${c}` };
-    if (c == 1) column.minWidth = "200px";
+    if (c == 1) {
+      column.width = "250px";
+      column.sort = true;
+      column.order = "desc";
+    }
     columns.push(column);
   }
 
   return columns;
 };
 
-export const tableActions = (): TableUIActions[] => [
+export const tableActions = (): TableUIAction[] => [
   {
     id: 1,
     label: "Editar",
