@@ -1,56 +1,50 @@
 .pagination__container {
   display: flex;
+  align-items: center;
+  --border: 5px;
+  padding: 0;
 
   li {
-    .label {
-      border: 1px solid #ededf9;
-      padding: 5px 10px;
-      border-right: 0;
-
-      transition: all 0.2s ease;
-
-      &:hover {
-        background-color: #3399ff;
-        border-color: #3399ff;
-        color: #fff;
-        cursor: pointer;
-      }
-    }
-
-    &.selected {
-      .label {
-        background-color: #3399ff;
-        color: #fff;
-        border-color: #3399ff;
-      }
-    }
-
+    display: flex;
     &:first-child {
       .label {
-        border-radius: 5px 0 0 5px;
+        border-radius: var(--border) 0 0 var(--border);
       }
     }
 
     &:last-child {
       .label {
-        border-radius: 0 5px 5px 0;
+        border-radius: 0 var(--border) var(--border) 0;
         border-right: 1px solid #ededf9;
-
-        &:hover {
-          background-color: #3399ff;
-          border-color: #3399ff;
-          color: #fff;
-          cursor: pointer;
-        }
       }
     }
 
-    &.last__page {
-      .dots {
-        border: 1px solid #ededf9;
-        border-right: 0;
-        padding: 5px 10px;
+    .label {
+      box-sizing: border-box;
+      border: 1px solid #ededf9;
+      background: #fff;
+      padding: 7px 10px;
+      border-right: 0;
+      transition: all 0.2s ease;
+
+      &:hover,
+      &.selected {
+        background-color: #3399ff;
+        border-color: #3399ff;
+        color: #fff;
+        cursor: pointer;
       }
+
+      &.alone {
+        border-radius: var(--border);
+      }
+    }
+
+    .dots {
+      border: 1px solid #ededf9;
+      background: #fff;
+      border-right: 0;
+      padding: 5px 10px;
     }
   }
 }

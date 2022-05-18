@@ -4,7 +4,10 @@ export default {
   title: "UI / PaginationUI",
   component: PaginationUI,
   args: {
-    size: 20,
+    size: 35,
+    perPage: 10,
+    firstPage: 1,
+    selected: 1,
   },
   argTypes: {},
   parameters: {
@@ -21,9 +24,7 @@ export const Component = (args: unknown) => ({
   },
   template: `
     <div class="default--storybook">
-      <div class="table">
-        <PaginationUI v-bind="args" />
-      </div>
+      <PaginationUI v-bind="args" />
     </div>
   `,
 });

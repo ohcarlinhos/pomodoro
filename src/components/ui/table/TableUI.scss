@@ -10,7 +10,6 @@ table {
   line-height: 1.4rem;
   border-collapse: inherit;
   background-color: #fff;
-  border-radius: 20px;
   display: table;
   vertical-align: center;
 
@@ -84,4 +83,10 @@ table {
   border-top: 0;
   text-align: center;
   background-color: #fff;
+}
+
+.table__pagination {
+  display: flex;
+  justify-content: right;
+  padding-top: 10px;
 }

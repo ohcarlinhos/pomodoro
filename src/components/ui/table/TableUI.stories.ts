@@ -3,14 +3,21 @@ import TableUI from "./TableUI.vue";
 import "./util/storybook.css";
 import { tableLines, tableColumns, tableActions } from "./util/mock";
 
+const lines = tableLines("Linha", 35);
+const actions = [...tableActions()];
+const columns = [...tableColumns()];
+
 export default {
   title: "UI / TableUI",
   component: TableUI,
   args: {
-    actions: tableActions(),
-    columns: tableColumns(),
-    lines: tableLines(),
-    desing: "",
+    perPage: 7,
+    firstPage: 1,
+    selectedPage: 1,
+    design: "",
+    actions,
+    columns,
+    lines,
   },
   argTypes: {},
   parameters: {
@@ -23,7 +30,9 @@ export default {
 export const Component = (args: unknown) => ({
   components: { TableUI },
   setup() {
-    return { args };
+    return {
+      args,
+    };
   },
   template: `
     <div class="table-ui--storybook">

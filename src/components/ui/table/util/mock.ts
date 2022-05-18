@@ -4,13 +4,17 @@ import type {
   TableUIActions,
 } from "../TableUI.types";
 
-export const tableLines = (text = "Linha", num = 5): TableUILine[] => {
+export const tableLines = (
+  text = "Linha",
+  linesNum = 5,
+  linesColumn = 5
+): TableUILine[] => {
   const lines: TableUILine[] = [];
 
-  for (let l = 1; l <= num; l++) {
+  for (let l = 1; l <= linesNum; l++) {
     const line: TableUILine = { id: l, label: `${text} ${l}`, columns: [] };
 
-    for (let c = 1; c <= num; c++) {
+    for (let c = 1; c <= linesColumn; c++) {
       line.columns.push({ label: `${text} ${c}` });
     }
 
