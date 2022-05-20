@@ -1,16 +1,9 @@
 import type {
-  TableUIColumn,
   TableUILine,
+  TableUIAction,
+  TableUIColumn,
 } from "@/components/ui/table/TableUI.types";
 import type { RecordDataAPI } from "@/services/types";
-
-export const tableColumns = (): TableUIColumn[] => [
-  { label: "Coluna 1" },
-  { label: "Coluna 2" },
-  { label: "Coluna 3" },
-  { label: "Coluna 4" },
-  { label: "Coluna 5" },
-];
 
 export const tableLines = (): TableUILine[] => {
   const lines: TableUILine[] = [];
@@ -47,3 +40,29 @@ export const makeColumnsByRecords = (records: RecordDataAPI[]) => {
     return line;
   });
 };
+
+export const tableColumns = (): TableUIColumn[] => [
+  { label: "Nome", width: "33%" },
+  { label: "Categoria" },
+  { label: "Tags" },
+  { label: "Data" },
+  { label: "Finalizado às" },
+  { label: "Tempo" },
+];
+
+export const tableActions = (): TableUIAction[] => [
+  {
+    id: 1,
+    label: "Editar",
+    disabled: false,
+    action: "edit",
+    icon: "edit",
+  },
+  {
+    id: 2,
+    label: "Excluir",
+    disabled: false,
+    action: "delete",
+    icon: "delete",
+  },
+];

@@ -43,6 +43,20 @@ export const Component = (args: unknown) => ({
   `,
 });
 
+export const Example = (args: unknown) => ({
+  components: { TableUI },
+  setup() {
+    return { args };
+  },
+  template: `
+    <div class="table-ui--storybook">
+      <div class="custom-table">
+        <TableUI v-bind="args" />
+      </div>
+    </div>
+  `,
+});
+
 export const EmptyText = () => ({
   components: { TableUI },
   template: `

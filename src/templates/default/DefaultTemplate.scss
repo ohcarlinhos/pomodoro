@@ -1,7 +1,6 @@
 .template__container {
   position: relative;
-  background: #fff;
-  transition: 0.2s;
+  background: #f3f4f5;
   display: flex;
   max-width: 100vw;
 
@@ -11,13 +10,11 @@
     display: flex;
     justify-content: center;
     padding: 25px;
-    // margin: 0 20px;
     overflow: auto;
   }
 
   .body__center {
     width: 100%;
-    // max-width: 1200px;
   }
 
   .header {
@@ -41,7 +38,6 @@
     max-height: 100vh;
     display: flex;
     flex-direction: column;
-    transition: 0.2s;
 
     .body__content {
       margin: 0;
@@ -75,27 +71,4 @@
 
 .body__area {
   flex: 1 1;
-}
-
-/** component animations */
-
-.v-enter-active,
-.v-leave-active {
-  transition: all 0.3s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-  transform: translate(500px);
-}
-
-.close-area-enter-active,
-.close-area-leave-active {
-  transition: all 0.3s ease;
-}
-
-.close-area-enter-from,
-.close-area-leave-to {
-  opacity: 0;
 }

@@ -90,19 +90,21 @@ const filterLines = computed(() => {
             {{ column.label }}
           </td>
           <td v-if="actions.length" class="actions">
-            <button
-              v-for="action in actions"
-              :key="action.id"
-              :title="action.label"
-            >
-              <div v-if="action.icon" class="action__icon">
-                <Component
-                  :is="findComponent(action.icon)"
-                  @click="handleAction({ action: action.action, line })"
-                />
-              </div>
-              <span v-else>{{ action.label }}</span>
-            </button>
+            <div class="buttons">
+              <button
+                v-for="action in actions"
+                :key="action.id"
+                :title="action.label"
+              >
+                <div v-if="action.icon" class="action__icon">
+                  <Component
+                    :is="findComponent(action.icon)"
+                    @click="handleAction({ action: action.action, line })"
+                  />
+                </div>
+                <span v-else>{{ action.label }}</span>
+              </button>
+            </div>
           </td>
         </tr>
       </tbody>

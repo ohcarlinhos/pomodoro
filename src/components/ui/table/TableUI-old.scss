@@ -1,6 +1,7 @@
 .table__containter {
   display: block;
   overflow-x: auto;
+  border: 1px solid #eaeaea;
 }
 
 table {
@@ -8,11 +9,20 @@ table {
   font-size: 1.4rem;
   line-height: 1.4rem;
   border-collapse: inherit;
+  background-color: #fff;
   display: table;
   vertical-align: center;
 
   tr {
     box-sizing: border-box;
+
+    &:nth-child(even) {
+      background: #fff;
+    }
+
+    &:hover {
+      background: #fffbf7;
+    }
 
     &:last-of-type {
       td {
@@ -22,32 +32,28 @@ table {
 
     th {
       box-sizing: border-box;
-      font-size: 1.2rem;
-      line-height: 1.2rem;
-      text-transform: uppercase;
-      padding: 15px 20px;
+      font-size: 1.4rem;
+      line-height: 1.6rem;
+      padding: 20px;
       text-align: left;
-      font-weight: 700;
-      border-bottom: 1px solid #e9ecef;
-      color: #8392ab;
-      opacity: 0.7;
+      font-weight: 500;
+      background: #f7f8fd;
     }
 
     td {
-      font-size: 1.4rem;
-      line-height: 1.4rem;
-      padding: 10px 20px;
-      border-bottom: 1px solid #e9ecef;
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid #eaeaea;
     }
+  }
+
+  .table__header {
+    background: #f7f8fd;
   }
 
   .actions {
     text-align: right;
-
-    .buttons {
-      display: flex;
-      justify-content: right;
-    }
+    display: flex;
+    justify-content: right;
 
     button {
       padding: 0;
@@ -69,13 +75,13 @@ table {
 
   .column__filter,
   .action__icon {
-    width: 12px;
+    width: 15px;
     opacity: 0.5;
     transition: all 0.15s ease;
     cursor: pointer;
 
     svg {
-      fill: #8392ab;
+      fill: #545466;
     }
 
     &:hover {
@@ -84,19 +90,20 @@ table {
   }
 
   .column__filter {
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 1.4rem;
+    height: 1.6rem;
   }
 }
 
 .empty__text {
   padding: 25px;
+  border-top: 0;
   text-align: center;
+  background-color: #fff;
 }
 
 .table__pagination {
-  border-top: 1px solid #e9ecef;
   display: flex;
   justify-content: right;
-  padding: 15px 20px 10px 20px;
+  padding-top: 10px;
 }

@@ -8,3 +8,11 @@
 .table-ui--storybook .table {
   width: 800px;
 }
+
+.table-ui--storybook .custom-table {
+  width: 800px;
+  background-color: #fff;
+  padding: 5px 0;
+  border-radius: 20px;
+  box-shadow: 0 20px 27px 0 rgba(0,0,0,.05);
+}
