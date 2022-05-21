@@ -9,6 +9,7 @@ export default {
     disabled: false,
     radius: true,
     full: false,
+    size: "",
   },
   argTypes: {
     label: { type: "string" },

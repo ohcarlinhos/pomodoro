@@ -1,0 +1,53 @@
+.button-ui {
+  background: #8700f2;
+  padding: 14px 20px;
+  border: none;
+  color: #fff;
+  transition: all 0.1s ease-in-out;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  border-radius: 5px;
+
+  &.lg {
+    padding: 20px 25px;
+    font-size: 1.7rem;
+    line-height: 1.7rem;
+  }
+
+  &.sm {
+    padding: 10px 15px;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
+}
+
+.sharp {
+  border-radius: 0;
+}
+
+.button-ui:hover {
+  background: #7100cd;
+  cursor: pointer;
+  filter: drop-shadow(4px 4px 0px #1e1a6134);
+}
+
+.button-ui:active {
+  transform: translateY(2px);
+}
+
+.button-ui.full {
+  width: 100%;
+}
+
+.button-ui:disabled {
+  opacity: 0.5;
+  filter: none;
+}
+
+.button-ui:disabled:active {
+  transform: none;
+}
+
+.button-ui:disabled:hover {
+  cursor: default;
+}
