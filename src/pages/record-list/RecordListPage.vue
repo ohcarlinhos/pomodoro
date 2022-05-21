@@ -13,6 +13,8 @@ import {
 import { recordsAPI } from "@/services";
 import InputSearchUI from "../../components/ui/input-search/InputSearchUI.vue";
 import ButtonUI from "../../components/ui/button/ButtonUI.vue";
+import TimerUI from "../../components/ui/timer/TimerUI.vue";
+import RecordForm from "../../components/form/record/RecordForm.vue";
 
 const table = reactive<TableUIProps>({
   columns: [],
@@ -45,9 +47,15 @@ const toggleOrder = (payload: TableUIOrder) => {
     </div>
 
     <div class="info__area">
-      <div class="timer__area white-bg">Timer</div>
+      <div class="timer__area white-bg">
+        <TimerUI :minutes="25" />
+      </div>
       <div class="table__area white-bg">
         <TableUI v-bind="table" @table:order="toggleOrder" />
+      </div>
+
+      <div>
+        <RecordForm />
       </div>
     </div>
   </div>
@@ -64,7 +72,8 @@ const toggleOrder = (payload: TableUIOrder) => {
 .white-bg {
   padding: 20px;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 15px;
+  border: 1px solid #eaeaea;
 }
 
 .info__area {
