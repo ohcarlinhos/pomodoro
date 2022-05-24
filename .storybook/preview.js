@@ -10,7 +10,8 @@ export const parameters = {
 
 import "../src/assets/reset.css";
 import "../src/assets/root.css";
-import "../src/assets/storybook.css";
+
+import "../src/assets/storybook.scss";
 
 export const decorators = [
   (story) => ({
