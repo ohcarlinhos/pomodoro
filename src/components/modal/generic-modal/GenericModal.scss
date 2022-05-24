@@ -1,0 +1,29 @@
+.modal__container {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  padding: 20px;
+  border: 1px solid #eaeaea;
+  background: #fff;
+  border-radius: 10px;
+  flex-direction: column;
+
+  &.center {
+    text-align: center;
+  }
+
+  &.lg {
+    max-width: 600px;
+  }
+}
+
+.modal__title {
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 700;
+  padding-bottom: 20px;
+}
+
+.modal__body {
+  padding-bottom: 30px;
+}
