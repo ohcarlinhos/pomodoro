@@ -1,6 +1,6 @@
 <script setup lang="ts">
 export interface DefaultTemplateProps {
-  scrollAction: (e: UIEvent) => void;
+  scrollAction?: (e: UIEvent) => void;
 }
 
 withDefaults(defineProps<DefaultTemplateProps>(), {

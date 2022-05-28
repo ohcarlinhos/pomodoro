@@ -30,9 +30,14 @@ const table = reactive<TableUIProps>({
 
 onMounted(async () => {
   table.columns = tableColumns();
-  const records = await recordsAPI.get();
-  table.lines = makeColumnsByRecords(records);
-  table.actions = [...tableActions()];
+
+  try {
+    const records = await recordsAPI.get();
+    table.lines = makeColumnsByRecords(records);
+    table.actions = [...tableActions()];
+  } catch (err) {
+    console.log("Erro na requisição");
+  }
 });
 
 const toggleOrder = (payload: TableUIOrder) => {
@@ -75,45 +80,5 @@ const openRecordModal = () => {
 </template>
 
 <style lang="scss" scoped>
-.record__container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 15px;
-}
-
-.white-bg {
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 15px;
-  border: 1px solid #eaeaea;
-}
-
-.info__area {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 20px;
-}
-
-.timer__area {
-  width: 100%;
-  max-width: 400px;
-}
-.table__area {
-  width: 100%;
-}
-
-.action__area {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
-
-  .add-button {
-    width: 100%;
-    max-width: 250px;
-  }
-}
+@import "./RecordListPage.scss";
 </style>
