@@ -3,6 +3,7 @@ export interface DigitalTimerInterface {
   active: boolean;
   type: string;
   buttons: DigitalTimerButton[];
+  custom: string;
 }
 
 export interface DigitalTimerButton {

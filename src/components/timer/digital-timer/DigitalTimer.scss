@@ -3,9 +3,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   margin-bottom: 10px;
 
-  button {
+  button,
+  input {
     background: transparent;
     border: 1px solid #eee;
     margin: 5px;
@@ -13,6 +15,7 @@
     border-radius: 5px;
     font-size: 1.8rem;
     transition: all 0.1s ease-in-out;
+    color: var(--color-text);
 
     &:hover {
       background-color: #eee;
@@ -24,6 +27,16 @@
         background-color: transparent;
         cursor: inherit;
       }
+    }
+  }
+
+  input {
+    width: 80px;
+    text-align: center;
+
+    &::placeholder {
+      color: var(--color-text);
+      opacity: 1;
     }
   }
 }

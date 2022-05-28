@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { reactive, onMounted } from "vue";
+import { maska } from "maska";
 
 import type {
   TimerUIClickPayload,
@@ -16,11 +17,14 @@ import clickSound from "./sounds/click.mp3";
 const alarm = new Audio(alarmSound);
 const click = new Audio(clickSound);
 
+const vMaska = maska;
+
 const timer = reactive<DigitalTimerInterface>({
   minutes: 25,
   active: false,
   type: "normal",
   buttons: [],
+  custom: "",
 });
 
 onMounted(() => {
@@ -42,6 +46,10 @@ const setTime = (minutes: number, type = "normal") => {
   timer.minutes = minutes;
   timer.type = type;
 };
+
+const setCustomTime = () => {
+  setTime(parseInt(timer.custom) || 0);
+};
 </script>
 
 <template>
@@ -55,6 +63,14 @@ const setTime = (minutes: number, type = "normal") => {
       >
         {{ b.label }}
       </button>
+      <input
+        v-model="timer.custom"
+        v-maska="'###'"
+        type="text"
+        placeholder="Outro"
+        @input="setCustomTime"
+        @click="setCustomTime"
+      />
     </div>
     <TimerUI
       :minutes="timer.minutes"
