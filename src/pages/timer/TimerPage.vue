@@ -4,7 +4,7 @@ import DigitalTimer from "../../components/timer/digital-timer/DigitalTimer.vue"
 
 <template>
   <div class="page__container">
-    <h2 class="page__title">🍅 Pomodoro Timer</h2>
+    <h2 class="page__title">🍅 Pomodoro</h2>
 
     <div class="timer__area white-bg">
       <DigitalTimer />
@@ -31,8 +31,10 @@ import DigitalTimer from "../../components/timer/digital-timer/DigitalTimer.vue"
 
 .page__title {
   font-size: 3.5rem;
+  line-height: 3.5rem;
   font-weight: 900;
   margin: 20px;
+  text-align: center;
 }
 
 .white-bg {
