@@ -15,14 +15,20 @@ const page = reactive({
     },
     userImage:
       "https://gravatar.com/avatar/9a82ba52769cbc22951a7cf516124307?s=250",
+    userName: "Carlos Roberto (@caarlos1)",
+    userClickable: true,
   },
 });
+
+const clickUser = () => {
+  window.open("https://github.com/caarlos1", "_blank");
+};
 </script>
 
 <template>
   <DefaultTemplate>
     <template #header>
-      <TheMenu v-bind="page.menu" />
+      <TheMenu v-bind="page.menu" :user-click-action="clickUser" />
     </template>
 
     <template #content>

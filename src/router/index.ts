@@ -6,7 +6,16 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
+      component: () => import("../pages/timer/TimerPage.vue"),
+    },
+    {
+      path: "/panel",
+      name: "panel",
       component: () => import("../pages/record-list/RecordListPage.vue"),
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      redirect: { name: "home" },
     },
   ],
 });

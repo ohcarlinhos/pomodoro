@@ -6,20 +6,42 @@ import ImageBoxUI from "../../ui/image/ImageBoxUI.vue";
 export interface MenuProps {
   logo: LogoProps;
   userImage?: string;
+  userName?: string;
+  userClickable?: boolean;
+  userClickAction?: () => void;
 }
 
-withDefaults(defineProps<MenuProps>(), {
+const props = withDefaults(defineProps<MenuProps>(), {
   userImage: "",
+  userName: "",
+  userClickable: false,
+  userClickAction: () => {
+    return;
+  },
 });
 
 defineEmits(["menu:open-favorite", "menu:open-cart"]);
+
+const clickUser = () => {
+  if (props.userClickable) props.userClickAction();
+};
 </script>
 
 <template>
   <div class="menu__container">
     <TheLogo v-bind="logo" />
-    <div v-if="userImage" class="menu__user">
-      <ImageBoxUI :url="userImage" radius="20px" min-height="40px" />
+    <div
+      v-if="userImage"
+      class="menu__user"
+      :class="{ clickable: userClickable }"
+      @click="clickUser"
+    >
+      <ImageBoxUI
+        :url="userImage"
+        :title="userName"
+        radius="20px"
+        min-height="40px"
+      />
     </div>
   </div>
 </template>
@@ -33,6 +55,10 @@ defineEmits(["menu:open-favorite", "menu:open-cart"]);
   align-items: center;
   justify-content: space-between;
   gap: 15px;
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 .menu__user {
