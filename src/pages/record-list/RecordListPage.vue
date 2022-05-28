@@ -59,19 +59,20 @@ const openRecordModal = () => {
 
 <template>
   <div class="record__container">
-    <div class="action__area">
-      <InputSearchUI size="lg" />
-      <ButtonUI
-        class="add-button"
-        label="Adicionar Registro"
-        @click="openRecordModal"
-      />
+    <div class="timer__area white-bg">
+      <DigitalTimer />
     </div>
 
     <div class="info__area">
-      <div class="timer__area white-bg">
-        <DigitalTimer />
+      <div class="action__area">
+        <InputSearchUI size="lg" />
+        <ButtonUI
+          class="add-button"
+          label="Adicionar Registro"
+          @click="openRecordModal"
+        />
       </div>
+
       <div class="table__area white-bg">
         <TableUI v-bind="table" @table:order="toggleOrder" />
       </div>

@@ -1,8 +1,13 @@
 .record__container {
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   align-items: flex-start;
   gap: 15px;
+
+  @media (max-width: 1200px) {
+    align-items: center;
+    flex-direction: column;
+  }
 }
 
 .white-bg {
@@ -10,22 +15,6 @@
   background-color: #fff;
   border-radius: 15px;
   border: 1px solid #eaeaea;
-}
-
-.info__area {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 20px;
-}
-
-.timer__area {
-  width: 100%;
-  max-width: 500px;
-}
-.table__area {
-  width: 100%;
 }
 
 .action__area {
@@ -37,5 +26,34 @@
   .add-button {
     width: 100%;
     max-width: 250px;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+
+    .add-button {
+      max-width: 100%;
+    }
+  }
+}
+
+.timer__area {
+  width: 100%;
+  max-width: 500px;
+
+  @media (max-width: 600px) {
+    max-width: 100%;
+  }
+}
+
+.info__area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+
+  .table__area {
+    width: 100%;
   }
 }
