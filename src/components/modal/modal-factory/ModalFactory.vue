@@ -24,6 +24,12 @@ const modalList = [
       loader: () => import("../generic-modal/GenericModal.vue"),
     }),
   },
+  {
+    name: "record-form",
+    component: defineAsyncComponent({
+      loader: () => import("../record/RecordModal.vue"),
+    }),
+  },
 ];
 
 const DinamicComponent = computed(() => {
@@ -62,17 +68,19 @@ const closeModal = () => {
 
 <template>
   <Transition name="modal">
-    <div v-show="modalState.status" class="modal__container">
-      <DinamicComponent
-        v-if="DinamicComponent"
-        class="modal__dinamic"
-        v-bind="modalState.props"
-      />
+    <div v-show="modalState.status" class="modal-factory__container">
+      <Transition name="component">
+        <DinamicComponent
+          v-if="DinamicComponent"
+          class="modal__dinamic"
+          v-bind="modalState.props"
+        />
+      </Transition>
       <div class="modal__exit" @click="closeModal"></div>
     </div>
   </Transition>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "./ModalFactory.scss";
 </style>

@@ -1,4 +1,4 @@
-.modal__container {
+.modal-factory__container {
   height: 100vh;
   width: 100vw;
   position: fixed;
@@ -32,6 +32,15 @@
 }
 .modal-enter-from,
 .modal-leave-to {
+  opacity: 0;
+}
+
+.component-enter-active,
+.component-leave-active {
+  transition: all 0.5s ease;
+}
+.component-enter-from,
+.component-leave-to {
   opacity: 0;
   transform: translateY(30px);
 }
