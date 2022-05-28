@@ -117,7 +117,7 @@ const zeroLeft = (value: number, size = 2): string => {
       <ButtonUI
         @click="done(true)"
         size="sm"
-        label="Finaliziar"
+        label="Finalizar"
         :disabled="!timer.secondsPast"
         full
       />
