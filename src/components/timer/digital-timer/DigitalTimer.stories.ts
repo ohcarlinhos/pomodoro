@@ -1,12 +1,9 @@
-import TimerUI from "./TimerUI.vue";
+import DigitalTimer from "./DigitalTimer.vue";
 
 export default {
-  title: "UI / TimerUI",
-  component: TimerUI,
-  args: {
-    minutes: 25,
-    seconds: 0,
-  },
+  title: "Timer / DigitalTimer",
+  component: DigitalTimer,
+  args: {},
   argTypes: {},
   parameters: {
     backgrounds: {
@@ -16,7 +13,7 @@ export default {
 };
 
 export const Component = (args: unknown) => ({
-  components: { TimerUI },
+  components: { DigitalTimer },
   setup() {
     return {
       args,
@@ -24,7 +21,7 @@ export const Component = (args: unknown) => ({
   },
   template: `
     <div class="default--storybook w-350">
-      <TimerUI v-bind="args" />
+      <DigitalTimer v-bind="args" />
     </div>
   `,
 });

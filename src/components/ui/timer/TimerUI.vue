@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { reactive, ref, onMounted, computed } from "vue";
+import { reactive, ref, watch, onMounted, computed } from "vue";
 import ButtonUI from "../button/ButtonUI.vue";
+import type { TimerUIDonePayload } from "./TimerUI.types";
 
 export interface TimerUIProps {
   increment?: boolean;
@@ -8,7 +9,7 @@ export interface TimerUIProps {
   seconds?: number;
 }
 
-const emit = defineEmits(["timer:done"]);
+const emit = defineEmits(["timer:done", "timer:click"]);
 
 const props = withDefaults(defineProps<TimerUIProps>(), {
   increment: false,
@@ -29,6 +30,13 @@ const timer = reactive({
 onMounted(() => {
   resetTimer();
 });
+
+watch(
+  () => props.minutes,
+  () => {
+    resetTimer();
+  }
+);
 
 /** Computeds */
 
@@ -57,19 +65,18 @@ const moveTimer = () => {
 const start = () => {
   if (!timer.active) initTimerInterval();
   else clearTimerInterval();
+  const payload = { active: timer.active };
+  emit("timer:click", payload);
 };
 
-interface TimerUIPayload {
-  date: Date;
-  seconds: number;
-}
-
-const done = () => {
+const done = (manual = false) => {
   if (timer.secondsPast == 0) return;
-  const payload: TimerUIPayload = {
+  const payload: TimerUIDonePayload = {
     date: new Date(),
     seconds: timer.secondsPast,
+    manual,
   };
+
   emit("timer:done", payload);
   clearTimerInterval();
   resetTimer();
@@ -108,7 +115,7 @@ const zeroLeft = (value: number, size = 2): string => {
     <div class="buttons">
       <ButtonUI @click="start" size="sm" :label="timerButton" full />
       <ButtonUI
-        @click="done"
+        @click="done(true)"
         size="sm"
         label="Finaliziar"
         :disabled="!timer.secondsPast"
