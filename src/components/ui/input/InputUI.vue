@@ -2,39 +2,31 @@
 import { maska } from "maska";
 import { computed } from "vue";
 
-const props = defineProps({
-  modelValue: [String, Number],
-  id: String,
-  label: String,
-  type: {
-    type: String,
-    default: "text",
-  },
-  placeholder: {
-    type: String,
-    default: "",
-  },
-  mask: {
-    type: [Array, String],
-    default: () => [],
-  },
-  required: {
-    type: Boolean,
-    default: false,
-  },
-  size: {
-    type: String,
-    default: "",
-  },
-  rounded: {
-    type: Boolean,
-    default: false,
-  },
+export interface InputUIProps {
+  modelValue: string | number;
+  id?: string;
+  label?: string;
+  type?: string;
+  placeholder?: string;
+  mask?: string[] | string;
+  required?: boolean;
+  size?: string;
+  rounded?: boolean;
+}
+
+const props = withDefaults(defineProps<InputUIProps>(), {
+  type: "text",
+  placeholder: "",
+  mask: () => [],
+  required: false,
+  size: "",
+  rounded: false,
 });
 
 const vMaska = maska;
 
 const emit = defineEmits(["update:modelValue"]);
+
 const inputValue = computed({
   get() {
     return props.modelValue;
@@ -52,17 +44,21 @@ const inputValue = computed({
     </label>
     <input
       v-if="mask.length"
-      v-bind="props"
-      v-maska="mask"
       v-model="inputValue"
+      v-maska="mask"
+      :id="id"
+      :placeholder="placeholder"
+      :type="type"
       :required="required"
       :class="{ [size]: size, rounded }"
     />
 
     <input
       v-else
-      v-bind="props"
       v-model="inputValue"
+      :id="id"
+      :placeholder="placeholder"
+      :type="type"
       :required="required"
       :class="{ [size]: size, rounded }"
     />
