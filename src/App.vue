@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import GeneralPages from "./pages/GeneralPages.vue";
+import ModalFactory from "@/components/modal/modal-factory/ModalFactory.vue";
+import GeneralPages from "@/pages/GeneralPages.vue";
 </script>
 
 <template>
+  <ModalFactory />
   <GeneralPages />
 </template>
 

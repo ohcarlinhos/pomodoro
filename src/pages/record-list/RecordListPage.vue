@@ -13,8 +13,14 @@ import {
 import { recordsAPI } from "@/services";
 import InputSearchUI from "../../components/ui/input-search/InputSearchUI.vue";
 import ButtonUI from "../../components/ui/button/ButtonUI.vue";
-import TimerUI from "../../components/ui/timer/TimerUI.vue";
-import RecordForm from "../../components/form/record/RecordForm.vue";
+
+import { useModal } from "@/hooks/useModal";
+import type { ModalStateInterface } from "@/components/modal/modal-factory/ModalFactory.vue";
+import type { RecordModalProps } from "@/components/modal/record/RecordModal.vue";
+
+import DigitalTimer from "../../components/timer/digital-timer/DigitalTimer.vue";
+
+const modal = useModal();
 
 const table = reactive<TableUIProps>({
   columns: [],
@@ -37,25 +43,32 @@ const toggleOrder = (payload: TableUIOrder) => {
     return column;
   });
 };
+
+const openRecordModal = () => {
+  modal.open<ModalStateInterface<RecordModalProps>>({
+    name: "record-form",
+    props: {},
+  });
+};
 </script>
 
 <template>
   <div class="record__container">
     <div class="action__area">
       <InputSearchUI size="lg" />
-      <ButtonUI class="add-button" label="Adicionar Registro" />
+      <ButtonUI
+        class="add-button"
+        label="Adicionar Registro"
+        @click="openRecordModal"
+      />
     </div>
 
     <div class="info__area">
       <div class="timer__area white-bg">
-        <TimerUI :minutes="25" />
+        <DigitalTimer />
       </div>
       <div class="table__area white-bg">
         <TableUI v-bind="table" @table:order="toggleOrder" />
-      </div>
-
-      <div>
-        <RecordForm />
       </div>
     </div>
   </div>
