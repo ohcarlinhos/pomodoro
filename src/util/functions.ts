@@ -6,3 +6,15 @@ export const limStr = (s: string, size = 20) => {
   if (newString < s) newString += "...";
   return newString.trim();
 };
+
+export const desktopNotify = (message = "") => {
+  if (!message) return;
+  if (!("Notification" in window)) return;
+  const permission = Notification.permission;
+  if (permission === "granted") return new Notification(message);
+  //...
+  else if (permission !== "denied")
+    Notification.requestPermission((p) => {
+      if (p === "granted") return new Notification(message);
+    });
+};
