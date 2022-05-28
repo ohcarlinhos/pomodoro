@@ -48,7 +48,8 @@ const setTime = (minutes: number, type = "normal") => {
 };
 
 const setCustomTime = () => {
-  setTime(parseInt(timer.custom) || 0);
+  if (timer.active) return;
+  setTime(parseInt(timer.custom) || 1);
 };
 </script>
 
@@ -58,8 +59,8 @@ const setCustomTime = () => {
       <button
         v-for="b in timer.buttons"
         :key="b.label"
-        @click="setTime(b.value)"
         :disabled="timer.active"
+        @click="setTime(b.value)"
       >
         {{ b.label }}
       </button>
@@ -68,6 +69,7 @@ const setCustomTime = () => {
         v-maska="'###'"
         type="text"
         placeholder="Outro"
+        :disabled="timer.active"
         @input="setCustomTime"
         @click="setCustomTime"
       />

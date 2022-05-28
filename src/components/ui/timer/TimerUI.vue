@@ -34,7 +34,7 @@ onMounted(() => {
 watch(
   () => props.minutes,
   () => {
-    resetTimer();
+    reCalcTimer();
   }
 );
 
@@ -56,7 +56,7 @@ const seconds = computed(() => {
 /** Methods */
 
 const moveTimer = () => {
-  if (!props.increment && timer.seconds == timer.secondsPast) done();
+  if (!props.increment && timer.secondsPast >= timer.seconds) done();
   else {
     timer.secondsPast++;
   }
@@ -93,8 +93,12 @@ const initTimerInterval = () => {
 };
 
 const resetTimer = () => {
-  timer.seconds = props.minutes * 60 + props.seconds;
+  reCalcTimer();
   timer.secondsPast = 0;
+};
+
+const reCalcTimer = () => {
+  timer.seconds = props.minutes * 60 + props.seconds;
 };
 
 /** Filters */
