@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { zeroLeft } from "@/util/functions";
 import { reactive, ref, watch, onMounted, computed } from "vue";
 import ButtonUI from "../button/ButtonUI.vue";
 import type { TimerUIDonePayload } from "./TimerUI.types";
@@ -105,16 +106,6 @@ const resetTimer = () => {
 
 const reCalcTimer = () => {
   timer.seconds = props.minutes * 60 + props.seconds;
-};
-
-/** Filters */
-
-const zeroLeft = (value: number, size = 2): string => {
-  let s = String(value);
-  while (s.length < size) {
-    s = "0" + s;
-  }
-  return s;
 };
 </script>
 

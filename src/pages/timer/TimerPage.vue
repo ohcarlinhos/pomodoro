@@ -1,5 +1,62 @@
 <script setup lang="ts">
-import DigitalTimer from "../../components/timer/digital-timer/DigitalTimer.vue";
+import { computed, onMounted, reactive } from "vue";
+import dayjs from "dayjs";
+
+import localizedFormatDayJs from "dayjs/plugin/localizedFormat";
+import localeDayJs from "dayjs/locale/pt-br";
+import { zeroLeft } from "@/util/functions";
+
+import DigitalTimer from "@/components/timer/digital-timer/DigitalTimer.vue";
+import SimpleTable, {
+  type SimpleTableProps,
+} from "@/components/table/simple-table/SimpleTable.vue";
+import type { TimerUIDonePayload } from "@/components/ui/timer/TimerUI.types";
+
+import {
+  makeTableLinesByLocalRecords,
+  tableActions,
+  tableColumns,
+} from "./TimerPage.util";
+
+import { useLocalRecordsStore } from "@/stores/localRecords";
+import type { TableUIActionPayload } from "@/components/ui/table/TableUI.types";
+
+dayjs.extend(localizedFormatDayJs);
+dayjs.locale(localeDayJs);
+
+const localRecords = useLocalRecordsStore();
+
+const table = reactive<SimpleTableProps>({
+  columns: [],
+  actions: [],
+  perPage: 4,
+});
+
+onMounted(async () => {
+  table.columns = tableColumns();
+  table.actions = tableActions();
+  localRecords.requestRecords();
+});
+
+const localRecordsLines = computed(() => {
+  return makeTableLinesByLocalRecords(localRecords.getRecords);
+});
+
+const doneAction = (payload: TimerUIDonePayload) => {
+  const { date } = payload;
+  const day = dayjs(date).format("DD/MM/YYYY");
+
+  const whenFinished = `${zeroLeft(dayjs(date).hour())}: ${zeroLeft(
+    dayjs(date).minute()
+  )}`;
+
+  localRecords.addRecord(day, whenFinished, payload.seconds);
+};
+
+const handleAction = (payload: TableUIActionPayload) => {
+  const { action, line } = payload;
+  if (action == "delete") localRecords.deleteRecord(line.id as string);
+};
 </script>
 
 <template>
@@ -7,7 +64,15 @@ import DigitalTimer from "../../components/timer/digital-timer/DigitalTimer.vue"
     <h2 class="page__title">🍅 Pomodoro</h2>
 
     <div class="timer__area white-bg">
-      <DigitalTimer />
+      <DigitalTimer :done-action="doneAction" />
+    </div>
+
+    <div class="timer__area white-bg">
+      <SimpleTable
+        v-bind="table"
+        :lines="localRecordsLines"
+        @table:action="handleAction"
+      />
     </div>
 
     <div class="page__footer">
@@ -22,37 +87,5 @@ import DigitalTimer from "../../components/timer/digital-timer/DigitalTimer.vue"
 </template>
 
 <style lang="scss" scoped>
-.page__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-}
-
-.page__title {
-  font-size: 3.5rem;
-  line-height: 3.5rem;
-  font-weight: 900;
-  margin: 20px;
-  text-align: center;
-}
-
-.white-bg {
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 15px;
-  border: 1px solid #eaeaea;
-}
-
-.timer__area {
-  width: 100%;
-  max-width: 500px;
-}
-.page__footer {
-  text-align: center;
-  line-height: 2.5rem;
-  .warning {
-    font-size: 2rem;
-  }
-}
+@import "./TimerPage.scss";
 </style>

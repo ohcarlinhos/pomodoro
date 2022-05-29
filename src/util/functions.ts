@@ -7,6 +7,14 @@ export const limStr = (s: string, size = 20) => {
   return newString.trim();
 };
 
+export const zeroLeft = (value: number, size = 2): string => {
+  let s = String(value);
+  while (s.length < size) {
+    s = "0" + s;
+  }
+  return s;
+};
+
 export const desktopNotify = (message = "") => {
   if (!message) return;
   if (!("Notification" in window)) return;

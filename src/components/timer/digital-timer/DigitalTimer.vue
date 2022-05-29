@@ -5,17 +5,26 @@ import { maska } from "maska";
 import type {
   TimerUIClickPayload,
   TimerUIDonePayload,
-} from "../../ui/timer/TimerUI.types";
-import TimerUI from "../../ui/timer/TimerUI.vue";
-
+} from "@/components/ui/timer/TimerUI.types";
 import type { DigitalTimerInterface } from "./DigitalTimer.types";
 import { defaultTimerButtons } from "./DigitalTimer.util";
+import TimerUI from "@/components/ui/timer/TimerUI.vue";
 
 import alarmSound from "./sounds/alarm.mp3";
 import clickSound from "./sounds/click.mp3";
 
+export interface DigitalTimerProps {
+  doneAction?: (payload: TimerUIDonePayload) => void;
+}
+
 const alarm = new Audio(alarmSound);
 const click = new Audio(clickSound);
+
+const props = withDefaults(defineProps<DigitalTimerProps>(), {
+  doneAction: () => {
+    return;
+  },
+});
 
 const vMaska = maska;
 
@@ -35,6 +44,7 @@ const doneTimer = (payload: TimerUIDonePayload) => {
   if (payload.manual) click.play();
   else alarm.play();
   timer.active = false;
+  props.doneAction(payload);
 };
 
 const clickTimer = (payload: TimerUIClickPayload) => {
