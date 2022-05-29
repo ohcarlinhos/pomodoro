@@ -42,6 +42,11 @@ const clickTimer = (payload: TimerUIClickPayload) => {
   timer.active = payload.active;
 };
 
+const resetTimer = () => {
+  click.play();
+  timer.active = false;
+};
+
 const setTime = (minutes: number, type = "normal") => {
   timer.minutes = minutes;
   timer.type = type;
@@ -78,6 +83,7 @@ const setCustomTime = () => {
       :minutes="timer.minutes"
       @timer:done="doneTimer"
       @timer:click="clickTimer"
+      @timer:reset="resetTimer"
     />
   </div>
 </template>

@@ -9,7 +9,7 @@ export interface TimerUIProps {
   seconds?: number;
 }
 
-const emit = defineEmits(["timer:done", "timer:click"]);
+const emit = defineEmits(["timer:done", "timer:click", "timer:reset"]);
 
 const props = withDefaults(defineProps<TimerUIProps>(), {
   increment: false,
@@ -40,7 +40,7 @@ watch(
 
 /** Computeds */
 
-const timerButton = computed(() => (timer.active ? "Pausar" : "Começar"));
+const timerButton = computed(() => (timer.active ? "Pausar" : "Iniciar"));
 
 const minutes = computed(() => {
   const secondsTimer = timer.seconds - timer.secondsPast;
@@ -67,6 +67,12 @@ const start = () => {
   else clearTimerInterval();
   const payload = { active: timer.active };
   emit("timer:click", payload);
+};
+
+const reset = () => {
+  emit("timer:reset");
+  clearTimerInterval();
+  resetTimer();
 };
 
 const done = (manual = false) => {
@@ -121,7 +127,14 @@ const zeroLeft = (value: number, size = 2): string => {
       <ButtonUI
         @click="done(true)"
         size="sm"
-        label="Finalizar"
+        label="Concluir"
+        :disabled="!timer.secondsPast"
+        full
+      />
+      <ButtonUI
+        @click="reset"
+        size="sm"
+        label="Limpar"
         :disabled="!timer.secondsPast"
         full
       />
