@@ -21,7 +21,7 @@ export const tableLines = (): TableUILine[] => {
   return lines;
 };
 
-export const makeColumnsByRecords = (records: RecordDataAPI[]) => {
+export const makeTableLinesByRecords = (records: RecordDataAPI[]) => {
   return records.map((record) => {
     const line: TableUILine = { id: "", label: "", columns: [] };
 

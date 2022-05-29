@@ -2,23 +2,21 @@
 import { onMounted, reactive } from "vue";
 
 import TableUI, { type TableUIProps } from "@/components/ui/table/TableUI.vue";
+import InputSearchUI from "@/components/ui/input-search/InputSearchUI.vue";
+import ButtonUI from "@/components/ui/button/ButtonUI.vue";
+import type { ModalStateInterface } from "@/components/modal/modal-factory/ModalFactory.vue";
+import type { RecordModalProps } from "@/components/modal/record/RecordModal.vue";
+import DigitalTimer from "@/components/timer/digital-timer/DigitalTimer.vue";
 
-import type { TableUIOrder } from "@/components/ui/table/TableUI.types";
+import type { TableUIOrderPayload } from "@/components/ui/table/TableUI.types";
 import {
-  makeColumnsByRecords,
+  makeTableLinesByRecords,
   tableActions,
   tableColumns,
 } from "./RecordListPage.util";
 
-import { recordsAPI } from "@/services";
-import InputSearchUI from "../../components/ui/input-search/InputSearchUI.vue";
-import ButtonUI from "../../components/ui/button/ButtonUI.vue";
-
 import { useModal } from "@/hooks/useModal";
-import type { ModalStateInterface } from "@/components/modal/modal-factory/ModalFactory.vue";
-import type { RecordModalProps } from "@/components/modal/record/RecordModal.vue";
-
-import DigitalTimer from "../../components/timer/digital-timer/DigitalTimer.vue";
+import { recordsAPI } from "@/services";
 
 const modal = useModal();
 
@@ -33,14 +31,14 @@ onMounted(async () => {
 
   try {
     const records = await recordsAPI.get();
-    table.lines = makeColumnsByRecords(records);
+    table.lines = makeTableLinesByRecords(records);
     table.actions = [...tableActions()];
   } catch (err) {
     console.log("Erro na requisição");
   }
 });
 
-const toggleOrder = (payload: TableUIOrder) => {
+const toggleOrder = (payload: TableUIOrderPayload) => {
   table.columns.forEach((column) => {
     if (column.label == payload.column.label) {
       column.order = payload.order == "desc" ? "asc" : "desc";
