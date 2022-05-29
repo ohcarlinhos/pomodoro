@@ -17,6 +17,7 @@ export interface TableUIProps {
   perPage?: number;
   firstPage?: number;
   selectedPage?: number;
+  totalItems?: number;
   selectPage?: (page: number) => void;
 }
 
@@ -28,6 +29,7 @@ const props = withDefaults(defineProps<TableUIProps>(), {
   perPage: 10,
   firstPage: 1,
   selectedPage: 1,
+  totalItems: 0,
   selectPage: () => {
     return;
   },
@@ -54,7 +56,7 @@ const filterLines = computed(() => {
   const perPage = props.perPage != 0 ? props.perPage : 10;
 
   for (let i = 0; i < perPage; i++) {
-    if (i == props.lines.length - 1) break;
+    if (!props.lines[i]) break;
     lineList.push(props.lines[i]);
   }
 
@@ -115,9 +117,9 @@ const filterLines = computed(() => {
     </div>
   </div>
 
-  <div class="table__pagination" v-if="lines.length > perPage">
+  <div class="table__pagination" v-if="totalItems > perPage">
     <PaginationUI
-      :size="lines.length"
+      :total="totalItems"
       :per-page="perPage"
       :first-page="firstPage"
       :selected="selectedPage"

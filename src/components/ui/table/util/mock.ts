@@ -5,7 +5,7 @@ import type {
 } from "../TableUI.types";
 
 export const tableLines = (
-  text = "Linha",
+  text = "Coluna",
   linesNum = 5,
   linesColumn = 5
 ): TableUILine[] => {
@@ -15,7 +15,9 @@ export const tableLines = (
     const line: TableUILine = { id: l, label: `${text} ${l}`, columns: [] };
 
     for (let c = 1; c <= linesColumn; c++) {
-      line.columns.push({ label: `${text} ${c}` });
+      const column = { label: `${text} ${c}` };
+      if (c == 1) column.label = "Linha " + l;
+      line.columns.push(column);
     }
 
     lines.push(line);

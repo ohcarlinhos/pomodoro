@@ -2,14 +2,14 @@
 import { computed } from "vue";
 
 export interface PaginationUIProps {
-  size: number;
+  total: number;
   perPage: number;
   firstPage: number;
   selected: number;
 }
 
 const props = withDefaults(defineProps<PaginationUIProps>(), {
-  size: 0,
+  total: 0,
   perPage: 10,
   firstPage: 1,
   selected: 1,
@@ -25,14 +25,14 @@ interface Page {
 }
 
 const pages = computed(() => {
-  if (!props.size || props.perPage == 0) return [];
+  if (!props.total || props.perPage == 0) return [];
 
   let pageList: Page[] = [];
 
-  let modulePage = props.size % props.perPage;
-  let lastPageCalc = props.size / props.perPage;
+  let modulePage = props.total % props.perPage;
+  let lastPageCalc = props.total / props.perPage;
   if (modulePage != 0) lastPageCalc = lastPageCalc + 1;
-  if (props.size <= props.perPage) lastPageCalc = 1;
+  if (props.total <= props.perPage) lastPageCalc = 1;
 
   const firstPage =
     props.firstPage <= lastPageCalc ? props.firstPage : lastPageCalc;

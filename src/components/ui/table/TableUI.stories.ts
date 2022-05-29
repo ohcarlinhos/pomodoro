@@ -14,6 +14,7 @@ export default {
     perPage: 7,
     firstPage: 1,
     selectedPage: 1,
+    totalItems: 35,
     design: "",
     actions,
     columns,
