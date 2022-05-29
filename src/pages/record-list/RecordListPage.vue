@@ -6,7 +6,6 @@ import InputSearchUI from "@/components/ui/input-search/InputSearchUI.vue";
 import ButtonUI from "@/components/ui/button/ButtonUI.vue";
 import type { ModalStateInterface } from "@/components/modal/modal-factory/ModalFactory.vue";
 import type { RecordModalProps } from "@/components/modal/record/RecordModal.vue";
-import DigitalTimer from "@/components/timer/digital-timer/DigitalTimer.vue";
 
 import type { TableUIOrderPayload } from "@/components/ui/table/TableUI.types";
 import {
@@ -17,6 +16,7 @@ import {
 
 import { useModal } from "@/hooks/useModal";
 import { recordsAPI } from "@/services";
+import TimerAndLocalRecords from "../../components/timer/timer-and-local-records/TimerAndLocalRecords.vue";
 
 const modal = useModal();
 
@@ -57,8 +57,8 @@ const openRecordModal = () => {
 
 <template>
   <div class="record__container">
-    <div class="timer__area white-bg">
-      <DigitalTimer />
+    <div class="timer__area">
+      <TimerAndLocalRecords />
     </div>
 
     <div class="info__area">

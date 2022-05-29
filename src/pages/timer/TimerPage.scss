@@ -5,6 +5,11 @@
   gap: 15px;
 }
 
+.timer__area {
+  width: 100%;
+  max-width: 500px;
+}
+
 .page__title {
   font-size: 3.5rem;
   line-height: 3.5rem;
@@ -20,10 +25,6 @@
   border: 1px solid #eaeaea;
 }
 
-.timer__area {
-  width: 100%;
-  max-width: 500px;
-}
 .page__footer {
   text-align: center;
   line-height: 2.5rem;

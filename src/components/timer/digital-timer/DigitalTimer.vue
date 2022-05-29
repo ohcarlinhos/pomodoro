@@ -69,8 +69,8 @@ const setCustomTime = () => {
 </script>
 
 <template>
-  <div class="timer__container">
-    <div class="timer__buttons">
+  <div class="digital-timer__container">
+    <div class="digital-timer__buttons">
       <button
         v-for="b in timer.buttons"
         :key="b.label"
