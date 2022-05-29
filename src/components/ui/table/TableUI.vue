@@ -1,18 +1,21 @@
 <script setup lang="ts">
 import { computed } from "vue";
+
 import type {
   TableUIColumn,
   TableUILine,
   TableUIAction,
-  TableUIOrder,
+  TableUIOrderPayload,
+  TableUIActionPayload,
 } from "./TableUI.types";
 import PaginationUI from "../pagination/PaginationUI.vue";
+
 import { iconList } from "./icons";
 
 export interface TableUIProps {
   actions?: TableUIAction[];
   columns: TableUIColumn[];
-  lines: TableUILine[];
+  lines?: TableUILine[];
   design?: string;
   perPage?: number;
   firstPage?: number;
@@ -41,11 +44,11 @@ const findComponent = (iconName: string) => {
   return iconList.find((list) => list.name == iconName)?.component;
 };
 
-const handleAction = (payload: { action: string; line: TableUILine }) => {
+const handleAction = (payload: TableUIActionPayload) => {
   emit("table:action", payload);
 };
 
-const handleOrder = (payload: TableUIOrder) => {
+const handleOrder = (payload: TableUIOrderPayload) => {
   emit("table:order", payload);
 };
 

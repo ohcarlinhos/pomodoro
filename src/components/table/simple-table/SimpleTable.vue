@@ -1,16 +1,18 @@
 <script setup lang="ts">
-import TableUI from "../../ui/table/TableUI.vue";
-import { reactive, onMounted, computed } from "vue";
+import { reactive, computed } from "vue";
+
 import type {
   TableUIAction,
+  TableUIActionPayload,
   TableUIColumn,
   TableUILine,
-} from "../../ui/table/TableUI.types";
+} from "@/components/ui/table/TableUI.types";
+import TableUI from "@/components/ui/table/TableUI.vue";
 
 export interface SimpleTableProps {
   actions?: TableUIAction[];
   columns: TableUIColumn[];
-  lines: TableUILine[];
+  lines?: TableUILine[];
   design?: string;
   perPage?: number;
 }
@@ -22,6 +24,8 @@ const props = withDefaults(defineProps<SimpleTableProps>(), {
   design: "",
   perPage: 10,
 });
+
+const emit = defineEmits(["table:action"]);
 
 const table = reactive({
   page: 1,
@@ -41,6 +45,10 @@ const pageLines = computed(() => {
 const selectPage = (page: number) => {
   table.page = page;
 };
+
+const handleAction = (payload: TableUIActionPayload) => {
+  emit("table:action", payload);
+};
 </script>
 
 <template>
@@ -51,6 +59,7 @@ const selectPage = (page: number) => {
       :total-items="lines.length"
       :selected-page="table.page"
       :select-page="selectPage"
+      @table:action="handleAction"
     />
   </div>
 </template>

@@ -21,7 +21,12 @@ export interface TableUIAction {
   disabled?: boolean;
 }
 
-export interface TableUIOrder {
+export interface TableUIOrderPayload {
   order: string;
   column: TableUIColumn;
+}
+
+export interface TableUIActionPayload {
+  action: string;
+  line: TableUILine;
 }
