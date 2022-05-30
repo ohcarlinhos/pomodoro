@@ -26,3 +26,28 @@ export const desktopNotify = (message = "") => {
       if (p === "granted") return new Notification(message);
     });
 };
+
+export const secondsToString = (seconds: number) => {
+  let string = "";
+  let calcSec = seconds;
+  let sec = 0;
+
+  const hour = Math.floor(Math.floor(calcSec / 60) / 60);
+
+  if (hour) {
+    calcSec -= hour * 60 * 60;
+    string += `${hour} h `;
+  }
+
+  const min = Math.floor(calcSec / 60);
+
+  if (min) {
+    calcSec -= min * 60;
+    string += `${min} m `;
+  } else sec = seconds;
+
+  sec = calcSec;
+  if (sec) string += `${sec} s`;
+
+  return string;
+};

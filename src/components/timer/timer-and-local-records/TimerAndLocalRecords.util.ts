@@ -4,6 +4,7 @@ import type {
   TableUIColumn,
 } from "@/components/ui/table/TableUI.types";
 import type { LocalRecordsStore } from "@/types";
+import { secondsToString } from "@/util/functions";
 
 export const makeTableLinesByLocalRecords = (records: LocalRecordsStore[]) => {
   return records.map((record) => {
@@ -15,7 +16,7 @@ export const makeTableLinesByLocalRecords = (records: LocalRecordsStore[]) => {
     const labels: string[] = [
       record.day,
       record.whenFinished ?? "-",
-      `${record.registerTime} s`,
+      secondsToString(record.registerTime),
     ];
 
     line.columns = labels.map((l) => ({ label: l }));
