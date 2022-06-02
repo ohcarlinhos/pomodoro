@@ -15,6 +15,8 @@ import clickSound from "./sounds/click.mp3";
 
 export interface DigitalTimerProps {
   doneAction?: (payload: TimerUIDonePayload) => void;
+  handleCounter?: (payload: string) => void;
+  resetAction?: () => void;
 }
 
 const alarm = new Audio(alarmSound);
@@ -22,6 +24,12 @@ const click = new Audio(clickSound);
 
 const props = withDefaults(defineProps<DigitalTimerProps>(), {
   doneAction: () => {
+    return;
+  },
+  resetAction: () => {
+    return;
+  },
+  handleCounter: () => {
     return;
   },
 });
@@ -55,6 +63,7 @@ const clickTimer = (payload: TimerUIClickPayload) => {
 const resetTimer = () => {
   click.play();
   timer.active = false;
+  props.resetAction();
 };
 
 const setTime = (minutes: number, type = "normal") => {
@@ -94,6 +103,7 @@ const setCustomTime = () => {
       @timer:done="doneTimer"
       @timer:click="clickTimer"
       @timer:reset="resetTimer"
+      @timer:counter="handleCounter"
     />
   </div>
 </template>

@@ -10,7 +10,12 @@ export interface TimerUIProps {
   seconds?: number;
 }
 
-const emit = defineEmits(["timer:done", "timer:click", "timer:reset"]);
+const emit = defineEmits([
+  "timer:done",
+  "timer:click",
+  "timer:reset",
+  "timer:counter",
+]);
 
 const props = withDefaults(defineProps<TimerUIProps>(), {
   increment: false,
@@ -60,6 +65,7 @@ const moveTimer = () => {
   if (!props.increment && timer.secondsPast >= timer.seconds) done();
   else {
     timer.secondsPast++;
+    emit("timer:counter", timerCounter.value);
   }
 };
 
@@ -67,6 +73,7 @@ const start = () => {
   if (!timer.active) initTimerInterval();
   else clearTimerInterval();
   const payload = { active: timer.active };
+  emit("timer:counter", timerCounter.value);
   emit("timer:click", payload);
 };
 
@@ -107,11 +114,15 @@ const resetTimer = () => {
 const reCalcTimer = () => {
   timer.seconds = props.minutes * 60 + props.seconds;
 };
+
+const timerCounter = computed(() => {
+  return `${minutes.value}:${seconds.value}`;
+});
 </script>
 
 <template>
   <div class="timer__container">
-    <span class="timer"> {{ minutes }}:{{ seconds }} </span>
+    <span class="timer"> {{ timerCounter }} </span>
 
     <div class="buttons">
       <ButtonUI @click="start" size="sm" :label="timerButton" full />

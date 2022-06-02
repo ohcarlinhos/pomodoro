@@ -26,6 +26,10 @@ dayjs.locale(localeDayJs);
 
 const localRecords = useLocalRecordsStore();
 
+const page = reactive({
+  title: "",
+});
+
 const table = reactive<SimpleTableProps>({
   columns: [],
   actions: [],
@@ -36,6 +40,7 @@ onMounted(async () => {
   table.columns = tableColumns();
   table.actions = tableActions();
   localRecords.requestRecords();
+  page.title = "";
 });
 
 const localRecordsLines = computed(() => {
@@ -50,7 +55,17 @@ const doneAction = (payload: TimerUIDonePayload) => {
     dayjs(date).minute()
   )}`;
 
+  if (page.title) document.title = page.title;
   localRecords.addRecord(day, whenFinished, payload.seconds);
+};
+
+const resetAction = () => {
+  if (page.title) document.title = page.title;
+};
+
+const handleCounter = (counter: string) => {
+  if (!page.title) page.title = document.title;
+  document.title = `${counter} - ${page.title}`;
 };
 
 const handleAction = (payload: TableUIActionPayload) => {
@@ -62,7 +77,11 @@ const handleAction = (payload: TableUIActionPayload) => {
 <template>
   <div class="timer__container">
     <div class="timer__area">
-      <DigitalTimer :done-action="doneAction" />
+      <DigitalTimer
+        :done-action="doneAction"
+        :reset-action="resetAction"
+        :handle-counter="handleCounter"
+      />
     </div>
 
     <div class="timer__area">
