@@ -28,7 +28,7 @@ export const useLocalRecordsStore = defineStore({
     },
 
     addRecord(day: string, whenFinished: string, registerTime: number) {
-      this.$state.records.push({
+      this.$state.records.unshift({
         uuid: uuidv4(),
         day,
         whenFinished,
