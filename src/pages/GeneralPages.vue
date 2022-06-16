@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
 
-import DefaultTemplate from "@/templates/default/DefaultTemplate.vue";
-import TheMenu from "@/components/header/menu/TheMenu.vue";
+import DefaultTemplate from "@/templates/default";
+import TheMenu from "@/components/header/menu";
 import { pageConfig } from "@/config";
 
 const clickUser = () => window.open(pageConfig.devUrlProfile, "_blank");
@@ -23,5 +23,9 @@ const clickUser = () => window.open(pageConfig.devUrlProfile, "_blank");
 <style lang="scss" scoped>
 .router__content {
   position: relative;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 }
 </style>

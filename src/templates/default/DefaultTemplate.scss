@@ -47,6 +47,10 @@
   @media (max-width: 768px) {
     margin-top: 60px;
 
+    &.no--header {
+      margin-top: 0;
+    }
+
     .header {
       z-index: 20;
       position: fixed;

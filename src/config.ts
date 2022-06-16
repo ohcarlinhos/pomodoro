@@ -1,8 +1,10 @@
+import logoImage from "@/assets/img/logo.svg";
+
 export const pageConfig = {
   menu: {
     logo: {
-      title: "Salva meu Tempo!",
-      logoImage: "",
+      title: "My Timeer - Save your time!",
+      logoImage,
       uppercase: false,
       url: "home",
     },

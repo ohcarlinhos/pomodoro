@@ -11,8 +11,8 @@ withDefaults(defineProps<DefaultTemplateProps>(), {
 </script>
 
 <template>
-  <div class="template__container">
-    <div class="header">
+  <div class="template__container" :class="{ 'no--header': !$slots.header }">
+    <div class="header" v-show="$slots.header">
       <slot name="header"></slot>
     </div>
 

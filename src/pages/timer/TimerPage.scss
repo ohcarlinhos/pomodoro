@@ -1,7 +1,9 @@
 .page__container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 15px;
 }
 
@@ -11,11 +13,21 @@
 }
 
 .page__title {
-  font-size: 3.5rem;
-  line-height: 3.5rem;
-  font-weight: 900;
-  margin: 20px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+
+  .title_h {
+    font-size: 3.2rem;
+    line-height: 1;
+    font-weight: 900;
+    margin: 20px;
+    text-align: center;
+  }
+
+  .logo__image {
+    height: 60px;
+  }
+  
 }
 
 .white-bg {
