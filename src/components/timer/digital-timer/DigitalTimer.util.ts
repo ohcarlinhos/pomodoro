@@ -1,4 +1,4 @@
-import type { DigitalTimerButton } from "./DigitalTimer.types";
+import type { DigitalTimerButton } from ".";
 
 export const defaultTimerButtons = (): DigitalTimerButton[] => [
   {

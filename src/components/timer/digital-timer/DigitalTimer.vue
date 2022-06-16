@@ -2,16 +2,15 @@
 import { reactive, onMounted } from "vue";
 import { maska } from "maska";
 
-import type {
-  TimerUIClickPayload,
-  TimerUIDonePayload,
-} from "@/components/ui/timer/TimerUI.types";
-import type { DigitalTimerInterface } from "./DigitalTimer.types";
-import { defaultTimerButtons } from "./DigitalTimer.util";
-import TimerUI from "@/components/ui/timer/TimerUI.vue";
+import { util } from ".";
+import type { DigitalTimerInterface } from ".";
 
-import alarmSound from "./sounds/alarm.mp3";
-import clickSound from "./sounds/click.mp3";
+import { alarmSound, clickSound } from "./sounds";
+
+import TimerUI, {
+  type TimerUIClickPayload,
+  type TimerUIDonePayload,
+} from "@/components/ui/timer";
 
 export interface DigitalTimerProps {
   doneAction?: (payload: TimerUIDonePayload) => void;
@@ -45,7 +44,7 @@ const timer = reactive<DigitalTimerInterface>({
 });
 
 onMounted(() => {
-  timer.buttons = defaultTimerButtons();
+  timer.buttons = util.defaultTimerButtons();
 });
 
 const doneTimer = (payload: TimerUIDonePayload) => {

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted, reactive } from "vue";
 
-import TableUI, { type TableUIProps } from "@/components/ui/table/TableUI.vue";
-import InputSearchUI from "@/components/ui/input-search/InputSearchUI.vue";
+import TableUI, { type TableUIProps } from "@/components/ui/table";
+import InputSearchUI from "@/components/ui/input-search";
 import ButtonUI from "@/components/ui/button/ButtonUI.vue";
 import type { ModalStateInterface } from "@/components/modal/modal-factory/ModalFactory.vue";
 import type { RecordModalProps } from "@/components/modal/record/RecordModal.vue";

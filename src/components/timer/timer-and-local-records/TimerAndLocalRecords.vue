@@ -2,24 +2,21 @@
 import { computed, onMounted, reactive } from "vue";
 import dayjs from "dayjs";
 
+import { util } from ".";
+
 import localizedFormatDayJs from "dayjs/plugin/localizedFormat";
 import localeDayJs from "dayjs/locale/pt-br";
 import { zeroLeft } from "@/util/functions";
 
-import DigitalTimer from "@/components/timer/digital-timer/DigitalTimer.vue";
+import type { TableUIActionPayload } from "@/components/ui/table";
 import SimpleTable, {
   type SimpleTableProps,
-} from "@/components/table/simple-table/SimpleTable.vue";
-import type { TimerUIDonePayload } from "@/components/ui/timer/TimerUI.types";
+} from "@/components/table/simple-table";
 
-import {
-  makeTableLinesByLocalRecords,
-  tableActions,
-  tableColumns,
-} from "./TimerAndLocalRecords.util";
+import DigitalTimer from "@/components/timer/digital-timer";
+import type { TimerUIDonePayload } from "@/components/ui/timer";
 
 import { useLocalRecordsStore } from "@/stores/localRecords";
-import type { TableUIActionPayload } from "@/components/ui/table/TableUI.types";
 
 dayjs.extend(localizedFormatDayJs);
 dayjs.locale(localeDayJs);
@@ -37,14 +34,14 @@ const table = reactive<SimpleTableProps>({
 });
 
 onMounted(async () => {
-  table.columns = tableColumns();
-  table.actions = tableActions();
+  table.columns = util.tableColumns();
+  table.actions = util.tableActions();
   localRecords.requestRecords();
   page.title = "";
 });
 
 const localRecordsLines = computed(() => {
-  return makeTableLinesByLocalRecords(localRecords.getRecords);
+  return util.makeTableLinesByLocalRecords(localRecords.getRecords);
 });
 
 const doneAction = (payload: TimerUIDonePayload) => {
