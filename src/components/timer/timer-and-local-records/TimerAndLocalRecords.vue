@@ -48,7 +48,7 @@ const doneAction = (payload: TimerUIDonePayload) => {
   const { date } = payload;
   const day = dayjs(date).format("DD/MM/YYYY");
 
-  const whenFinished = `${zeroLeft(dayjs(date).hour())}: ${zeroLeft(
+  const whenFinished = `${zeroLeft(dayjs(date).hour())}:${zeroLeft(
     dayjs(date).minute()
   )}`;
 
