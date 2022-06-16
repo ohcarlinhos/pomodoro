@@ -6,7 +6,12 @@ import logoImage from "@/assets/img/logo.svg";
 <template>
   <div class="page__container">
     <div class="page__title">
-      <img :src="logoImage" alt="" class="logo__image" />
+      <img
+        :src="logoImage"
+        alt="My Timeer - Hora de Focar!"
+        title="My Timeer - Hora de Focar!"
+        class="logo__image"
+      />
       <h2 class="title_h">Hora de Focar!</h2>
     </div>
     <div class="timer__area">
