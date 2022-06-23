@@ -15,20 +15,21 @@ const props = withDefaults(defineProps<ButtonUIProps>(), {
   full: false,
   disabled: false,
   sharp: false,
+  size: "sm",
 });
 
 const computedClass = computed(() => {
-  const { disabled, full, design, sharp } = props;
-  return { design, disabled, full, sharp };
+  const { disabled, full, design, sharp, size } = props;
+  return { design, disabled, full, sharp, [design]: true, [size || ""]: true };
 });
 </script>
 
 <template>
   <button
-    v-bind="props"
     class="button-ui"
-    :class="{ ...computedClass, design: true, [size!]: true }"
+    :class="computedClass"
     data-test="button-ui"
+    :disabled="disabled"
   >
     {{ label }}
   </button>

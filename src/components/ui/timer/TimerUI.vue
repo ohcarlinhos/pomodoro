@@ -46,7 +46,10 @@ watch(
 
 /** Computeds */
 
-const timerButton = computed(() => (timer.active ? "Pausar" : "Iniciar"));
+const startButton = computed(() => (timer.active ? "Pausar" : "Iniciar"));
+const startButtonDesign = computed(() =>
+  !timer.active ? "primary" : "warning"
+);
 
 const minutes = computed(() => {
   const secondsTimer = timer.seconds - timer.secondsPast;
@@ -125,11 +128,18 @@ const timerCounter = computed(() => {
     <span class="timer"> {{ timerCounter }} </span>
 
     <div class="buttons">
-      <ButtonUI @click="start" size="sm" :label="timerButton" full />
+      <ButtonUI
+        @click="start"
+        size="sm"
+        :label="startButton"
+        :design="startButtonDesign"
+        full
+      />
       <ButtonUI
         @click="done(true)"
         size="sm"
         label="Concluir"
+        design="confirm"
         :disabled="!timer.secondsPast"
         full
       />
@@ -137,6 +147,7 @@ const timerCounter = computed(() => {
         @click="reset"
         size="sm"
         label="Limpar"
+        design="remove"
         :disabled="!timer.secondsPast"
         full
       />

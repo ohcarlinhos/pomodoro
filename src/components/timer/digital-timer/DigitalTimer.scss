@@ -19,7 +19,7 @@
     border-radius: 5px;
     font-size: 1.8rem;
     transition: all 0.1s ease-in-out;
-    color: var(--color-text);
+    color: var(--text-color);
 
     &:hover {
       background-color: #eee;
@@ -39,7 +39,7 @@
     text-align: center;
 
     &::placeholder {
-      color: var(--color-text);
+      color: var(--text-color);
       opacity: 1;
     }
   }

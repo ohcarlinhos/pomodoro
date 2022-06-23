@@ -1,8 +1,32 @@
 :root {
-  --color-text: #2c3e50;
+  --text-color: #2c3e50;
   --color-background: #ffffff;
   --color-primary: #605bff;
   --section-gap: 160px;
+
+  --action-primary-light: #2684ff;
+  --action-primary: #0065ff;
+  --action-primary-dark: #0052cc;
+
+  --action-secondary-light: #f4f5f7;
+  --action-secondary: #ebecf0;
+  --action-secondary-dark: #dfe1e6;
+
+  --action-confirm-light: #57d9a3;
+  --action-confirm: #36b37e;
+  --action-confirm-dark: #00875a;
+
+  --action-warning-light: #ffc400;
+  --action-warning: #ffab00;
+  --action-warning-dark: #ff991f;
+
+  --action-remove-light: #FF5630;
+  --action-remove: #DE350B;
+  --action-remove-dark: #BF2600;
+
+  --action-help-light: #8777d9;
+  --action-help: #6554c0;
+  --action-help-dark: #5243aa;
 }
 
 *,
@@ -22,7 +46,7 @@ html {
 body {
   min-height: 100vh;
   max-width: 100vw;
-  color: var(--color-text);
+  color: var(--text-color);
   background: var(--color-background);
   transition: color 0.5s, background-color 0.5s;
   font-size: 1.6rem;
@@ -38,7 +62,7 @@ body {
 
 a {
   text-decoration: none;
-  color: var(--color-text);
+  color: var(--text-color);
 }
 
 a:hover {

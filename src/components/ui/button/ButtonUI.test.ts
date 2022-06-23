@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 
-import ButtonUI from "./ButtonUI.vue";
+import ButtonUI from ".";
 
 const mock = { label: "Little Button" };
 

@@ -1,8 +1,8 @@
-import ButtonUI from "./ButtonUI.vue";
+import TheComponent from ".";
 
 export default {
   title: "UI / ButtonUI",
-  component: ButtonUI,
+  component: TheComponent,
   args: {
     label: "Just a simple button...",
     design: "",
@@ -26,13 +26,13 @@ export default {
 };
 
 export const Component = (args: unknown) => ({
-  components: { ButtonUI },
+  components: { TheComponent },
   setup() {
     return { args };
   },
   template: `
     <div class="default--storybook w-400">  
-      <ButtonUI v-bind="args" />
+      <TheComponent v-bind="args" />
     </div>
   `,
 });
