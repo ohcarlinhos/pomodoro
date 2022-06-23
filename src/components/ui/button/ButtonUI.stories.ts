@@ -5,7 +5,7 @@ export default {
   component: TheComponent,
   args: {
     label: "Just a simple button...",
-    design: "",
+    design: "help",
     disabled: false,
     radius: true,
     full: false,
