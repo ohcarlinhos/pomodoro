@@ -69,7 +69,7 @@ export const Example = (args: { title: string }) => ({
           </div>
         </template>
         <template v-if="args.footer" #footer>
-          <ButtonUI v-bind="button"/>
+          <ButtonUI v-bind="button" design="confirm" />
         </template>
       </CardUI>
     </div>

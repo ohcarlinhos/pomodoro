@@ -68,7 +68,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <CardUI title="Cadastro de Registro de Tempo">
+  <CardUI title="Registrar Intervalo de Tempo">
     <template #body>
       <div class="record-form">
         <InputUI
@@ -121,7 +121,8 @@ onMounted(() => {
     </template>
     <template #footer>
       <ButtonUI
-        label="Criar Registro"
+        label="Registrar"
+        design="confirm"
         :disabled="!canSubmit"
         full
         @click="submit"

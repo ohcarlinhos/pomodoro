@@ -66,6 +66,7 @@ const openRecordModal = () => {
         <InputSearchUI size="lg" />
         <ButtonUI
           class="add-button"
+          design="primary"
           label="Adicionar Registro"
           @click="openRecordModal"
         />
