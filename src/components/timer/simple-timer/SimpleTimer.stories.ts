@@ -1,8 +1,8 @@
-import TimerUI from "./TimerUI.vue";
+import TheComponent from ".";
 
 export default {
-  title: "UI / TimerUI",
-  component: TimerUI,
+  title: "Timer / SimpleTimer",
+  component: TheComponent,
   args: {
     minutes: 25,
     seconds: 0,
@@ -16,7 +16,7 @@ export default {
 };
 
 export const Component = (args: unknown) => ({
-  components: { TimerUI },
+  components: { TheComponent },
   setup() {
     return {
       args,
@@ -24,7 +24,7 @@ export const Component = (args: unknown) => ({
   },
   template: `
     <div class="default--storybook w-350">
-      <TimerUI v-bind="args" />
+      <TheComponent v-bind="args" />
     </div>
   `,
 });

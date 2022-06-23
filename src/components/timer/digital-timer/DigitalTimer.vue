@@ -7,13 +7,13 @@ import type { DigitalTimerInterface } from ".";
 
 import { alarmSound, clickSound } from "./sounds";
 
-import TimerUI, {
-  type TimerUIClickPayload,
-  type TimerUIDonePayload,
-} from "@/components/ui/timer";
+import SimpleTimer, {
+  type SimpleTimerClickPayload,
+  type SimpleTimerDonePayload,
+} from "@/components/timer/simple-timer";
 
 export interface DigitalTimerProps {
-  doneAction?: (payload: TimerUIDonePayload) => void;
+  doneAction?: (payload: SimpleTimerDonePayload) => void;
   handleCounter?: (payload: string) => void;
   resetAction?: () => void;
 }
@@ -47,14 +47,14 @@ onMounted(() => {
   timer.buttons = util.defaultTimerButtons();
 });
 
-const doneTimer = (payload: TimerUIDonePayload) => {
+const doneTimer = (payload: SimpleTimerDonePayload) => {
   if (payload.manual) click.play();
   else alarm.play();
   timer.active = false;
   props.doneAction(payload);
 };
 
-const clickTimer = (payload: TimerUIClickPayload) => {
+const clickTimer = (payload: SimpleTimerClickPayload) => {
   click.play();
   timer.active = payload.active;
 };
@@ -97,7 +97,7 @@ const setCustomTime = () => {
         @click="setCustomTime"
       />
     </div>
-    <TimerUI
+    <SimpleTimer
       :minutes="timer.minutes"
       @timer:done="doneTimer"
       @timer:click="clickTimer"
@@ -108,5 +108,5 @@ const setCustomTime = () => {
 </template>
 
 <style lang="scss" scoped>
-@import "./DigitalTimer.scss";
+@import "./style.scss";
 </style>

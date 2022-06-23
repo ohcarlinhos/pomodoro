@@ -1,8 +1,8 @@
-import DigitalTimer from "./DigitalTimer.vue";
+import TheComponent from ".";
 
 export default {
   title: "Timer / DigitalTimer",
-  component: DigitalTimer,
+  component: TheComponent,
   args: {},
   argTypes: {},
   parameters: {
@@ -13,7 +13,7 @@ export default {
 };
 
 export const Component = (args: unknown) => ({
-  components: { DigitalTimer },
+  components: { TheComponent },
   setup() {
     return {
       args,
@@ -21,7 +21,7 @@ export const Component = (args: unknown) => ({
   },
   template: `
     <div class="default--storybook w-350">
-      <DigitalTimer v-bind="args" />
+      <TheComponent v-bind="args" />
     </div>
   `,
 });

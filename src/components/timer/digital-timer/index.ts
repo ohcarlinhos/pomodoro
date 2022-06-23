@@ -1,3 +1,3 @@
 export { default } from "./DigitalTimer.vue";
-export * as util from "./DigitalTimer.util";
-export * from "./DigitalTimer.types";
+export * as util from "./util";
+export * from "./types";

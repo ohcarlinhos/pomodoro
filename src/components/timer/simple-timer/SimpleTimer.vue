@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { zeroLeft } from "@/util/functions";
 import { reactive, ref, watch, onMounted, computed } from "vue";
-import ButtonUI from "../button/ButtonUI.vue";
-import type { TimerUIDonePayload } from "./TimerUI.types";
+import ButtonUI from "@/components/ui/button";
+import type { SimpleTimerDonePayload } from ".";
 
-export interface TimerUIProps {
+export interface SimpleTimerProps {
   increment?: boolean;
   minutes?: number;
   seconds?: number;
@@ -17,7 +17,7 @@ const emit = defineEmits([
   "timer:counter",
 ]);
 
-const props = withDefaults(defineProps<TimerUIProps>(), {
+const props = withDefaults(defineProps<SimpleTimerProps>(), {
   increment: false,
   minutes: 0,
   seconds: 0,
@@ -88,7 +88,7 @@ const reset = () => {
 
 const done = (manual = false) => {
   if (timer.secondsPast == 0) return;
-  const payload: TimerUIDonePayload = {
+  const payload: SimpleTimerDonePayload = {
     date: new Date(),
     seconds: timer.secondsPast,
     manual,
@@ -156,5 +156,5 @@ const timerCounter = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-@import "./TimerUI.scss";
+@import "./style.scss";
 </style>
