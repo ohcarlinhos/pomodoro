@@ -15,4 +15,8 @@
   display: flex;
   gap: 10px;
   width: 100%;
+
+  @media (max-width: 350px) {
+    flex-direction: column;
+  }
 }

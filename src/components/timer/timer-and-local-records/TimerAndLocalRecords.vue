@@ -14,7 +14,7 @@ import SimpleTable, {
 } from "@/components/table/simple-table";
 
 import DigitalTimer from "@/components/timer/digital-timer";
-import type { TimerUIDonePayload } from "@/components/ui/timer";
+import type { SimpleTimerDonePayload } from "@/components/timer/simple-timer";
 
 import { useLocalRecordsStore } from "@/stores/localRecords";
 
@@ -44,7 +44,7 @@ const localRecordsLines = computed(() => {
   return util.makeTableLinesByLocalRecords(localRecords.getRecords);
 });
 
-const doneAction = (payload: TimerUIDonePayload) => {
+const doneAction = (payload: SimpleTimerDonePayload) => {
   const { date } = payload;
   const day = dayjs(date).format("DD/MM/YYYY");
 
