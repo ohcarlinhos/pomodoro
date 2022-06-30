@@ -1,11 +1,31 @@
 <script setup lang="ts">
-import { RouterView } from "vue-router";
+import { computed, reactive, ref, watch } from "vue";
+import { RouterView, useRoute } from "vue-router";
 
 import DefaultTemplate from "@/templates/default";
 import TheMenu from "@/components/header/menu";
-import { pageConfig } from "@/config";
+import { pageConfig, type NavLink } from "@/config";
+import { authService } from "@/services";
 
 const clickUser = () => window.open(pageConfig.devUrlProfile, "_blank");
+const route = useRoute();
+
+const menuLinks = reactive<NavLink[]>([...pageConfig.menu.links]);
+const userSession = ref(false);
+
+watch(
+  () => route.path,
+  async () => {
+    userSession.value = authService.hasSession();
+  }
+);
+
+const navLinks = computed(() => {
+  return menuLinks.filter((link) => {
+    if (userSession.value && link.hideOnSession) return false;
+    return link.session ? userSession.value && !link.hideOnSession : true;
+  });
+});
 </script>
 
 <template>
@@ -14,7 +34,7 @@ const clickUser = () => window.open(pageConfig.devUrlProfile, "_blank");
       <TheMenu
         v-bind="pageConfig.menu"
         :user-click-action="clickUser"
-        :links="pageConfig.menu.links"
+        :links="navLinks"
       />
     </template>
 

@@ -1,6 +1,11 @@
 import logoImage from "@/assets/img/logo.svg";
 import type { LinkProps } from "./components/header/link/TheLink.vue.__VLS_script";
 
+export interface NavLink extends LinkProps {
+  session?: boolean;
+  hideOnSession?: boolean;
+}
+
 export const pageConfig = {
   menu: {
     logo: {
@@ -15,9 +20,10 @@ export const pageConfig = {
     userClickable: true,
     links: [
       { id: 1, label: "Timer", url: "home" },
-      { id: 2, label: "Painel", url: "panel" },
-      { id: 3, label: "Acessar", url: "login" },
-    ] as LinkProps[],
+      { id: 2, label: "Painel", url: "panel", session: true },
+      { id: 3, label: "Acessar", url: "login", hideOnSession: true },
+      { id: 3, label: "Sair", url: "exit", session: true },
+    ] as NavLink[],
   },
   devUrlProfile: "https://github.com/caarlos1",
 };
