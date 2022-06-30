@@ -19,6 +19,11 @@ const router = createRouter({
       component: () => import("../pages/auth"),
     },
     {
+      path: "/exit",
+      name: "exit",
+      component: () => import("../pages/exit"),
+    },
+    {
       path: "/:pathMatch(.*)*",
       redirect: { name: "home" },
     },

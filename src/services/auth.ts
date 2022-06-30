@@ -29,4 +29,8 @@ export class AuthService extends DefaultAPI {
   public getUserToken() {
     return storageService.load("tokenUser");
   }
+
+  public hasSession() {
+    return !!this.getUserToken();
+  }
 }
