@@ -9,11 +9,7 @@ import type { RecordModalProps } from "@/components/modal/record/RecordModal.vue
 import TimerAndLocalRecords from "@/components/timer/timer-and-local-records";
 
 import type { TableUIOrderPayload } from "@/components/ui/table/TableUI.types";
-import {
-  makeTableLinesByRecords,
-  tableActions,
-  tableColumns,
-} from "./RecordListPage.util";
+import { util } from ".";
 
 import { useModal } from "@/hooks/useModal";
 import { recordsAPI } from "@/services";
@@ -27,12 +23,12 @@ const table = reactive<TableUIProps>({
 });
 
 onMounted(async () => {
-  table.columns = tableColumns();
+  table.columns = util.tableColumns();
 
   try {
     const records = await recordsAPI.get();
-    table.lines = makeTableLinesByRecords(records);
-    table.actions = [...tableActions()];
+    table.lines = util.makeTableLinesByRecords(records);
+    table.actions = [...util.tableActions()];
   } catch (err) {
     console.log("Erro na requisição");
   }
@@ -80,5 +76,5 @@ const openRecordModal = () => {
 </template>
 
 <style lang="scss" scoped>
-@import "./RecordListPage.scss";
+@import "./style.scss";
 </style>

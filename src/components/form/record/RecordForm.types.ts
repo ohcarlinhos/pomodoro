@@ -3,9 +3,9 @@ import type { SelectUIOption } from "@/components/ui/select/SelectUI.types";
 export interface RecordForm {
   name: string;
   category: string;
-  day: string;
+  date: string;
   whenFinished: string;
-  registerTime: number;
+  seconds: number;
   tags: string;
 }
 

@@ -2,8 +2,9 @@ import { DefaultAPI } from "./default";
 import type { RecordDataAPI } from "./types";
 
 export class RecordsAPI extends DefaultAPI {
-  URN = "/timerecord";
-
+  constructor() {
+    super("/record");
+  }
   public get(urn = ""): Promise<RecordDataAPI[]> {
     return this.getAPI<RecordDataAPI[]>(urn);
   }

@@ -29,11 +29,11 @@ export const makeTableLinesByRecords = (records: RecordDataAPI[]) => {
     line.label = record.name;
     const labels: string[] = [
       record.name,
-      record.category,
+      record.category.name,
       "-",
-      record.day,
+      record.date,
       record.whenFinished ?? "-",
-      `${record.registerTime}`,
+      `${record.seconds}`,
     ];
 
     line.columns = labels.map((l) => ({ label: l }));
@@ -45,7 +45,7 @@ export const tableColumns = (): TableUIColumn[] => [
   { label: "Nome", width: "33%" },
   { label: "Categoria" },
   { label: "Tags" },
-  { label: "Data" },
+  { label: "Data", width: "20%" },
   { label: "Finalizado às" },
   { label: "Tempo" },
 ];

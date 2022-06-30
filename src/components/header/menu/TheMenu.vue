@@ -2,6 +2,8 @@
 import type { LogoProps } from "../logo/TheLogo.vue";
 import TheLogo from "../logo/TheLogo.vue";
 import ImageBoxUI from "../../ui/image/ImageBoxUI.vue";
+import Nav from "../nav/Nav.vue";
+import type { LinkProps } from "../link/TheLink.vue";
 
 export interface MenuProps {
   logo: LogoProps;
@@ -9,6 +11,7 @@ export interface MenuProps {
   userName?: string;
   userClickable?: boolean;
   userClickAction?: () => void;
+  links?: LinkProps[];
 }
 
 const props = withDefaults(defineProps<MenuProps>(), {
@@ -18,6 +21,7 @@ const props = withDefaults(defineProps<MenuProps>(), {
   userClickAction: () => {
     return;
   },
+  links: () => [],
 });
 
 defineEmits(["menu:open-favorite", "menu:open-cart"]);
@@ -30,6 +34,7 @@ const clickUser = () => {
 <template>
   <div class="menu__container">
     <TheLogo v-bind="logo" />
+    <Nav v-if="links.length" :links="links" />
     <div
       v-if="userImage"
       class="menu__user"

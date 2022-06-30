@@ -11,7 +11,11 @@ const clickUser = () => window.open(pageConfig.devUrlProfile, "_blank");
 <template>
   <DefaultTemplate>
     <template #header>
-      <TheMenu v-bind="pageConfig.menu" :user-click-action="clickUser" />
+      <TheMenu
+        v-bind="pageConfig.menu"
+        :user-click-action="clickUser"
+        :links="pageConfig.menu.links"
+      />
     </template>
 
     <template #content>

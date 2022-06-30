@@ -11,7 +11,12 @@ const router = createRouter({
     {
       path: "/panel",
       name: "panel",
-      component: () => import("../pages/record-list"),
+      component: () => import("../pages/panel"),
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: () => import("../pages/auth"),
     },
     {
       path: "/:pathMatch(.*)*",

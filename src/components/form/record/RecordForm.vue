@@ -13,9 +13,9 @@ import { recordsAPI } from "@/services";
 const formDefault = (): RecordForm => ({
   name: "",
   category: "",
-  day: "",
+  date: "",
   whenFinished: "",
-  registerTime: 0,
+  seconds: 0,
   tags: "",
 });
 
@@ -34,8 +34,8 @@ const requestBody = computed(() => {
   return {
     name: form.name,
     category: form.category,
-    day: form.day,
-    registerTime: form.registerTime,
+    date: form.date,
+    seconds: form.seconds,
     whenFinished: form.whenFinished,
     tags: form.tags,
   };
@@ -43,7 +43,7 @@ const requestBody = computed(() => {
 
 const canSubmit = computed(
   () =>
-    !!(form.name && form.category && form.day && form.registerTime) &&
+    !!(form.name && form.category && form.date && form.seconds) &&
     !disabled.submit
 );
 
@@ -97,25 +97,20 @@ onMounted(() => {
 
         <div class="col-tree">
           <InputUI
-            v-model="form.day"
-            id="day"
+            v-model="form.date"
+            id="date"
             type="date"
             label="Data do Registro:"
           />
 
           <InputUI
             v-model="form.whenFinished"
-            id="day"
+            id="date"
             type="time"
             label="Finalizado às:"
           />
 
-          <InputUI
-            v-model="form.registerTime"
-            mask="###"
-            id="time"
-            label="Tempo:"
-          />
+          <InputUI v-model="form.seconds" mask="###" id="time" label="Tempo:" />
         </div>
       </div>
     </template>

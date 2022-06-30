@@ -13,14 +13,26 @@ export interface APIError extends APIResponse {
 export interface RecordDataAPI {
   uuid: string;
   name: string;
-  category: string;
+  category: {
+    uuid: string;
+    name: string;
+  };
   tags?: Tag[];
-  day: string;
+  date: string;
   whenFinished: string;
-  registerTime: number;
+  seconds: number;
 }
 
 export interface Tag {
   uuid?: string;
   name: string;
+}
+
+export interface LoginRequest {
+  email: string;
+  password: string;
+}
+
+export interface LoginResponse {
+  token: string;
 }

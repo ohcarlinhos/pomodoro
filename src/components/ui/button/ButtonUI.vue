@@ -8,6 +8,7 @@ export type ButtonUIProps = {
   sharp?: boolean;
   disabled?: boolean;
   size?: string;
+  type?: string;
 };
 
 const props = withDefaults(defineProps<ButtonUIProps>(), {
@@ -16,6 +17,7 @@ const props = withDefaults(defineProps<ButtonUIProps>(), {
   disabled: false,
   sharp: false,
   size: "sm",
+  type: "button",
 });
 
 const computedClass = computed(() => {
