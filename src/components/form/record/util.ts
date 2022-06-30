@@ -1,27 +1,16 @@
 import type { SelectUIOption } from "@/components/ui/select/SelectUI.types";
+import type { CategoryAPI } from "@/services/types";
 
-export const categoriesOptions = (): SelectUIOption[] => [
-  {
-    label: "Estudo",
-    value: "study",
-  },
-  {
-    label: "Trabalho",
-    value: "work",
-  },
-  {
-    label: "Hobby",
-    value: "hobby",
-  },
-  {
-    label: "Serviços Domésticos",
-    value: "domestic_services",
-  },
-  {
-    label: "Outro",
-    value: "other",
-  },
-];
+export const categoriesSelectAdapter = (
+  categories: CategoryAPI[]
+): SelectUIOption[] => {
+  return categories.map<SelectUIOption>((category) => {
+    return {
+      label: category.name,
+      value: category.uuid,
+    };
+  });
+};
 
 export const tagsOptions = (): SelectUIOption[] => [
   {

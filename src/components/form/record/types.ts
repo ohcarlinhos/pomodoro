@@ -5,6 +5,7 @@ export interface RecordForm {
   category: string;
   date: string;
   whenFinished: string;
+  minutes: number;
   seconds: number;
   tags: string;
 }

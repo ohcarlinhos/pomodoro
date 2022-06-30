@@ -1,41 +1,46 @@
 <script setup lang="ts">
+import { computed, onMounted, reactive } from "vue";
+import { useToast } from "vue-toastification";
+
 import CardUI from "@/components/ui/card/CardUI.vue";
 import InputUI from "@/components/ui/input/InputUI.vue";
 import ButtonUI from "@/components/ui/button/ButtonUI.vue";
 import SelectUI from "@/components/ui/select/SelectUI.vue";
 
-import { computed, onMounted, reactive } from "vue";
+import type { RecordForm, RecordFormOptions } from ".";
+import { categoriesSelectAdapter, tagsOptions } from ".";
 
-import type { RecordForm, RecordFormOptions } from "./RecordForm.types";
-import { categoriesOptions, tagsOptions } from "./RecordForm.util";
+import { useCategoriesStore } from "@/stores/categories";
 import { recordsAPI } from "@/services";
+import type { RecordUpdateAPI } from "@/services/types";
+
+const toast = useToast();
 
 const formDefault = (): RecordForm => ({
   name: "",
   category: "",
   date: "",
   whenFinished: "",
+  minutes: 0,
   seconds: 0,
   tags: "",
 });
 
+const categoriesStore = useCategoriesStore();
+
 const form = reactive<RecordForm>(formDefault());
-
-const disabled = reactive({
-  submit: false,
-});
-
+const disabled = reactive({ submit: false });
 const options = reactive<RecordFormOptions>({
   categories: [],
   tags: [],
 });
 
-const requestBody = computed(() => {
+const requestBody = computed<RecordUpdateAPI>(() => {
   return {
     name: form.name,
     category: form.category,
     date: form.date,
-    seconds: form.seconds,
+    seconds: form.minutes * 60 + form.seconds,
     whenFinished: form.whenFinished,
     tags: form.tags,
   };
@@ -43,7 +48,7 @@ const requestBody = computed(() => {
 
 const canSubmit = computed(
   () =>
-    !!(form.name && form.category && form.date && form.seconds) &&
+    !!(form.name && form.category && form.date && form.minutes) &&
     !disabled.submit
 );
 
@@ -52,17 +57,21 @@ const submit = async () => {
 
   disabled.submit = true;
   try {
-    await recordsAPI.post<RecordForm>(requestBody.value);
+    await recordsAPI.post<RecordUpdateAPI>(requestBody.value);
+    toast.success("Registro feito com sucesso!");
     Object.assign(form, formDefault());
   } catch (err) {
-    console.log(err);
+    toast.error("Não foi possível fazer o registro.");
   } finally {
     disabled.submit = false;
   }
 };
 
-onMounted(() => {
-  options.categories = [...categoriesOptions()];
+onMounted(async () => {
+  await categoriesStore.requestCategories();
+  options.categories = [
+    ...categoriesSelectAdapter(categoriesStore.getCategories),
+  ];
   options.tags = [...tagsOptions()];
 });
 </script>
@@ -78,6 +87,13 @@ onMounted(() => {
           label="Nome do Registro:"
         />
 
+        <SelectUI
+          v-model="form.tags"
+          :options="options.tags"
+          id="tags"
+          label="Tags:"
+        />
+
         <div class="col">
           <SelectUI
             v-model="form.category"
@@ -87,22 +103,15 @@ onMounted(() => {
             select-first
           />
 
-          <SelectUI
-            v-model="form.tags"
-            :options="options.tags"
-            id="tags"
-            label="Tags:"
-          />
-        </div>
-
-        <div class="col-tree">
           <InputUI
             v-model="form.date"
             id="date"
             type="date"
             label="Data do Registro:"
           />
+        </div>
 
+        <div class="col col-tree">
           <InputUI
             v-model="form.whenFinished"
             id="date"
@@ -110,7 +119,19 @@ onMounted(() => {
             label="Finalizado às:"
           />
 
-          <InputUI v-model="form.seconds" mask="###" id="time" label="Tempo:" />
+          <InputUI
+            v-model="form.minutes"
+            mask="###"
+            id="minutes"
+            label="Minutos:"
+          />
+
+          <InputUI
+            v-model="form.seconds"
+            mask="###"
+            id="seconds"
+            label="Segundos:"
+          />
         </div>
       </div>
     </template>
@@ -127,5 +148,5 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-@import "./RecordForm.scss";
+@import "./style.scss";
 </style>

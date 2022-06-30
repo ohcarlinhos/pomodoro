@@ -23,6 +23,16 @@ export interface RecordDataAPI {
   seconds: number;
 }
 
+export interface RecordUpdateAPI {
+  uuid?: string;
+  name: string;
+  category: string;
+  tags: string;
+  date: string;
+  whenFinished: string;
+  seconds: number;
+}
+
 export interface Tag {
   uuid?: string;
   name: string;
@@ -35,4 +45,9 @@ export interface LoginRequest {
 
 export interface LoginResponse {
   token: string;
+}
+
+export interface CategoryAPI {
+  uuid: string;
+  name: string;
 }

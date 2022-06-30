@@ -3,7 +3,7 @@ import type {
   TableUIAction,
   TableUIColumn,
 } from "@/components/ui/table/TableUI.types";
-import type { LocalRecordsStore } from "@/types";
+import type { LocalRecordsStore } from "@/stores";
 import { secondsToString } from "@/util/functions";
 
 export const makeTableLinesByLocalRecords = (records: LocalRecordsStore[]) => {

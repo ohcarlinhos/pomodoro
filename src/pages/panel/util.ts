@@ -4,6 +4,7 @@ import type {
   TableUIColumn,
 } from "@/components/ui/table/TableUI.types";
 import type { RecordDataAPI } from "@/services/types";
+import { secondsToString } from "@/util/functions";
 
 export const tableLines = (): TableUILine[] => {
   const lines: TableUILine[] = [];
@@ -33,7 +34,7 @@ export const makeTableLinesByRecords = (records: RecordDataAPI[]) => {
       "-",
       record.date,
       record.whenFinished ?? "-",
-      `${record.seconds}`,
+      secondsToString(record.seconds),
     ];
 
     line.columns = labels.map((l) => ({ label: l }));

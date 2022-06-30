@@ -5,13 +5,12 @@
 }
 
 .col {
-  display: grid;
-  grid-template-columns: repeat(2, calc(50% - 7.5px));
+  display: flex;
   gap: 15px;
 }
 
 .col-tree {
   display: grid;
-  grid-template-columns: repeat(2, calc(1fr)) 80px;
+  grid-template-columns: 1fr repeat(2, calc(100px));
   gap: 15px;
 }

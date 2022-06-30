@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-import type { LocalRecordsStore } from "@/types";
+import type { LocalRecordsStore } from "@/stores";
 import { defineStore } from "pinia";
 import { storageService } from "@/services";
 

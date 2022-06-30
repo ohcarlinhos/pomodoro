@@ -4,3 +4,8 @@ export interface LocalRecordsStore {
   whenFinished: string;
   registerTime: number;
 }
+
+export interface CategoriesStore {
+  uuid: string;
+  name: string;
+}
