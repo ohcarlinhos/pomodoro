@@ -34,7 +34,7 @@ const clickUser = () => {
 <template>
   <div class="menu__container">
     <TheLogo v-bind="logo" />
-    <Nav v-if="links.length" :links="links" />
+    <Nav v-if="links.length && false" :links="links" />
     <div
       v-if="userImage"
       class="menu__user"
