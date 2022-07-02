@@ -12,4 +12,8 @@ export class RecordsAPI extends DefaultAPI {
   public post<U>(data: U, urn = ""): Promise<RecordDataAPI> {
     return this.postAPI<U, RecordDataAPI>(data, urn);
   }
+
+  public delete(uuid: string): Promise<void> {
+    return this.deleteAPI(uuid);
+  }
 }

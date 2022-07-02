@@ -1,9 +1,19 @@
 import TheComponent from ".";
 
 export default {
-  title: "Test / Select2UI",
+  title: "UI / Select2UI",
   component: TheComponent,
-  args: {},
+  args: {
+    options: ["Teste 1", "Teste 2", "Teste 3"],
+    placeholder: "Clique para selecionar um item.",
+    tagPlaceholder: "Clique para adicionar tag!",
+    noOptions: "Nenhuma opção encontrada!",
+    noResult: "Nada encontrado...",
+    selectLabel: "Aperte enter selecionar",
+    labelName: "Selecionar:",
+    multiple: false,
+    taggable: false,
+  },
   argTypes: {},
   parameters: {
     backgrounds: {

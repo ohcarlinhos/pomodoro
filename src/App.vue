@@ -12,6 +12,8 @@ import GeneralPages from "@/pages/GeneralPages.vue";
 @import "../src/assets/reset.css";
 @import "../src/assets/root.css";
 
+@import "vue-multiselect/dist/vue-multiselect.css";
+
 #app {
   display: flex;
   min-height: 100vh;

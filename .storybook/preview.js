@@ -10,6 +10,7 @@ export const parameters = {
 
 import "../src/assets/reset.css";
 import "../src/assets/root.css";
+import "vue-multiselect/dist/vue-multiselect.css";
 
 import "../src/assets/storybook.scss";
 

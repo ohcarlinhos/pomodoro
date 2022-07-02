@@ -2,12 +2,12 @@ import type { SelectUIOption } from "@/components/ui/select/SelectUI.types";
 
 export interface RecordForm {
   name: string;
-  category: string;
+  category: SelectUIOption | null;
   date: string;
   whenFinished: string;
   minutes: number;
   seconds: number;
-  tags: string;
+  tags: SelectUIOption[];
 }
 
 export interface RecordFormOptions {

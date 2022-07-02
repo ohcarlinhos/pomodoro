@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { onMounted, reactive } from "vue";
+import { useToast } from "vue-toastification";
+
+import { tableColumns, makeTableLinesByRecords, tableActions } from ".";
 
 import TableUI, { type TableUIProps } from "@/components/ui/table";
 import InputSearchUI from "@/components/ui/input-search";
@@ -8,13 +11,16 @@ import type { ModalStateInterface } from "@/components/modal/modal-factory/Modal
 import type { RecordModalProps } from "@/components/modal/record/RecordModal.vue";
 import TimerAndLocalRecords from "@/components/timer/timer-and-local-records";
 
-import type { TableUIOrderPayload } from "@/components/ui/table/TableUI.types";
-import { util } from ".";
+import type {
+  TableUIActionPayload,
+  TableUIOrderPayload,
+} from "@/components/ui/table/TableUI.types";
 
 import { useModal } from "@/hooks/useModal";
 import { recordsAPI } from "@/services";
 
 const modal = useModal();
+const toast = useToast();
 
 const table = reactive<TableUIProps>({
   columns: [],
@@ -23,16 +29,19 @@ const table = reactive<TableUIProps>({
 });
 
 onMounted(async () => {
-  table.columns = util.tableColumns();
+  await requestRecords();
+  table.columns = tableColumns();
+});
 
+const requestRecords = async () => {
   try {
     const records = await recordsAPI.get();
-    table.lines = util.makeTableLinesByRecords(records);
-    table.actions = [...util.tableActions()];
+    table.lines = makeTableLinesByRecords(records);
+    table.actions = [...tableActions()];
   } catch (err) {
-    console.log("Erro na requisição");
+    toast.error("Ocorreu um erro ao tentar obter os registros.");
   }
-});
+};
 
 const toggleOrder = (payload: TableUIOrderPayload) => {
   table.columns.forEach((column) => {
@@ -46,8 +55,30 @@ const toggleOrder = (payload: TableUIOrderPayload) => {
 const openRecordModal = () => {
   modal.open<ModalStateInterface<RecordModalProps>>({
     name: "record-form",
-    props: {},
+    props: {
+      finalAction: closeModalAndUpdate,
+    },
   });
+};
+
+const closeModalAndUpdate = async () => {
+  await requestRecords();
+};
+
+const handleTableActions = async (payload: TableUIActionPayload) => {
+  if (payload.action == "delete")
+    if (table.lines && table.lines.length) {
+      try {
+        await recordsAPI.delete(`${payload.line.id}`);
+        const index = table.lines?.findIndex(
+          (line) => line.id == payload.line.id
+        );
+        table.lines?.splice(index, 1);
+        toast.success("Removido com sucesso!");
+      } catch (err) {
+        toast.error("Ocorreu um erro ao tentar excluir o registro.");
+      }
+    }
 };
 </script>
 
@@ -69,7 +100,11 @@ const openRecordModal = () => {
       </div>
 
       <div class="table__area white-bg">
-        <TableUI v-bind="table" @table:order="toggleOrder" />
+        <TableUI
+          v-bind="table"
+          @table:order="toggleOrder"
+          @table:action="handleTableActions"
+        />
       </div>
     </div>
   </div>

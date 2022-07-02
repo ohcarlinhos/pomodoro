@@ -18,4 +18,8 @@ export class DefaultAPI {
       .data as APIResponseData<T>;
     return res.data as T;
   }
+
+  protected async deleteAPI(id: string): Promise<void> {
+    await api.delete(this.path + "/" + id);
+  }
 }

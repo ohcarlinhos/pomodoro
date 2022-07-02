@@ -7,13 +7,8 @@ import {
   computed,
 } from "vue";
 
-import { useModal } from "../../../hooks/useModal";
-
-export interface ModalStateInterface<T> {
-  name: string;
-  status?: boolean;
-  props: T;
-}
+import { useModal } from "@/hooks/useModal";
+import type { ModalStateInterface } from "./types";
 
 const modal = useModal();
 

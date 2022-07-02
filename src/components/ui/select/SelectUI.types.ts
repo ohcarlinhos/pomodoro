@@ -1,4 +1,4 @@
 export interface SelectUIOption {
   label: string;
-  value: string | number;
+  value: string;
 }

@@ -5,44 +5,73 @@ import { useToast } from "vue-toastification";
 import CardUI from "@/components/ui/card/CardUI.vue";
 import InputUI from "@/components/ui/input/InputUI.vue";
 import ButtonUI from "@/components/ui/button/ButtonUI.vue";
-import SelectUI from "@/components/ui/select/SelectUI.vue";
+import Select2UI from "@/components/ui/select-2";
 
 import type { RecordForm, RecordFormOptions } from ".";
-import { categoriesSelectAdapter, tagsOptions } from ".";
+
+import {
+  formatDate,
+  formatWhenFinished,
+  makeTagByString,
+  recordFormDefault,
+  selectOptionsToString,
+  categoriesSelectAdapter,
+  tagsOptions,
+} from ".";
 
 import { useCategoriesStore } from "@/stores/categories";
 import { recordsAPI } from "@/services";
 import type { RecordUpdateAPI } from "@/services/types";
+import type { ActionModal } from "@/components/modal/modal-factory";
+
+export interface RecordFormProps {
+  finalAction?: ActionModal;
+}
 
 const toast = useToast();
-
-const formDefault = (): RecordForm => ({
-  name: "",
-  category: "",
-  date: "",
-  whenFinished: "",
-  minutes: 0,
-  seconds: 0,
-  tags: "",
-});
-
 const categoriesStore = useCategoriesStore();
 
-const form = reactive<RecordForm>(formDefault());
+const props = withDefaults(defineProps<RecordFormProps>(), {
+  finalAction: () => {
+    return;
+  },
+});
+
+const form = reactive<RecordForm>(recordFormDefault());
 const disabled = reactive({ submit: false });
 const options = reactive<RecordFormOptions>({
   categories: [],
   tags: [],
 });
 
-const requestBody = computed<RecordUpdateAPI>(() => {
+// Lifecycle
+
+onMounted(async () => {
+  try {
+    await categoriesStore.requestCategories();
+  } catch (err) {
+    toast.error("Não foi possível carregar as categorias.");
+  }
+
+  options.categories = [
+    ...categoriesSelectAdapter(categoriesStore.getCategories),
+  ];
+
+  options.tags = [...tagsOptions()];
+
+  setDateAndWhenFinished();
+});
+
+// Computeds
+
+const formatedAPIBody = computed<RecordUpdateAPI>(() => {
   return {
     name: form.name,
-    category: form.category,
+    category: form.category?.value || "",
     date: form.date,
     seconds: form.minutes * 60 + form.seconds,
     whenFinished: form.whenFinished,
-    tags: form.tags,
+    tags: selectOptionsToString(form.tags),
   };
 });
 
@@ -52,14 +81,27 @@ const canSubmit = computed(
     !disabled.submit
 );
 
+// Components Actions
+
+const addTags = (searchQuery: unknown) => {
+  if (!searchQuery) return;
+  const tags = makeTagByString(searchQuery as string);
+  options.tags.push(...tags);
+  form.tags.push(...tags);
+};
+
+// State Actions
+
 const submit = async () => {
   if (!canSubmit.value) return;
 
   disabled.submit = true;
   try {
-    await recordsAPI.post<RecordUpdateAPI>(requestBody.value);
+    await recordsAPI.post<RecordUpdateAPI>(formatedAPIBody.value);
     toast.success("Registro feito com sucesso!");
-    Object.assign(form, formDefault());
+
+    resetForm();
+    if (props.finalAction) props.finalAction();
   } catch (err) {
     toast.error("Não foi possível fazer o registro.");
   } finally {
@@ -67,13 +109,15 @@ const submit = async () => {
   }
 };
 
-onMounted(async () => {
-  await categoriesStore.requestCategories();
-  options.categories = [
-    ...categoriesSelectAdapter(categoriesStore.getCategories),
-  ];
-  options.tags = [...tagsOptions()];
-});
+const resetForm = () => {
+  Object.assign(form, recordFormDefault());
+  setDateAndWhenFinished();
+};
+
+const setDateAndWhenFinished = () => {
+  form.date = formatDate();
+  form.whenFinished = formatWhenFinished();
+};
 </script>
 
 <template>
@@ -87,20 +131,26 @@ onMounted(async () => {
           label="Nome do Registro:"
         />
 
-        <SelectUI
+        <Select2UI
           v-model="form.tags"
           :options="options.tags"
+          label-name="Tags:"
+          label="label"
+          track-by="value"
           id="tags"
-          label="Tags:"
+          taggable
+          multiple
+          :tagAction="addTags"
         />
 
         <div class="col">
-          <SelectUI
+          <Select2UI
             v-model="form.category"
             :options="options.categories"
+            label-name="Categoria"
+            label="label"
+            track-by="value"
             id="category"
-            label="Categoria:"
-            select-first
           />
 
           <InputUI

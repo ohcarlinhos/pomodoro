@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import RecordForm from "../../../components/form/record/RecordForm.vue";
+import RecordForm from "@/components/form/record/RecordForm.vue";
+import type { ActionModal } from "@/components/modal/modal-factory";
 
 export interface RecordModalProps {
   name?: string;
+  finalAction: ActionModal;
 }
 
 withDefaults(defineProps<RecordModalProps>(), {
@@ -11,9 +13,5 @@ withDefaults(defineProps<RecordModalProps>(), {
 </script>
 
 <template>
-  <RecordForm />
+  <RecordForm :final-action="finalAction" />
 </template>
-
-<style lang="scss">
-@import "./RecordModal.scss";
-</style>

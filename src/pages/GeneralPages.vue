@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, reactive, ref, watch } from "vue";
+import { computed, onMounted, reactive, ref, watch } from "vue";
 import { RouterView, useRoute } from "vue-router";
 
 import DefaultTemplate from "@/templates/default";
@@ -12,6 +12,10 @@ const route = useRoute();
 
 const menuLinks = reactive<NavLink[]>([...pageConfig.menu.links]);
 const userSession = ref(false);
+
+onMounted(() => {
+  userSession.value = authService.hasSession();
+});
 
 watch(
   () => route.path,
