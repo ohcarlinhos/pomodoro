@@ -1,49 +1,47 @@
 <script setup lang="ts">
+import { USE_PANEL } from "@/global";
+
 import type { LogoProps } from "../logo/TheLogo.vue";
 import TheLogo from "../logo/TheLogo.vue";
 import ImageBoxUI from "../../ui/image/ImageBoxUI.vue";
 import Nav from "../nav/Nav.vue";
+
 import type { LinkProps } from "../link/TheLink.vue";
+import type { UserMenu } from "./types";
 
 export interface MenuProps {
   logo: LogoProps;
-  userImage?: string;
-  userName?: string;
-  userClickable?: boolean;
+  user?: UserMenu | null;
   userClickAction?: () => void;
   links?: LinkProps[];
 }
 
 const props = withDefaults(defineProps<MenuProps>(), {
-  userImage: "",
-  userName: "",
-  userClickable: false,
+  user: null,
   userClickAction: () => {
     return;
   },
   links: () => [],
 });
 
-defineEmits(["menu:open-favorite", "menu:open-cart"]);
-
 const clickUser = () => {
-  if (props.userClickable) props.userClickAction();
+  if (props.user && props.user.clickable) props.userClickAction();
 };
 </script>
 
 <template>
   <div class="menu__container">
     <TheLogo v-bind="logo" />
-    <Nav v-if="links.length" :links="links" />
+    <Nav v-if="links.length && USE_PANEL" :links="links" />
     <div
-      v-if="userImage"
+      v-if="user && user.image"
       class="menu__user"
-      :class="{ clickable: userClickable }"
+      :class="{ clickable: user && user.clickable }"
       @click="clickUser"
     >
       <ImageBoxUI
-        :url="userImage"
-        :title="userName"
+        :url="user && user.image"
+        :title="user && user.name"
         radius="20px"
         min-height="40px"
       />

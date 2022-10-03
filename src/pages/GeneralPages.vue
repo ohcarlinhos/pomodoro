@@ -4,13 +4,13 @@ import { RouterView, useRoute } from "vue-router";
 
 import DefaultTemplate from "@/templates/default";
 import TheMenu from "@/components/header/menu";
-import { pageConfig, type NavLink } from "@/config";
+import { appConfig, type NavLink } from "@/config";
 import { authService } from "@/services";
 
-const clickUser = () => window.open(pageConfig.devUrlProfile, "_blank");
 const route = useRoute();
 
-const menuLinks = reactive<NavLink[]>([...pageConfig.menu.links]);
+const clickUser = () => window.open(appConfig.menu.user.profile, "_blank");
+const menuLinks = reactive<NavLink[]>([...appConfig.menu.links]);
 const userSession = ref(false);
 
 onMounted(() => {
@@ -36,7 +36,7 @@ const navLinks = computed(() => {
   <DefaultTemplate>
     <template #header>
       <TheMenu
-        v-bind="pageConfig.menu"
+        v-bind="appConfig.menu"
         :user-click-action="clickUser"
         :links="navLinks"
       />

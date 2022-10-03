@@ -2,12 +2,14 @@
 export interface LogoProps {
   title: string;
   url?: string;
+  alt?: string;
   logoImage?: string;
   uppercase?: boolean;
 }
 
 withDefaults(defineProps<LogoProps>(), {
   url: "",
+  alt: "",
   uppercase: false,
 });
 </script>
@@ -16,15 +18,15 @@ withDefaults(defineProps<LogoProps>(), {
   <div class="logo__container">
     <RouterLink
       :to="{ name: url }"
-      :title="title"
+      :title="alt || title"
       :class="{ disabled: !url }"
       class="logo__url"
     >
       <img
         v-if="logoImage"
         :src="logoImage"
-        :alt="title"
-        :title="title"
+        :alt="alt || title"
+        :title="alt || title"
         class="logo__image"
       />
       <h1

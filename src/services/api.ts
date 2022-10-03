@@ -1,9 +1,10 @@
 import router from "@/router";
 import axios from "axios";
+import { API_URL } from "@/global";
 import { authService } from ".";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: API_URL,
   headers: {
     "content-type": "application/json",
   },

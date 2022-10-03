@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import ModalFactory from "@/components/modal/modal-factory/ModalFactory.vue";
 import GeneralPages from "@/pages/GeneralPages.vue";
+
+import { useTitle } from "@vueuse/core";
+import { appConfig } from "./config";
+
+const title = useTitle();
+title.value = appConfig.general.title;
 </script>
 
 <template>

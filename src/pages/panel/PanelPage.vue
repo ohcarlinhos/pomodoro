@@ -7,7 +7,7 @@ import { tableColumns, makeTableLinesByRecords, tableActions } from ".";
 import TableUI, { type TableUIProps } from "@/components/ui/table";
 import InputSearchUI from "@/components/ui/input-search";
 import ButtonUI from "@/components/ui/button/ButtonUI.vue";
-import type { ModalStateInterface } from "@/components/modal/modal-factory/ModalFactory.vue";
+import type { ModalStateInterface } from "@/components/modal/modal-factory/types";
 import type { RecordModalProps } from "@/components/modal/record/RecordModal.vue";
 import TimerAndLocalRecords from "@/components/timer/timer-and-local-records";
 
