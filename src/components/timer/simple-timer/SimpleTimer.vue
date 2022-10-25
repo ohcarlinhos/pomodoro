@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { zeroLeft } from "@/util/functions";
 import { reactive, ref, watch, onMounted, computed } from "vue";
+
 import ButtonUI from "@/components/ui/button";
+import { OhVueIcon, addIcons } from "oh-vue-icons";
+
+import { MdPause, MdPlayarrow, MdStop, MdCheck } from "oh-vue-icons/icons/md";
+
 import type { SimpleTimerDonePayload } from ".";
 
 export interface SimpleTimerProps {
@@ -16,6 +21,8 @@ const emit = defineEmits([
   "timer:reset",
   "timer:counter",
 ]);
+
+addIcons(MdPause, MdPlayarrow, MdStop, MdCheck);
 
 const props = withDefaults(defineProps<SimpleTimerProps>(), {
   increment: false,
@@ -49,6 +56,10 @@ watch(
 const startButton = computed(() => (timer.active ? "Pausar" : "Iniciar"));
 const startButtonDesign = computed(() =>
   !timer.active ? "primary" : "warning"
+);
+
+const startButtonIcon = computed(() =>
+  !timer.active ? "md-playarrow" : "md-pause"
 );
 
 const minutes = computed(() => {
@@ -133,28 +144,31 @@ const timerCounter = computed(() => {
         size="sm"
         :label="startButton"
         :design="startButtonDesign"
-        full
-      />
+      >
+        <OhVueIcon :name="startButtonIcon" />
+      </ButtonUI>
       <ButtonUI
         @click="done(true)"
         size="sm"
         label="Concluir"
         design="confirm"
         :disabled="!timer.secondsPast"
-        full
-      />
+      >
+        <OhVueIcon name="md-check" />
+      </ButtonUI>
       <ButtonUI
         @click="reset"
         size="sm"
         label="Limpar"
         design="remove"
         :disabled="!timer.secondsPast"
-        full
-      />
+      >
+        <OhVueIcon name="md-stop" />
+      </ButtonUI>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-@import "./style.scss";
+@import "./SimpleTimer.scss";
 </style>
