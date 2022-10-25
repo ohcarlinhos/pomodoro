@@ -111,5 +111,5 @@ const handleTableActions = async (payload: TableUIActionPayload) => {
 </template>
 
 <style lang="scss" scoped>
-@import "./style.scss";
+@import "./PanelPage.scss";
 </style>

@@ -18,5 +18,5 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-@import "./style.scss";
+@import "./AuthPage.scss";
 </style>
