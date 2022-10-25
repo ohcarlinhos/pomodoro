@@ -108,5 +108,5 @@ const setCustomTime = () => {
 </template>
 
 <style lang="scss" scoped>
-@import "./style.scss";
+@import "./DigitalTimer.scss";
 </style>
