@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { USE_PANEL } from "@/global";
-
 import type { LogoProps } from "../logo/TheLogo.vue";
 import TheLogo from "../logo/TheLogo.vue";
 import ImageBoxUI from "../../ui/image/ImageBoxUI.vue";
@@ -14,6 +12,7 @@ export interface MenuProps {
   user?: UserMenu | null;
   userClickAction?: () => void;
   links?: LinkProps[];
+  hasNav: boolean;
 }
 
 const props = withDefaults(defineProps<MenuProps>(), {
@@ -22,6 +21,7 @@ const props = withDefaults(defineProps<MenuProps>(), {
     return;
   },
   links: () => [],
+  hasNav: false,
 });
 
 const clickUser = () => {
@@ -32,7 +32,7 @@ const clickUser = () => {
 <template>
   <div class="menu__container">
     <TheLogo v-bind="logo" />
-    <Nav v-if="links.length && USE_PANEL" :links="links" />
+    <Nav v-if="links.length && hasNav" :links="links" />
     <div
       v-if="user && user.image"
       class="menu__user"

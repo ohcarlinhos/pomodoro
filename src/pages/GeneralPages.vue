@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { USE_PANEL } from "@/global";
+
 import { computed, onMounted, reactive, ref, watch } from "vue";
 import { RouterView, useRoute } from "vue-router";
 
@@ -39,6 +41,7 @@ const navLinks = computed(() => {
         v-bind="appConfig.menu"
         :user-click-action="clickUser"
         :links="navLinks"
+        :has-nav="USE_PANEL"
       />
     </template>
 
