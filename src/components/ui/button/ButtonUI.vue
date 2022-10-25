@@ -1,39 +1,46 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, useSlots } from "vue";
 
 export type ButtonUIProps = {
-  label: string;
+  label?: string;
   design?: string;
   full?: boolean;
   sharp?: boolean;
   disabled?: boolean;
   size?: string;
-  type?: string;
 };
 
 const props = withDefaults(defineProps<ButtonUIProps>(), {
+  label: "",
   design: "",
   full: false,
   disabled: false,
   sharp: false,
   size: "sm",
-  type: "button",
 });
 
-const computedClass = computed(() => {
-  const { disabled, full, design, sharp, size } = props;
-  return { design, disabled, full, sharp, [design]: true, [size || ""]: true };
+const slots = useSlots();
+
+const computedClasses = computed(() => {
+  const { full, size, sharp, disabled, design } = props;
+  return {
+    full,
+    [size]: size.length,
+    sharp,
+    disabled,
+    [design]: design.length,
+  };
 });
 </script>
 
 <template>
-  <button
-    class="button-ui"
-    :class="computedClass"
-    data-test="button-ui"
-    :disabled="disabled"
-  >
-    {{ label }}
+  <button class="button-ui" :class="computedClasses" :disabled="disabled">
+    <template v-if="slots['default']">
+      <slot></slot>
+    </template>
+    <template v-else>
+      {{ label }}
+    </template>
   </button>
 </template>
 

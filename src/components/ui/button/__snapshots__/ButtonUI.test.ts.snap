@@ -2,13 +2,12 @@
 
 exports[`ButtonUI > should match a snapshot 1`] = `
 <button
-  class="cJTTMW full full"
-  data-test="button-ui"
-  design=""
-  disabled="false"
-  full="true"
-  label="Little Button"
+  class="button-ui full sm sharp disabled some simple classes"
+  data-v-a4d02f90=""
+  disabled="true"
 >
-  Little Button
+  
+  Snap! ;)
+  
 </button>
 `;

@@ -3,27 +3,35 @@ import { mount } from "@vue/test-utils";
 
 import ButtonUI from ".";
 
-const mock = { label: "Little Button" };
-
 describe("ButtonUI", () => {
   it("should render a button with correct label", () => {
-    const w = mount(ButtonUI, {
-      props: { label: mock.label },
-    });
-    expect(w.text()).toContain(mock.label);
+    const wrapper = mount(ButtonUI, { props: { label: "Simple Text" } });
+    expect(wrapper.text()).toContain("Simple Text");
   });
 
   it("should render a button with full style", () => {
-    const w = mount(ButtonUI, {
-      props: { label: mock.label, full: true },
+    const wrapper = mount(ButtonUI, { props: { full: true } });
+    expect(wrapper.classes()).toContain("full");
+  });
+
+  it("should render a slot item", () => {
+    const wrapper = mount(ButtonUI, {
+      slots: { default: "<p>Slot Example</p>" },
     });
-    expect(w.classes()).toContain("full");
+
+    expect(wrapper.text()).toContain("Slot Example");
   });
 
   it("should match a snapshot", () => {
-    const w = mount(ButtonUI, {
-      props: { label: mock.label, full: true, disabled: false },
+    const { element } = mount(ButtonUI, {
+      props: {
+        label: "Snap! ;)",
+        design: "some simple classes",
+        sharp: true,
+        full: true,
+        disabled: true,
+      },
     });
-    expect(w.element).toMatchSnapshot();
+    expect(element).toMatchSnapshot();
   });
 });
