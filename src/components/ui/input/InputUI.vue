@@ -3,7 +3,7 @@ import { maska } from "maska";
 import { computed } from "vue";
 
 export interface InputUIProps {
-  modelValue: string | number;
+  modelValue?: string | number;
   id?: string;
   label?: string;
   type?: string;

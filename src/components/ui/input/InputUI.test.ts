@@ -7,23 +7,24 @@ const mock = { id: 1, label: "Little Input" };
 
 describe("InputUI", () => {
   it("should render a input with label", () => {
-    const w = mount(InputUI, { props: { label: mock.label } });
-    expect(w.get("label").text()).toContain(mock.label);
+    const wrapper = mount(InputUI, { props: { label: "I'm a Input" } });
+
+    expect(wrapper.get("label").text()).toContain("I'm a Input");
   });
 
   it("should emit a event when change input value", () => {
-    const w = mount(InputUI, { props: { label: mock.label } });
+    const wrapper = mount(InputUI, { props: { label: mock.label } });
 
-    const input = w.get("input");
+    const input = wrapper.get("input");
     const inputValue = "Input Value";
     input.setValue(inputValue);
 
     expect(input.element.value).toBe(inputValue);
-    expect(w.emitted()).toHaveProperty("update:modelValue");
+    expect(wrapper.emitted()).toHaveProperty("update:modelValue");
   });
 
   it("should match a snapshot", () => {
-    const w = mount(InputUI, { props: { label: mock.label } });
-    expect(w.element).toMatchSnapshot();
+    const { element } = mount(InputUI, { props: { label: mock.label } });
+    expect(element).toMatchSnapshot();
   });
 });
