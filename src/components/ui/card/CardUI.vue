@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { useSlots } from "vue";
 
-defineProps({
-  title: String,
-});
+export interface CardUIProps {
+  title?: string;
+}
+
+defineProps<CardUIProps>();
 
 const slots = useSlots();
 </script>
