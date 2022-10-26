@@ -17,15 +17,15 @@ import DigitalTimer from "@/components/timer/digital-timer";
 import type { SimpleTimerDonePayload } from "@/components/timer/simple-timer";
 
 import { useLocalRecordsStore } from "@/stores/localRecords";
+import { useTitle } from "@vueuse/core";
 
 dayjs.extend(localizedFormatDayJs);
 dayjs.locale(localeDayJs);
 
 const localRecords = useLocalRecordsStore();
 
-const page = reactive({
-  title: "",
-});
+const title = useTitle();
+const initialTitle = title.value.toString();
 
 const table = reactive<SimpleTableProps>({
   columns: [],
@@ -36,7 +36,6 @@ const table = reactive<SimpleTableProps>({
 onMounted(async () => {
   table.columns = util.tableColumns();
   table.actions = util.tableActions();
-  page.title = "";
 });
 
 const localRecordsLines = computed(() => {
@@ -51,17 +50,16 @@ const doneAction = (payload: SimpleTimerDonePayload) => {
     dayjs(date).minute()
   )}`;
 
-  if (page.title) document.title = page.title;
+  title.value = initialTitle;
   localRecords.addRecord(day, whenFinished, payload.seconds);
 };
 
 const resetAction = () => {
-  if (page.title) document.title = page.title;
+  title.value = initialTitle;
 };
 
 const handleCounter = (counter: string) => {
-  if (!page.title) page.title = document.title;
-  document.title = `${counter} - ${page.title}`;
+  title.value = `${counter} - ${initialTitle}`;
 };
 
 const handleAction = (payload: TableUIActionPayload) => {

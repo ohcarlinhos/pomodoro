@@ -42,7 +42,7 @@ const timer = useStorage("timer-status", {
 /** Lifecycle */
 
 onMounted(() => {
-  resetTimer();
+  reCalcTimer();
   timer.value.active = false;
 });
 
@@ -110,7 +110,7 @@ const done = (manual = false) => {
 
   emit("timer:done", payload);
   clearTimerInterval();
-  reCalcTimer();
+  resetTimer();
 };
 
 const clearTimerInterval = () => {
@@ -125,6 +125,7 @@ const initTimerInterval = () => {
 
 const resetTimer = () => {
   reCalcTimer();
+  timer.value.active = false;
   timer.value.secondsPast = 0;
 };
 
