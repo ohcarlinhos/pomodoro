@@ -1,12 +1,10 @@
+// Disabled due to incompatibility of "VueUse" with the storybook.
 import TheComponent from ".";
 
 export default {
-  title: "Timer / SimpleTimer",
+  title: "Timer / DigitalTimer",
   component: TheComponent,
-  args: {
-    minutes: 25,
-    seconds: 0,
-  },
+  args: {},
   argTypes: {},
   parameters: {
     backgrounds: {

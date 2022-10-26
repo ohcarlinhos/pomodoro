@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { ref, watch, onMounted, computed } from "vue";
 import { zeroLeft } from "@/util/functions";
-import { reactive, ref, watch, onMounted, computed } from "vue";
+import { useStorage } from "@vueuse/core";
 
 import ButtonUI from "@/components/ui/button";
 import { OhVueIcon, addIcons } from "oh-vue-icons";
@@ -32,7 +33,7 @@ const props = withDefaults(defineProps<SimpleTimerProps>(), {
 
 const interval = ref<unknown>(null);
 
-const timer = reactive({
+const timer = useStorage("timer-status", {
   active: false,
   seconds: 0,
   secondsPast: 0,
@@ -42,6 +43,7 @@ const timer = reactive({
 
 onMounted(() => {
   resetTimer();
+  timer.value.active = false;
 });
 
 watch(
@@ -53,22 +55,22 @@ watch(
 
 /** Computeds */
 
-const startButton = computed(() => (timer.active ? "Pausar" : "Iniciar"));
+const startButton = computed(() => (timer.value.active ? "Pausar" : "Iniciar"));
 const startButtonDesign = computed(() =>
-  !timer.active ? "primary" : "warning"
+  !timer.value.active ? "primary" : "warning"
 );
 
 const startButtonIcon = computed(() =>
-  !timer.active ? "md-playarrow" : "md-pause"
+  !timer.value.active ? "md-playarrow" : "md-pause"
 );
 
 const minutes = computed(() => {
-  const secondsTimer = timer.seconds - timer.secondsPast;
+  const secondsTimer = timer.value.seconds - timer.value.secondsPast;
   return zeroLeft(Math.floor(secondsTimer / 60));
 });
 
 const seconds = computed(() => {
-  const secondsTimer = timer.seconds - timer.secondsPast;
+  const secondsTimer = timer.value.seconds - timer.value.secondsPast;
   const totalMinutes = Math.floor(secondsTimer / 60) * 60;
   return zeroLeft((totalMinutes - secondsTimer) * -1);
 });
@@ -76,17 +78,18 @@ const seconds = computed(() => {
 /** Methods */
 
 const moveTimer = () => {
-  if (!props.increment && timer.secondsPast >= timer.seconds) done();
+  if (!props.increment && timer.value.secondsPast >= timer.value.seconds)
+    done();
   else {
-    timer.secondsPast++;
+    timer.value.secondsPast++;
     emit("timer:counter", timerCounter.value);
   }
 };
 
 const start = () => {
-  if (!timer.active) initTimerInterval();
+  if (!timer.value.active) initTimerInterval();
   else clearTimerInterval();
-  const payload = { active: timer.active };
+  const payload = { active: timer.value.active };
   emit("timer:counter", timerCounter.value);
   emit("timer:click", payload);
 };
@@ -98,35 +101,35 @@ const reset = () => {
 };
 
 const done = (manual = false) => {
-  if (timer.secondsPast == 0) return;
+  if (timer.value.secondsPast == 0) return;
   const payload: SimpleTimerDonePayload = {
     date: new Date(),
-    seconds: timer.secondsPast,
+    seconds: timer.value.secondsPast,
     manual,
   };
 
   emit("timer:done", payload);
   clearTimerInterval();
-  resetTimer();
+  reCalcTimer();
 };
 
 const clearTimerInterval = () => {
   clearInterval(interval.value as number);
-  timer.active = false;
+  timer.value.active = false;
 };
 
 const initTimerInterval = () => {
   interval.value = setInterval(moveTimer, 1000);
-  timer.active = true;
+  timer.value.active = true;
 };
 
 const resetTimer = () => {
   reCalcTimer();
-  timer.secondsPast = 0;
+  timer.value.secondsPast = 0;
 };
 
 const reCalcTimer = () => {
-  timer.seconds = props.minutes * 60 + props.seconds;
+  timer.value.seconds = props.minutes * 60 + props.seconds;
 };
 
 const timerCounter = computed(() => {

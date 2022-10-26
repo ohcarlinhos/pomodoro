@@ -36,7 +36,6 @@ const table = reactive<SimpleTableProps>({
 onMounted(async () => {
   table.columns = util.tableColumns();
   table.actions = util.tableActions();
-  localRecords.requestRecords();
   page.title = "";
 });
 
