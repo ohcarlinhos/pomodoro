@@ -77,8 +77,8 @@ const setCustomTime = () => {
 </script>
 
 <template>
-  <div class="digital-timer__container">
-    <div class="digital-timer__buttons">
+  <div class="container">
+    <div class="buttons">
       <button
         v-for="b in timer.buttons"
         :key="b.label"
@@ -91,7 +91,7 @@ const setCustomTime = () => {
         v-model="timer.custom"
         v-maska="'###'"
         type="text"
-        placeholder="Outro"
+        placeholder="Other"
         :disabled="timer.active"
         @input="setCustomTime"
         @click="setCustomTime"

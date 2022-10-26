@@ -1,9 +1,11 @@
-.digital-timer__container {
-  width: 100%;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.digital-timer__buttons {
-  width: 100%;
+.buttons {
   display: flex;
   align-items: center;
   justify-content: center;

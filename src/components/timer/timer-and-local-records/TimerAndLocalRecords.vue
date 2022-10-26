@@ -72,8 +72,8 @@ const handleAction = (payload: TableUIActionPayload) => {
 </script>
 
 <template>
-  <div class="timer__container">
-    <div class="timer__area">
+  <div class="container">
+    <div class="card-bg">
       <DigitalTimer
         :done-action="doneAction"
         :reset-action="resetAction"
@@ -81,7 +81,7 @@ const handleAction = (payload: TableUIActionPayload) => {
       />
     </div>
 
-    <div class="timer__area">
+    <div class="card-bg full-area">
       <SimpleTable
         v-bind="table"
         :lines="localRecordsLines"
