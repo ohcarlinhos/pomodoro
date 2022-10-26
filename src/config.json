@@ -1,11 +1,11 @@
 {
   "general": {
-    "title": "Poom - Pomodoro Timer Online"
+    "title": "Pomodoro - Timer Online"
   },
   "menu": {
     "logo": {
-      "title": "Poom",
-      "alt": "Poom - Pomodoro Timer Online",
+      "title": "Timer",
+      "alt": "Pomodoro Timer Online",
       "logoImage": "",
       "uppercase": false,
       "url": "home"
