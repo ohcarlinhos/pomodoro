@@ -49,6 +49,11 @@
     font-size: 1.5rem;
   }
 
+  &.transparent {
+    background-color: transparent;
+    padding: 0;
+  }
+
   &.primary {
     color: #fff;
     background: var(--action-primary);

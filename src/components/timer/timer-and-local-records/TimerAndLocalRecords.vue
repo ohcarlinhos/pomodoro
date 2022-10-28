@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive } from "vue";
+import { OhVueIcon, addIcons } from "oh-vue-icons";
+
 import dayjs from "dayjs";
 
 import { util } from ".";
@@ -8,6 +10,7 @@ import localizedFormatDayJs from "dayjs/plugin/localizedFormat";
 import localeDayJs from "dayjs/locale/pt-br";
 import { zeroLeft } from "@/util/functions";
 
+import ButtonUI from "@/components/ui/button/ButtonUI.vue";
 import type { TableUIActionPayload } from "@/components/ui/table";
 import SimpleTable, {
   type SimpleTableProps,
@@ -17,15 +20,23 @@ import DigitalTimer from "@/components/timer/digital-timer";
 import type { SimpleTimerDonePayload } from "@/components/timer/simple-timer";
 
 import { useLocalRecordsStore } from "@/stores/localRecords";
-import { useTitle } from "@vueuse/core";
+import { useStorage, useTitle } from "@vueuse/core";
+
+import {
+  MdKeyboardarrowdownRound,
+  MdKeyboardarrowupRound,
+} from "oh-vue-icons/icons/md";
 
 dayjs.extend(localizedFormatDayJs);
 dayjs.locale(localeDayJs);
 
+addIcons(MdKeyboardarrowdownRound, MdKeyboardarrowupRound);
+
 const localRecords = useLocalRecordsStore();
 
 const title = useTitle();
-const initialTitle = title.value.toString();
+const initialTitle = title.value ? title.value.toString() : "";
+const showTable = useStorage("show-local-table", false);
 
 const table = reactive<SimpleTableProps>({
   columns: [],
@@ -36,6 +47,8 @@ const table = reactive<SimpleTableProps>({
 onMounted(async () => {
   table.columns = util.tableColumns();
   table.actions = util.tableActions();
+
+  if (localRecordsLines.value.length === 0) showTable.value = false;
 });
 
 const localRecordsLines = computed(() => {
@@ -52,6 +65,9 @@ const doneAction = (payload: SimpleTimerDonePayload) => {
 
   title.value = initialTitle;
   localRecords.addRecord(day, whenFinished, payload.seconds);
+
+  // Open on first add record.
+  if (localRecordsLines.value.length == 1) showTable.value = true;
 };
 
 const resetAction = () => {
@@ -66,6 +82,10 @@ const handleAction = (payload: TableUIActionPayload) => {
   const { action, line } = payload;
   if (action == "delete") localRecords.deleteRecord(line.id as string);
 };
+
+const toggleTable = () => {
+  showTable.value = !showTable.value;
+};
 </script>
 
 <template>
@@ -78,13 +98,26 @@ const handleAction = (payload: TableUIActionPayload) => {
       />
     </div>
 
-    <div class="card-bg full-area">
-      <SimpleTable
-        v-bind="table"
-        :lines="localRecordsLines"
-        @table:action="handleAction"
+    <ButtonUI design="transparent" @click="toggleTable">
+      <OhVueIcon
+        :name="
+          showTable ? 'md-keyboardarrowup-round' : 'md-keyboardarrowdown-round'
+        "
+        title="Show Table"
+        scale="1.5"
+        fill="var(--text-color)"
       />
-    </div>
+    </ButtonUI>
+
+    <Transition>
+      <div class="card-bg full-area" v-if="showTable">
+        <SimpleTable
+          v-bind="table"
+          :lines="localRecordsLines"
+          @table:action="handleAction"
+        />
+      </div>
+    </Transition>
   </div>
 </template>
 
