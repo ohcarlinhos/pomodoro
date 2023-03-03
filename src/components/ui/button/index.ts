@@ -1,2 +1,2 @@
-export { default } from "./ButtonUI.vue";
-export type { ButtonUIProps } from "./ButtonUI.vue";
+export { default } from "./TheButton.vue";
+export type { TheButtonProps } from "./TheButton.vue";

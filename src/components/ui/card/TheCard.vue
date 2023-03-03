@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { useSlots } from "vue";
 
-export interface CardUIProps {
+export interface TheCardProps {
   title?: string;
 }
 
-defineProps<CardUIProps>();
+defineProps<TheCardProps>();
 
 const slots = useSlots();
 </script>
@@ -29,5 +29,5 @@ const slots = useSlots();
 </template>
 
 <style lang="scss">
-@import "./CardUI.scss";
+@import "./TheCard.scss";
 </style>

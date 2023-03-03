@@ -10,7 +10,7 @@ import localizedFormatDayJs from "dayjs/plugin/localizedFormat";
 import localeDayJs from "dayjs/locale/pt-br";
 import { zeroLeft } from "@/util/functions";
 
-import ButtonUI from "@/components/ui/button/ButtonUI.vue";
+import TheButton from "@/components/ui/button/TheButton.vue";
 import type { TableUIActionPayload } from "@/components/ui/table";
 import SimpleTable, {
   type SimpleTableProps,
@@ -98,7 +98,7 @@ const toggleTable = () => {
       />
     </div>
 
-    <ButtonUI design="transparent" @click="toggleTable">
+    <TheButton design="transparent" @click="toggleTable">
       <OhVueIcon
         :name="
           showTable ? 'md-keyboardarrowup-round' : 'md-keyboardarrowdown-round'
@@ -107,7 +107,7 @@ const toggleTable = () => {
         scale="1.5"
         fill="var(--text-color)"
       />
-    </ButtonUI>
+    </TheButton>
 
     <Transition>
       <div class="card-bg full-area" v-if="showTable">

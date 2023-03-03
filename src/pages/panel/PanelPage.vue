@@ -6,7 +6,7 @@ import { tableColumns, makeTableLinesByRecords, tableActions } from ".";
 
 import TableUI, { type TableUIProps } from "@/components/ui/table";
 import InputSearchUI from "@/components/ui/input-search";
-import ButtonUI from "@/components/ui/button/ButtonUI.vue";
+import TheButton from "@/components/ui/button";
 import type { ModalStateInterface } from "@/components/modal/modal-factory/types";
 import type { RecordModalProps } from "@/components/modal/record/RecordModal.vue";
 import TimerAndLocalRecords from "@/components/timer/timer-and-local-records";
@@ -91,7 +91,7 @@ const handleTableActions = async (payload: TableUIActionPayload) => {
     <div class="info__area">
       <div class="action__area">
         <InputSearchUI size="lg" />
-        <ButtonUI
+        <TheButton
           class="add-button"
           design="primary"
           label="Adicionar Registro"

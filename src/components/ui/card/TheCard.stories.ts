@@ -1,12 +1,12 @@
-import CardUI from "./CardUI.vue";
-import ButtonUI from "../button/ButtonUI.vue";
+import TheCard from "./TheCard.vue";
+import TheButton from "../button/TheButton.vue";
 import InputUI from "../input/InputUI.vue";
 
-import "./util/storybook.css";
+import "./storybook/style.css";
 
 export default {
-  title: "UI / CardUI",
-  component: CardUI,
+  title: "UI / TheCard",
+  component: TheCard,
   args: {
     title: "Hi! I'm a Title Card",
     body: "Mussum Ipsum, cacilds vidis litro abertis. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis!",
@@ -25,22 +25,22 @@ export default {
 };
 
 export const Component = (args: unknown) => ({
-  components: { CardUI },
+  components: { TheCard },
   setup() {
     return { args };
   },
   template: `
     <div class="card-ui--storybook">
-      <CardUI v-bind="args">
+      <TheCard v-bind="args">
         <template v-if="args.body" #body>{{args.body}}</template>
         <template v-if="args.footer" #footer>{{args.footer}}</template>
-      </CardUI>
+      </TheCard>
     </div>
   `,
 });
 
 export const Example = (args: { title: string }) => ({
-  components: { CardUI, ButtonUI, InputUI },
+  components: { TheCard, TheButton, InputUI },
   setup() {
     args = { ...args, title: "Formulário de Acesso" };
     const button = { label: "Solicitar Acesso", full: true };
@@ -62,16 +62,16 @@ export const Example = (args: { title: string }) => ({
   },
   template: `
     <div class="card-ui--storybook">
-      <CardUI v-bind="args">
+      <TheCard v-bind="args">
         <template v-if="args.body" #body>
           <div class="grid-inputs">
             <InputUI v-for="i in inputList" :key="i.id" v-bind="i" />
           </div>
         </template>
         <template v-if="args.footer" #footer>
-          <ButtonUI v-bind="button" design="confirm" />
+          <TheButton v-bind="button" design="confirm" />
         </template>
-      </CardUI>
+      </TheCard>
     </div>
   `,
 });

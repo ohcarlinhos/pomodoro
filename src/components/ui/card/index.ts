@@ -1,2 +1,2 @@
-export { default } from "./CardUI.vue";
-export type { CardUIProps } from "./CardUI.vue";
+export { default } from "./TheCard.vue";
+export type { TheCardProps } from "./TheCard.vue";

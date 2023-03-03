@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ButtonUI from "../../ui/button/ButtonUI.vue";
+import TheButton from "@/components/ui/button";
 
 export interface GenericModalProps {
   title: string;
@@ -31,7 +31,7 @@ const props = withDefaults(defineProps<GenericModalProps>(), {
     <div class="modal__body">
       {{ body }}
     </div>
-    <ButtonUI v-if="button" :label="button" radius @click="buttonAction" />
+    <TheButton v-if="button" :label="button" radius @click="buttonAction" />
   </div>
 </template>
 

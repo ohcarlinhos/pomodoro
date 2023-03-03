@@ -3,7 +3,7 @@ import { ref, watch, onMounted, computed } from "vue";
 import { zeroLeft } from "@/util/functions";
 import { useStorage } from "@vueuse/core";
 
-import ButtonUI from "@/components/ui/button";
+import TheButton from "@/components/ui/button";
 import { OhVueIcon, addIcons } from "oh-vue-icons";
 
 import { MdPause, MdPlayarrow, MdStop, MdCheck } from "oh-vue-icons/icons/md";
@@ -143,15 +143,15 @@ const timerCounter = computed(() => {
     <span class="timer"> {{ timerCounter }} </span>
 
     <div class="buttons">
-      <ButtonUI
+      <TheButton
         @click="start"
         size="sm"
         :label="startButton"
         :design="startButtonDesign"
       >
         <OhVueIcon :name="startButtonIcon" />
-      </ButtonUI>
-      <ButtonUI
+      </TheButton>
+      <TheButton
         @click="done(true)"
         size="sm"
         label="Concluir"
@@ -159,8 +159,8 @@ const timerCounter = computed(() => {
         :disabled="!timer.secondsPast"
       >
         <OhVueIcon name="md-check" />
-      </ButtonUI>
-      <ButtonUI
+      </TheButton>
+      <TheButton
         @click="reset"
         size="sm"
         label="Limpar"
@@ -168,7 +168,7 @@ const timerCounter = computed(() => {
         :disabled="!timer.secondsPast"
       >
         <OhVueIcon name="md-stop" />
-      </ButtonUI>
+      </TheButton>
     </div>
   </div>
 </template>

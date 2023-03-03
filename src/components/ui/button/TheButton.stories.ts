@@ -1,8 +1,8 @@
-import TheComponent from ".";
+import TheButton from ".";
 
 export default {
-  title: "UI / ButtonUI",
-  component: TheComponent,
+  title: "UI / TheButton",
+  component: TheButton,
   args: {
     label: "Just a simple button...",
     design: "help",
@@ -26,13 +26,13 @@ export default {
 };
 
 export const Component = (args: unknown) => ({
-  components: { TheComponent },
+  components: { TheButton },
   setup() {
     return { args };
   },
   template: `
     <div class="default--storybook w-400">  
-      <TheComponent v-bind="args" />
+      <TheButton v-bind="args" />
     </div>
   `,
 });

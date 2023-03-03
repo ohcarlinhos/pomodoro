@@ -2,9 +2,9 @@
 import { useToast } from "vue-toastification";
 import { useRouter } from "vue-router";
 
-import CardUI from "@/components/ui/card/CardUI.vue";
-import InputUI from "@/components/ui/input/InputUI.vue";
-import ButtonUI from "@/components/ui/button/ButtonUI.vue";
+import TheCard from "@/components/ui/card";
+import InputUI from "@/components/ui/input";
+import TheButton from "@/components/ui/button";
 
 import type { LoginForm } from ".";
 
@@ -49,7 +49,7 @@ const submit = async (outside = false) => {
 </script>
 
 <template>
-  <CardUI title="Acessar Painel">
+  <TheCard title="Acessar Painel">
     <template #body>
       <form class="form" @submit.prevent="submit()">
         <InputUI
@@ -72,7 +72,7 @@ const submit = async (outside = false) => {
       </form>
     </template>
     <template #footer>
-      <ButtonUI
+      <TheButton
         label="Acessar"
         design="primary"
         :disabled="!canSubmit"
@@ -81,7 +81,7 @@ const submit = async (outside = false) => {
         @click="submit(true)"
       />
     </template>
-  </CardUI>
+  </TheCard>
 </template>
 
 <style lang="scss" scoped>

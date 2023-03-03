@@ -17,6 +17,8 @@ defineProps({
   </footer>
 </template>
 
-<style lang="sass" scoped>
-@import "./Footer.sass"
+<style lang="scss" scoped>
+footer {
+  display: inline;
+}
 </style>

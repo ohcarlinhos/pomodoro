@@ -2,9 +2,9 @@
 import { computed, onMounted, reactive } from "vue";
 import { useToast } from "vue-toastification";
 
-import CardUI from "@/components/ui/card/CardUI.vue";
+import TheCard from "@/components/ui/card";
 import InputUI from "@/components/ui/input/InputUI.vue";
-import ButtonUI from "@/components/ui/button/ButtonUI.vue";
+import TheButton from "@/components/ui/button";
 import Select2UI from "@/components/ui/select-2";
 
 import type { RecordForm, RecordFormOptions } from ".";
@@ -121,7 +121,7 @@ const setDateAndWhenFinished = () => {
 </script>
 
 <template>
-  <CardUI title="Registrar Intervalo de Tempo">
+  <TheCard title="Registrar Intervalo de Tempo">
     <template #body>
       <div class="record-form">
         <InputUI
@@ -186,7 +186,7 @@ const setDateAndWhenFinished = () => {
       </div>
     </template>
     <template #footer>
-      <ButtonUI
+      <TheButton
         label="Registrar"
         design="confirm"
         :disabled="!canSubmit"
@@ -194,7 +194,7 @@ const setDateAndWhenFinished = () => {
         @click="submit"
       />
     </template>
-  </CardUI>
+  </TheCard>
 </template>
 
 <style lang="scss" scoped>
