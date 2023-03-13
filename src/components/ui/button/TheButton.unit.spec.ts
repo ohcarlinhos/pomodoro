@@ -1,36 +1,22 @@
-// import { mount } from "@vue/test-utils";
+import { render } from "@testing-library/vue";
+import TheButton from "./TheButton.vue";
 
-// import TheButton from "./TheButton.vue";
+describe("TheButton", () => {
+  fit("should render a button with correct label", () => {
+    const wrapper = render(TheButton, { props: { label: "Simple Text" } });
+    wrapper.getByText("Simple Text");
+  });
 
-// describe("TheButton", () => {
-//   it("should render a button with correct label", () => {
-//     const wrapper = mount(TheButton, { props: { label: "Simple Text" } });
-//     expect(wrapper.text()).toContain("Simple Text");
-//   });
+  // it("should render a button with full style", () => {
+  //   const wrapper = render(TheButton, { props: { full: true } });
+  //   expect(wrapper.classes()).toContain("full");
+  // });
 
-//   it("should render a button with full style", () => {
-//     const wrapper = mount(TheButton, { props: { full: true } });
-//     expect(wrapper.classes()).toContain("full");
-//   });
+  it("should render a slot item", () => {
+    const wrapper = render(TheButton, {
+      slots: { default: "<p>Slot Example</p>" },
+    });
 
-//   it("should render a slot item", () => {
-//     const wrapper = mount(TheButton, {
-//       slots: { default: "<p>Slot Example</p>" },
-//     });
-
-//     expect(wrapper.text()).toContain("Slot Example");
-//   });
-
-//   it("should match a snapshot", () => {
-//     const { element } = mount(TheButton, {
-//       props: {
-//         label: "Snap! ;)",
-//         design: "some simple classes",
-//         sharp: true,
-//         full: true,
-//         disabled: true,
-//       },
-//     });
-//     expect(element).toMatchSnapshot();
-//   });
-// });
+    wrapper.getByText("Slot Example");
+  });
+});

@@ -1,28 +1,26 @@
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.vite-config.json"
-    },
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.vitest.json"
-    }
-  ],
   "compilerOptions": {
-    "types": ["vitest/globals"],
+    "types": ["jest", "node", "ts-jest"],
     "composite": true,
     "target": "ESNext",
-    "module": "CommonJS",
+    "module": "ESNext",
     "lib": ["ES2017", "ES2016"],
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
-    "jsx": "preserve",
-    "allowJs": true
-  }
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": { "@/*": ["./src/*"] }
+  },
+  "shim": true,
+  "include": [
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue",
+    "src/config.json",
+    "vite.config.*"
+  ],
+  "exclude": ["src/**/__tests__/*"]
 }

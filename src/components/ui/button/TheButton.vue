@@ -32,7 +32,12 @@ const computedClasses = computed(() => {
 </script>
 
 <template>
-  <button class="button-ui" :class="computedClasses" :disabled="disabled">
+  <button
+    class="button-ui"
+    data-testid="the-button"
+    :class="computedClasses"
+    :disabled="disabled"
+  >
     <template v-if="$slots['default']">
       <slot></slot>
     </template>

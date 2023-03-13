@@ -1,18 +1,14 @@
-// Vitest Snapshot v1
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`InputUI > should match a snapshot 1`] = `
+exports[`InputUI should match a snapshot 1`] = `
 <div
   class="input__container"
-  data-v-2f6c028c=""
 >
-  <label
-    data-v-2f6c028c=""
-  >
+  <label>
     Little Input
   </label>
   <input
     class=""
-    data-v-2f6c028c=""
     name="text"
     placeholder=""
     type="text"
