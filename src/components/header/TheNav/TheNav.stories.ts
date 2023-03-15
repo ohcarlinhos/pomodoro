@@ -1,9 +1,9 @@
-import Nav from "./Nav.vue";
+import TheNav from "./TheNav.vue";
 import { navLinks } from "./util/mock";
 
 export default {
   title: "NAV / Nav",
-  component: Nav,
+  component: TheNav,
   args: {
     label: "Link",
     a: false,
@@ -26,7 +26,7 @@ export const Component = (args: {
   size: number;
   a: boolean;
 }) => ({
-  components: { Nav },
+  components: { TheNav },
   setup() {
     return {
       args: {

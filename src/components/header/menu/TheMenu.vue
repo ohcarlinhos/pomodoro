@@ -2,7 +2,7 @@
 import type { LogoProps } from "../logo/TheLogo.vue";
 import TheLogo from "../logo/TheLogo.vue";
 import ImageBoxUI from "../../ui/image/ImageBoxUI.vue";
-import Nav from "../nav/Nav.vue";
+import TheNav from "@/components/header/TheNav";
 
 import type { TheLinkProps } from "@/components/ui/TheLink";
 import type { UserMenu } from "./types";
@@ -32,7 +32,7 @@ const clickUser = () => {
 <template>
   <div class="menu__container">
     <TheLogo v-bind="logo" />
-    <Nav v-if="links.length && hasNav" :links="links" />
+    <TheNav v-if="links.length && hasNav" :links="links" />
     <div
       v-if="user && user.image"
       class="menu__user"
