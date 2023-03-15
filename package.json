@@ -20,6 +20,7 @@
     "maska": "^1.5.0",
     "oh-vue-icons": "^1.0.0-rc3",
     "pinia": "^2.0.11",
+    "the-new-css-reset": "^1.8.4",
     "tiny-emitter": "^2.1.0",
     "uuid": "^8.3.2",
     "vue": "^3.2.47",
