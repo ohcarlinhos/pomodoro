@@ -2,7 +2,7 @@
 import { onDeactivated, reactive } from "vue";
 import { ImageIcon } from "../../icons";
 
-export interface ImageUIProps {
+export interface ImageBoxProps {
   title?: string;
   url: string;
   radius?: string;
@@ -10,7 +10,7 @@ export interface ImageUIProps {
   srcImageOnMobile?: boolean;
 }
 
-withDefaults(defineProps<ImageUIProps>(), {
+withDefaults(defineProps<ImageBoxProps>(), {
   title: "",
   url: "",
   radius: "0px",

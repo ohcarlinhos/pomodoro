@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { LogoProps } from "../logo/TheLogo.vue";
 import TheLogo from "../logo/TheLogo.vue";
-import ImageBoxUI from "../../ui/image/ImageBoxUI.vue";
+import ImageBox from "@/components/ui/ImageBox";
 import TheNav from "@/components/header/TheNav";
 
 import type { TheLinkProps } from "@/components/ui/TheLink";
@@ -39,7 +39,7 @@ const clickUser = () => {
       :class="{ clickable: user && user.clickable }"
       @click="clickUser"
     >
-      <ImageBoxUI
+      <ImageBox
         :url="user && user.image"
         :title="user && user.name"
         radius="20px"

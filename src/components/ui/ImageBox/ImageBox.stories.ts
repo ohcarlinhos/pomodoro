@@ -1,8 +1,8 @@
-import ImageBoxUI from "./ImageBoxUI.vue";
+import ImageBox from "./ImageBox.vue";
 
 export default {
-  title: "UI / ImageBoxUI",
-  component: ImageBoxUI,
+  title: "UI / ImageBox",
+  component: ImageBox,
   args: {
     title: "Wooow, look this!",
     url: "https://assets.pokemon.com/static2/_ui/img/og-default-image.jpeg",
@@ -22,7 +22,7 @@ export default {
 };
 
 export const Component = (args: unknown) => ({
-  components: { ImageBoxUI },
+  components: { ImageBox },
   setup() {
     return {
       args,
@@ -30,7 +30,7 @@ export const Component = (args: unknown) => ({
   },
   template: `
     <div class="default--storybook w-350">
-      <ImageBoxUI v-bind="args" />
+      <ImageBox v-bind="args" />
     </div>
   `,
 });
