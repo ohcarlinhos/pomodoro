@@ -2,11 +2,11 @@ import TheNav from "./TheNav.vue";
 import { navLinks } from "./util/mock";
 
 export default {
-  title: "NAV / Nav",
+  title: "NAV / TheNav",
   component: TheNav,
   args: {
     label: "Link",
-    a: false,
+    a: true,
     size: 5,
     links: () => [],
   },
@@ -37,7 +37,7 @@ export const Component = (args: {
   },
   template: `
     <div class="default--storybook">  
-      <Nav v-bind="args" />
+      <TheNav v-bind="args" />
     </div>
   `,
 });
