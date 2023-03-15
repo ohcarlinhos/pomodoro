@@ -5,7 +5,7 @@ import { useToast } from "vue-toastification";
 import TheCard from "@/components/ui/TheCard";
 import InputField from "@/components/ui/InputField";
 import TheButton from "@/components/ui/TheButton";
-import Select2UI from "@/components/ui/select-2";
+import TheSelect2 from "@/components/ui/TheSelect2";
 
 import type { RecordForm, RecordFormOptions } from ".";
 
@@ -131,7 +131,7 @@ const setDateAndWhenFinished = () => {
           label="Nome do Registro:"
         />
 
-        <Select2UI
+        <TheSelect2
           v-model="form.tags"
           :options="options.tags"
           label-name="Tags:"
@@ -144,7 +144,7 @@ const setDateAndWhenFinished = () => {
         />
 
         <div class="col">
-          <Select2UI
+          <TheSelect2
             v-model="form.category"
             :options="options.categories"
             label-name="Categoria"

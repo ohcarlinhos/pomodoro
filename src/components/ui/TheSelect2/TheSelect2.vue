@@ -2,7 +2,7 @@
 import { computed } from "vue";
 import VueMultiselect from "vue-multiselect";
 
-export interface Select2UIProps {
+export interface TheSelect2Props {
   options: string[] | unknown[];
   modelValue: unknown;
   name?: string;
@@ -37,7 +37,7 @@ export type DefaultEventSelect = (
   id?: string | number
 ) => void;
 
-const props = withDefaults(defineProps<Select2UIProps>(), {
+const props = withDefaults(defineProps<TheSelect2Props>(), {
   options: () => [],
   placeholder: "Selecionar",
 });

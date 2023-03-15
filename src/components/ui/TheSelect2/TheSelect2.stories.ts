@@ -1,8 +1,8 @@
-import TheComponent from ".";
+import TheSelect2 from "./TheSelect2.vue";
 
 export default {
-  title: "UI / Select2UI",
-  component: TheComponent,
+  title: "UI / Select / TheSelect2",
+  component: TheSelect2,
   args: {
     options: ["Teste 1", "Teste 2", "Teste 3"],
     placeholder: "Clique para selecionar um item.",
@@ -23,13 +23,13 @@ export default {
 };
 
 export const Component = (args: unknown) => ({
-  components: { TheComponent },
+  components: { TheSelect2 },
   setup() {
     return { args };
   },
   template: `
     <div class="default--storybook w-400">  
-      <TheComponent v-bind="args" />
+      <TheSelect2 v-bind="args" />
     </div>
   `,
 });
