@@ -1,8 +1,8 @@
-import SpinnerUI from "./SpinnerUI.vue";
+import TheSpinner from "./TheSpinner.vue";
 
 export default {
-  title: "UI / SpinnerUI",
-  component: SpinnerUI,
+  title: "UI / TheSpinner",
+  component: TheSpinner,
   args: {
     size: 4,
   },
@@ -15,7 +15,7 @@ export default {
 };
 
 export const Component = (args: unknown) => ({
-  components: { SpinnerUI },
+  components: { TheSpinner },
   setup() {
     return {
       args,
@@ -23,7 +23,7 @@ export const Component = (args: unknown) => ({
   },
   template: `
     <div class="default--storybook">
-      <SpinnerUI v-bind="args" />
+      <TheSpinner v-bind="args" />
     </div>
   `,
 });
