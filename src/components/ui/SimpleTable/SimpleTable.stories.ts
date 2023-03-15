@@ -1,11 +1,7 @@
-import {
-  tableActions,
-  tableColumns,
-  tableLines,
-} from "../../ui/TheTable/util/mock";
+import { tableActions, tableColumns, tableLines } from "../TheTable/util/mock";
 import SimpleTable from "./SimpleTable.vue";
 
-import "../../ui/TheTable/util/storybook.css";
+import "../TheTable/util/storybook.css";
 
 const lines = [...tableLines("Coluna", 35)];
 const actions = [...tableActions()];

@@ -14,7 +14,7 @@ import TheButton from "@/components/ui/TheButton";
 import type { TheTableActionPayload } from "@/components/ui/TheTable";
 import SimpleTable, {
   type SimpleTableProps,
-} from "@/components/table/simple-table";
+} from "@/components/ui/SimpleTable";
 
 import DigitalTimer from "@/components/timer/digital-timer";
 import type { SimpleTimerDonePayload } from "@/components/timer/simple-timer";
