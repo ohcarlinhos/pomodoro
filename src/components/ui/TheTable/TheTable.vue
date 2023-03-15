@@ -8,7 +8,7 @@ import type {
   TheTableOrderPayload,
   TheTableActionPayload,
 } from "./TheTable.types";
-import PaginationUI from "../pagination/PaginationUI.vue";
+import ThePagination from "@/components/ui/ThePagination";
 
 import { iconList } from "./icons";
 
@@ -121,7 +121,7 @@ const filterLines = computed(() => {
   </div>
 
   <div class="table__pagination" v-if="totalItems > perPage">
-    <PaginationUI
+    <ThePagination
       :total="totalItems"
       :per-page="perPage"
       :first-page="firstPage"

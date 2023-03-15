@@ -1,8 +1,8 @@
-import PaginationUI from "./PaginationUI.vue";
+import ThePagination from "./ThePagination.vue";
 
 export default {
-  title: "UI / PaginationUI",
-  component: PaginationUI,
+  title: "UI / ThePagination",
+  component: ThePagination,
   args: {
     size: 35,
     perPage: 10,
@@ -18,13 +18,13 @@ export default {
 };
 
 export const Component = (args: unknown) => ({
-  components: { PaginationUI },
+  components: { ThePagination },
   setup() {
     return { args };
   },
   template: `
     <div class="default--storybook">
-      <PaginationUI v-bind="args" />
+      <ThePagination v-bind="args" />
     </div>
   `,
 });

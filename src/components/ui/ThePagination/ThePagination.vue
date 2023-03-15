@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-export interface PaginationUIProps {
+export interface ThePaginationProps {
   total: number;
   perPage: number;
   firstPage: number;
   selected: number;
 }
 
-const props = withDefaults(defineProps<PaginationUIProps>(), {
+const props = withDefaults(defineProps<ThePaginationProps>(), {
   total: 0,
   perPage: 10,
   firstPage: 1,
@@ -107,5 +107,5 @@ const next = () => {
 </template>
 
 <style lang="scss" scoped>
-@import "./PaginationUI.scss";
+@import "./ThePagination.scss";
 </style>
