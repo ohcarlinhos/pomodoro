@@ -2,15 +2,10 @@ import { render } from "@testing-library/vue";
 import TheButton from "./TheButton.vue";
 
 describe("TheButton", () => {
-  fit("should render a button with correct label", () => {
+  it("should render a button with correct label", () => {
     const wrapper = render(TheButton, { props: { label: "Simple Text" } });
     wrapper.getByText("Simple Text");
   });
-
-  // it("should render a button with full style", () => {
-  //   const wrapper = render(TheButton, { props: { full: true } });
-  //   expect(wrapper.classes()).toContain("full");
-  // });
 
   it("should render a slot item", () => {
     const wrapper = render(TheButton, {
