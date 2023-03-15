@@ -2,7 +2,7 @@ import TheLogo from "./TheLogo.vue";
 import { logo } from "./util/mock";
 
 export default {
-  title: "Header / TheLogo",
+  title: "UI / TheLogo",
   component: TheLogo,
   args: {
     ...logo,

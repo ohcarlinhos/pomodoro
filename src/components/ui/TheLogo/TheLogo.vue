@@ -1,5 +1,5 @@
 <script setup lang="ts">
-export interface LogoProps {
+export interface TheLogoProps {
   title: string;
   url?: string;
   alt?: string;
@@ -7,7 +7,7 @@ export interface LogoProps {
   uppercase?: boolean;
 }
 
-withDefaults(defineProps<LogoProps>(), {
+withDefaults(defineProps<TheLogoProps>(), {
   url: "",
   alt: "",
   uppercase: false,

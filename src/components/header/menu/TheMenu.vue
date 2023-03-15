@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import type { LogoProps } from "../logo/TheLogo.vue";
-import TheLogo from "../logo/TheLogo.vue";
+import TheLogo, { type TheLogoProps } from "@/components/ui/TheLogo";
 import ImageBox from "@/components/ui/ImageBox";
 import TheNav from "@/components/header/TheNav";
 
@@ -8,7 +7,7 @@ import type { TheLinkProps } from "@/components/ui/TheLink";
 import type { UserMenu } from "./types";
 
 export interface MenuProps {
-  logo: LogoProps;
+  logo: TheLogoProps;
   user?: UserMenu | null;
   userClickAction?: () => void;
   links?: TheLinkProps[];

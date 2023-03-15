@@ -1,4 +1,4 @@
-import { logo } from "@/components/header/logo/util/mock";
+import { logo } from "@/components/ui/TheLogo/util/mock";
 
 export const menu = {
   logo,
