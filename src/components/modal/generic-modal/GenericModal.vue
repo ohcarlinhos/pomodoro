@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TheButton from "@/components/ui/button";
+import TheButton from "@/components/ui/TheButton";
 
 export interface GenericModalProps {
   title: string;

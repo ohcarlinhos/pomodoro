@@ -10,7 +10,7 @@ import localizedFormatDayJs from "dayjs/plugin/localizedFormat";
 import localeDayJs from "dayjs/locale/pt-br";
 import { zeroLeft } from "@/util/functions";
 
-import TheButton from "@/components/ui/button/TheButton.vue";
+import TheButton from "@/components/ui/TheButton";
 import type { TableUIActionPayload } from "@/components/ui/table";
 import SimpleTable, {
   type SimpleTableProps,

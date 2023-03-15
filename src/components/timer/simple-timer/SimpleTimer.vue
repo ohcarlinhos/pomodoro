@@ -3,7 +3,7 @@ import { ref, watch, onMounted, computed } from "vue";
 import { zeroLeft } from "@/util/functions";
 import { useStorage } from "@vueuse/core";
 
-import TheButton from "@/components/ui/button";
+import TheButton from "@/components/ui/TheButton";
 import { OhVueIcon, addIcons } from "oh-vue-icons";
 
 import { MdPause, MdPlayarrow, MdStop, MdCheck } from "oh-vue-icons/icons/md";

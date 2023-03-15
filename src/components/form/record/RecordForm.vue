@@ -4,7 +4,7 @@ import { useToast } from "vue-toastification";
 
 import TheCard from "@/components/ui/card";
 import InputField from "@/components/ui/input/InputField.vue";
-import TheButton from "@/components/ui/button";
+import TheButton from "@/components/ui/TheButton";
 import Select2UI from "@/components/ui/select-2";
 
 import type { RecordForm, RecordFormOptions } from ".";

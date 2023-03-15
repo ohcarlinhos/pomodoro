@@ -4,7 +4,7 @@ import { useRouter } from "vue-router";
 
 import TheCard from "@/components/ui/card";
 import InputUI from "@/components/ui/input";
-import TheButton from "@/components/ui/button";
+import TheButton from "@/components/ui/TheButton";
 
 import type { LoginForm } from ".";
 
