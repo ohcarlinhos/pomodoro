@@ -1,8 +1,8 @@
-import InputUI from "./InputUI.vue";
+import InputField from "./InputField.vue";
 
 export default {
-  title: "UI / InputUI",
-  component: InputUI,
+  title: "UI / InputField",
+  component: InputField,
   args: {
     id: "default",
     label: "Look this Input:",
@@ -24,7 +24,7 @@ export default {
 };
 
 export const Component = (args: { mask: string }) => ({
-  components: { InputUI },
+  components: { InputField },
   setup() {
     return {
       args: {
@@ -38,7 +38,7 @@ export const Component = (args: { mask: string }) => ({
   },
   template: `
     <div class="default--storybook w-400">
-      <InputUI v-bind="args" />
+      <InputField v-bind="args" />
     </div>
   `,
 });

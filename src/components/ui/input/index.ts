@@ -1,2 +1,2 @@
-export { default } from "./InputUI.vue";
-export type { InputUIProps } from "./InputUI.vue";
+export { default } from "./InputField.vue";
+export type { InputFieldProps } from "./InputField.vue";

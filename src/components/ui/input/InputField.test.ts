@@ -1,18 +1,18 @@
 import { mount } from "@vue/test-utils";
 
-import InputUI from "./InputUI.vue";
+import InputField from "./InputField.vue";
 
 const mock = { id: 1, label: "Little Input" };
 
-describe("InputUI", () => {
+describe("InputField", () => {
   it("should render a input with label", () => {
-    const wrapper = mount(InputUI, { props: { label: "I'm a Input" } });
+    const wrapper = mount(InputField, { props: { label: "I'm a Input" } });
 
     expect(wrapper.get("label").text()).toContain("I'm a Input");
   });
 
   it("should emit a event when change input value", () => {
-    const wrapper = mount(InputUI, { props: { label: mock.label } });
+    const wrapper = mount(InputField, { props: { label: mock.label } });
 
     const input = wrapper.get("input");
     const inputValue = "Input Value";
@@ -23,7 +23,7 @@ describe("InputUI", () => {
   });
 
   it("should match a snapshot", () => {
-    const { element } = mount(InputUI, { props: { label: mock.label } });
+    const { element } = mount(InputField, { props: { label: mock.label } });
     expect(element).toMatchSnapshot();
   });
 });

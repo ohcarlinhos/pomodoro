@@ -3,7 +3,7 @@ import { computed, onMounted, reactive } from "vue";
 import { useToast } from "vue-toastification";
 
 import TheCard from "@/components/ui/card";
-import InputUI from "@/components/ui/input/InputUI.vue";
+import InputField from "@/components/ui/input/InputField.vue";
 import TheButton from "@/components/ui/button";
 import Select2UI from "@/components/ui/select-2";
 
@@ -124,7 +124,7 @@ const setDateAndWhenFinished = () => {
   <TheCard title="Registrar Intervalo de Tempo">
     <template #body>
       <div class="record-form">
-        <InputUI
+        <InputField
           v-model="form.name"
           id="name"
           type="text"
@@ -153,7 +153,7 @@ const setDateAndWhenFinished = () => {
             id="category"
           />
 
-          <InputUI
+          <InputField
             v-model="form.date"
             id="date"
             type="date"
@@ -162,21 +162,21 @@ const setDateAndWhenFinished = () => {
         </div>
 
         <div class="col col-tree">
-          <InputUI
+          <InputField
             v-model="form.whenFinished"
             id="date"
             type="time"
             label="Finalizado às:"
           />
 
-          <InputUI
+          <InputField
             v-model="form.minutes"
             mask="###"
             id="minutes"
             label="Minutos:"
           />
 
-          <InputUI
+          <InputField
             v-model="form.seconds"
             mask="###"
             id="seconds"

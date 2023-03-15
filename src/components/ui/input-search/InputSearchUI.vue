@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import InputUI from "../input/InputUI.vue";
+import InputField from "../input/InputField.vue";
 import { SearchIcon } from "../../icons";
 
 export interface InputSearchUIProps {
@@ -28,7 +28,7 @@ const search = () => {
 
 <template>
   <div class="search__container">
-    <InputUI
+    <InputField
       v-model="inputSearch"
       class="search__input"
       type="search"

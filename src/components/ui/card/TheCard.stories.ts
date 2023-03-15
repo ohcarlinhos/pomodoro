@@ -1,6 +1,6 @@
 import TheCard from "./TheCard.vue";
 import TheButton from "../button/TheButton.vue";
-import InputUI from "../input/InputUI.vue";
+import InputField from "../input/InputField.vue";
 
 import "./storybook/style.css";
 
@@ -40,7 +40,7 @@ export const Component = (args: unknown) => ({
 });
 
 export const Example = (args: { title: string }) => ({
-  components: { TheCard, TheButton, InputUI },
+  components: { TheCard, TheButton, InputField },
   setup() {
     args = { ...args, title: "Formulário de Acesso" };
     const button = { label: "Solicitar Acesso", full: true };
@@ -65,7 +65,7 @@ export const Example = (args: { title: string }) => ({
       <TheCard v-bind="args">
         <template v-if="args.body" #body>
           <div class="grid-inputs">
-            <InputUI v-for="i in inputList" :key="i.id" v-bind="i" />
+            <InputField v-for="i in inputList" :key="i.id" v-bind="i" />
           </div>
         </template>
         <template v-if="args.footer" #footer>

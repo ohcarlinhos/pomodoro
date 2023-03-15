@@ -2,7 +2,7 @@
 import { maska } from "maska";
 import { computed } from "vue";
 
-export interface InputUIProps {
+export interface InputFieldProps {
   modelValue?: string | number;
   id?: string;
   label?: string;
@@ -14,7 +14,7 @@ export interface InputUIProps {
   rounded?: boolean;
 }
 
-const props = withDefaults(defineProps<InputUIProps>(), {
+const props = withDefaults(defineProps<InputFieldProps>(), {
   type: "text",
   placeholder: "",
   mask: () => [],
@@ -68,5 +68,5 @@ const inputValue = computed({
 </template>
 
 <style lang="scss" scoped>
-@import "./InputUI.scss";
+@import "./InputField.scss";
 </style>
