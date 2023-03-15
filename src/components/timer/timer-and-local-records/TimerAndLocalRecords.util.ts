@@ -1,14 +1,14 @@
 import type {
-  TableUILine,
-  TableUIAction,
-  TableUIColumn,
-} from "@/components/ui/table/TableUI.types";
+  TheTableLine,
+  TheTableAction,
+  TheTableColumn,
+} from "@/components/ui/TheTable/TheTable.types";
 import type { LocalRecordsStore } from "@/stores";
 import { secondsToString } from "@/util/functions";
 
 export const makeTableLinesByLocalRecords = (records: LocalRecordsStore[]) => {
   return records.map((record) => {
-    const line: TableUILine = { id: "", label: "", columns: [] };
+    const line: TheTableLine = { id: "", label: "", columns: [] };
 
     line.id = record.uuid;
     line.label = "";
@@ -24,13 +24,13 @@ export const makeTableLinesByLocalRecords = (records: LocalRecordsStore[]) => {
   });
 };
 
-export const tableColumns = (): TableUIColumn[] => [
+export const tableColumns = (): TheTableColumn[] => [
   { label: "Data" },
   { label: "Finalizado às" },
   { label: "Tempo" },
 ];
 
-export const tableActions = (): TableUIAction[] => [
+export const tableActions = (): TheTableAction[] => [
   {
     id: 2,
     label: "Excluir",

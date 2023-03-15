@@ -2,17 +2,17 @@
 import { reactive, computed } from "vue";
 
 import type {
-  TableUIAction,
-  TableUIActionPayload,
-  TableUIColumn,
-  TableUILine,
-} from "@/components/ui/table/TableUI.types";
-import TableUI from "@/components/ui/table/TableUI.vue";
+  TheTableAction,
+  TheTableActionPayload,
+  TheTableColumn,
+  TheTableLine,
+} from "@/components/ui/TheTable/TheTable.types";
+import TheTable from "@/components/ui/TheTable";
 
 export interface SimpleTableProps {
-  actions?: TableUIAction[];
-  columns: TableUIColumn[];
-  lines?: TableUILine[];
+  actions?: TheTableAction[];
+  columns: TheTableColumn[];
+  lines?: TheTableLine[];
   design?: string;
   perPage?: number;
 }
@@ -33,7 +33,7 @@ const table = reactive({
 
 const pageLines = computed(() => {
   const lastItem = table.page * props.perPage;
-  const pageItems: TableUILine[] = [];
+  const pageItems: TheTableLine[] = [];
 
   props.lines.forEach((line, index) => {
     if (index + 1 <= lastItem && index >= lastItem - props.perPage)
@@ -46,14 +46,14 @@ const selectPage = (page: number) => {
   table.page = page;
 };
 
-const handleAction = (payload: TableUIActionPayload) => {
+const handleAction = (payload: TheTableActionPayload) => {
   emit("table:action", payload);
 };
 </script>
 
 <template>
   <div class="table__container">
-    <TableUI
+    <TheTable
       v-bind="props"
       :lines="pageLines"
       :total-items="lines.length"

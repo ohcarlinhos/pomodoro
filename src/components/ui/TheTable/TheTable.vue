@@ -2,20 +2,20 @@
 import { computed } from "vue";
 
 import type {
-  TableUIColumn,
-  TableUILine,
-  TableUIAction,
-  TableUIOrderPayload,
-  TableUIActionPayload,
-} from "./TableUI.types";
+  TheTableColumn,
+  TheTableLine,
+  TheTableAction,
+  TheTableOrderPayload,
+  TheTableActionPayload,
+} from "./TheTable.types";
 import PaginationUI from "../pagination/PaginationUI.vue";
 
 import { iconList } from "./icons";
 
-export interface TableUIProps {
-  actions?: TableUIAction[];
-  columns: TableUIColumn[];
-  lines?: TableUILine[];
+export interface TheTableProps {
+  actions?: TheTableAction[];
+  columns: TheTableColumn[];
+  lines?: TheTableLine[];
   design?: string;
   perPage?: number;
   firstPage?: number;
@@ -24,7 +24,7 @@ export interface TableUIProps {
   selectPage?: (page: number) => void;
 }
 
-const props = withDefaults(defineProps<TableUIProps>(), {
+const props = withDefaults(defineProps<TheTableProps>(), {
   actions: () => [],
   columns: () => [],
   lines: () => [],
@@ -44,16 +44,16 @@ const findComponent = (iconName: string) => {
   return iconList.find((list) => list.name == iconName)?.component;
 };
 
-const handleAction = (payload: TableUIActionPayload) => {
+const handleAction = (payload: TheTableActionPayload) => {
   emit("table:action", payload);
 };
 
-const handleOrder = (payload: TableUIOrderPayload) => {
+const handleOrder = (payload: TheTableOrderPayload) => {
   emit("table:order", payload);
 };
 
 const filterLines = computed(() => {
-  const lineList: TableUILine[] = [];
+  const lineList: TheTableLine[] = [];
   if (props.lines.length == 0) return lineList;
 
   const perPage = props.perPage != 0 ? props.perPage : 10;
@@ -132,5 +132,5 @@ const filterLines = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-@import "./TableUI.scss";
+@import "./TheTable.scss";
 </style>

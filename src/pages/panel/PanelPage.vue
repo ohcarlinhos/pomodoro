@@ -4,7 +4,7 @@ import { useToast } from "vue-toastification";
 
 import { tableColumns, makeTableLinesByRecords, tableActions } from ".";
 
-import TableUI, { type TableUIProps } from "@/components/ui/table";
+import TheTable, { type TheTableProps } from "@/components/ui/TheTable";
 import InputSearchUI from "@/components/ui/input-search";
 import TheButton from "@/components/ui/TheButton";
 import type { ModalStateInterface } from "@/components/modal/modal-factory/types";
@@ -12,9 +12,9 @@ import type { RecordModalProps } from "@/components/modal/record/RecordModal.vue
 import TimerAndLocalRecords from "@/components/timer/timer-and-local-records";
 
 import type {
-  TableUIActionPayload,
-  TableUIOrderPayload,
-} from "@/components/ui/table/TableUI.types";
+  TheTableActionPayload,
+  TheTableOrderPayload,
+} from "@/components/ui/TheTable/TheTable.types";
 
 import { useModal } from "@/hooks/useModal";
 import { recordsAPI } from "@/services";
@@ -22,7 +22,7 @@ import { recordsAPI } from "@/services";
 const modal = useModal();
 const toast = useToast();
 
-const table = reactive<TableUIProps>({
+const table = reactive<TheTableProps>({
   columns: [],
   lines: [],
   actions: [],
@@ -43,7 +43,7 @@ const requestRecords = async () => {
   }
 };
 
-const toggleOrder = (payload: TableUIOrderPayload) => {
+const toggleOrder = (payload: TheTableOrderPayload) => {
   table.columns.forEach((column) => {
     if (column.label == payload.column.label) {
       column.order = payload.order == "desc" ? "asc" : "desc";
@@ -65,7 +65,7 @@ const closeModalAndUpdate = async () => {
   await requestRecords();
 };
 
-const handleTableActions = async (payload: TableUIActionPayload) => {
+const handleTableActions = async (payload: TheTableActionPayload) => {
   if (payload.action == "delete")
     if (table.lines && table.lines.length) {
       try {
@@ -100,7 +100,7 @@ const handleTableActions = async (payload: TableUIActionPayload) => {
       </div>
 
       <div class="table__area white-bg">
-        <TableUI
+        <TheTable
           v-bind="table"
           @table:order="toggleOrder"
           @table:action="handleTableActions"

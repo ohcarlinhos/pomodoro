@@ -1,16 +1,16 @@
 import type {
-  TableUILine,
-  TableUIAction,
-  TableUIColumn,
-} from "@/components/ui/table/TableUI.types";
+  TheTableLine,
+  TheTableAction,
+  TheTableColumn,
+} from "@/components/ui/TheTable/TheTable.types";
 import type { RecordDataAPI } from "@/services/types";
 import { secondsToString } from "@/util/functions";
 
-export const tableLines = (): TableUILine[] => {
-  const lines: TableUILine[] = [];
+export const tableLines = (): TheTableLine[] => {
+  const lines: TheTableLine[] = [];
 
   for (let l = 0; l < 5; l++) {
-    const line: TableUILine = { id: l, label: `Linha ${l}`, columns: [] };
+    const line: TheTableLine = { id: l, label: `Linha ${l}`, columns: [] };
 
     for (let c = 0; c < 5; c++) {
       line.columns.push({ label: `Linha ${c}` });
@@ -24,7 +24,7 @@ export const tableLines = (): TableUILine[] => {
 
 export const makeTableLinesByRecords = (records: RecordDataAPI[]) => {
   return records.map((record) => {
-    const line: TableUILine = { id: "", label: "", columns: [] };
+    const line: TheTableLine = { id: "", label: "", columns: [] };
 
     line.id = record.uuid;
     line.label = record.name;
@@ -42,7 +42,7 @@ export const makeTableLinesByRecords = (records: RecordDataAPI[]) => {
   });
 };
 
-export const tableColumns = (): TableUIColumn[] => [
+export const tableColumns = (): TheTableColumn[] => [
   { label: "Nome", width: "33%" },
   { label: "Categoria" },
   { label: "Tags" },
@@ -51,7 +51,7 @@ export const tableColumns = (): TableUIColumn[] => [
   { label: "Tempo" },
 ];
 
-export const tableActions = (): TableUIAction[] => [
+export const tableActions = (): TheTableAction[] => [
   {
     id: 1,
     label: "Editar",

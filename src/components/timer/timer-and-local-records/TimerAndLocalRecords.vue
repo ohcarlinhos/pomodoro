@@ -11,7 +11,7 @@ import localeDayJs from "dayjs/locale/pt-br";
 import { zeroLeft } from "@/util/functions";
 
 import TheButton from "@/components/ui/TheButton";
-import type { TableUIActionPayload } from "@/components/ui/table";
+import type { TheTableActionPayload } from "@/components/ui/TheTable";
 import SimpleTable, {
   type SimpleTableProps,
 } from "@/components/table/simple-table";
@@ -78,7 +78,7 @@ const handleCounter = (counter: string) => {
   title.value = `${counter} - ${initialTitle}`;
 };
 
-const handleAction = (payload: TableUIActionPayload) => {
+const handleAction = (payload: TheTableActionPayload) => {
   const { action, line } = payload;
   if (action == "delete") localRecords.deleteRecord(line.id as string);
 };

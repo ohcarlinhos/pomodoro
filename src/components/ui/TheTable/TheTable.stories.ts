@@ -1,4 +1,4 @@
-import TableUI from "./TableUI.vue";
+import TheTable from "./TheTable.vue";
 
 import "./util/storybook.css";
 import { tableLines, tableColumns, tableActions } from "./util/mock";
@@ -8,8 +8,8 @@ const actions = [...tableActions()];
 const columns = [...tableColumns()];
 
 export default {
-  title: "UI / TableUI",
-  component: TableUI,
+  title: "UI / TheTable",
+  component: TheTable,
   args: {
     perPage: 7,
     firstPage: 1,
@@ -29,7 +29,7 @@ export default {
 };
 
 export const Component = (args: unknown) => ({
-  components: { TableUI },
+  components: { TheTable },
   setup() {
     return {
       args,
@@ -38,32 +38,32 @@ export const Component = (args: unknown) => ({
   template: `
     <div class="table-ui--storybook">
       <div class="table">
-        <TableUI v-bind="args" />
+        <TheTable v-bind="args" />
       </div>
     </div>
   `,
 });
 
 export const Example = (args: unknown) => ({
-  components: { TableUI },
+  components: { TheTable },
   setup() {
     return { args };
   },
   template: `
     <div class="table-ui--storybook">
       <div class="custom-table">
-        <TableUI v-bind="args" />
+        <TheTable v-bind="args" />
       </div>
     </div>
   `,
 });
 
 export const EmptyText = () => ({
-  components: { TableUI },
+  components: { TheTable },
   template: `
     <div class="table-ui--storybook">
       <div class="table">
-        <TableUI v-bind="args" />
+        <TheTable v-bind="args" />
       </div>
     </div>
   `,

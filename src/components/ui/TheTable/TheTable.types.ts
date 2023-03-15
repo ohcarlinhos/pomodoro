@@ -1,4 +1,4 @@
-export interface TableUIColumn {
+export interface TheTableColumn {
   label: string;
   minWidth?: string;
   width?: string;
@@ -6,13 +6,13 @@ export interface TableUIColumn {
   order?: string;
 }
 
-export interface TableUILine {
+export interface TheTableLine {
   id: string | number;
   label: string;
-  columns: TableUIColumn[];
+  columns: TheTableColumn[];
 }
 
-export interface TableUIAction {
+export interface TheTableAction {
   id: number;
   label: string;
   action: string;
@@ -21,12 +21,12 @@ export interface TableUIAction {
   disabled?: boolean;
 }
 
-export interface TableUIOrderPayload {
+export interface TheTableOrderPayload {
   order: string;
-  column: TableUIColumn;
+  column: TheTableColumn;
 }
 
-export interface TableUIActionPayload {
+export interface TheTableActionPayload {
   action: string;
-  line: TableUILine;
+  line: TheTableLine;
 }
