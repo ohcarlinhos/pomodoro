@@ -5,7 +5,7 @@ export default {
   component: ImageBox,
   args: {
     title: "Wooow, look this!",
-    url: "https://assets.pokemon.com/static2/_ui/img/og-default-image.jpeg",
+    url: "https://picsum.photos/500/500",
     radius: "20px",
     minHeight: "150px",
     srcImageOnMobile: false,

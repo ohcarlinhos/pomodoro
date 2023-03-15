@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import TimerAndLocalRecords from "@/components/timer/timer-and-local-records";
+import TheFooter from "@/components/ui/TheFooter";
 </script>
 
 <template>
@@ -8,10 +9,15 @@ import TimerAndLocalRecords from "@/components/timer/timer-and-local-records";
       <TimerAndLocalRecords />
     </div>
     <div class="page__footer">
-      <span>
+      <!-- <span>
         Developed by
         <a href="https://github.com/caarlos1" target="_blank">@caarlos1</a>
-      </span>
+      </span> -->
+      <TheFooter
+        link-auth="https://github.com/caarlos1"
+        copy="Developed by"
+        auth="@caarlos1"
+      />
     </div>
   </div>
 </template>
