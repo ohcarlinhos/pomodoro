@@ -38,6 +38,7 @@ const navLinks = computed(() => {
   <DefaultTemplate>
     <template #header>
       <TheMenu
+        v-if="USE_PANEL"
         v-bind="appConfig.menu"
         :user-click-action="clickUser"
         :links="navLinks"
