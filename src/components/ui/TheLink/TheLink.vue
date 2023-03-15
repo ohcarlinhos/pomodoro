@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-export type LinkProps = {
+export type TheLinkProps = {
   id: string | number;
   label: string;
   url: string;
@@ -9,7 +9,7 @@ export type LinkProps = {
   disabled?: boolean;
 };
 
-const props = withDefaults(defineProps<LinkProps>(), {
+const props = withDefaults(defineProps<TheLinkProps>(), {
   label: "Link",
   a: false,
   disabled: false,

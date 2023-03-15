@@ -4,14 +4,14 @@ import TheLogo from "../logo/TheLogo.vue";
 import ImageBoxUI from "../../ui/image/ImageBoxUI.vue";
 import Nav from "../nav/Nav.vue";
 
-import type { LinkProps } from "../link/TheLink.vue";
+import type { TheLinkProps } from "@/components/ui/TheLink";
 import type { UserMenu } from "./types";
 
 export interface MenuProps {
   logo: LogoProps;
   user?: UserMenu | null;
   userClickAction?: () => void;
-  links?: LinkProps[];
+  links?: TheLinkProps[];
   hasNav: boolean;
 }
 

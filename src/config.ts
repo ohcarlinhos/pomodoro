@@ -1,7 +1,7 @@
-import type { LinkProps } from "@/components/header/link/TheLink.vue";
+import type { TheLinkProps } from "@/components/ui/TheLink";
 import { menu, general, developer } from "./config.json";
 
-export interface NavLink extends LinkProps {
+export interface NavLink extends TheLinkProps {
   session?: boolean;
   hideOnSession?: boolean;
 }

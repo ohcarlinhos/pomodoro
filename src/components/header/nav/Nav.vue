@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import TheLink, { type LinkProps } from "../link/TheLink.vue";
+import TheLink, { type TheLinkProps } from "@/components/ui/TheLink";
 
-withDefaults(defineProps<{ links: LinkProps[] }>(), {
+withDefaults(defineProps<{ links: TheLinkProps[] }>(), {
   links: () => [],
 });
 </script>
