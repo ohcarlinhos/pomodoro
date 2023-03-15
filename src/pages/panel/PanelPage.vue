@@ -5,7 +5,7 @@ import { useToast } from "vue-toastification";
 import { tableColumns, makeTableLinesByRecords, tableActions } from ".";
 
 import TheTable, { type TheTableProps } from "@/components/ui/TheTable";
-import InputSearchUI from "@/components/ui/input-search";
+import InputSearch from "@/components/ui/InputSearch";
 import TheButton from "@/components/ui/TheButton";
 import type { ModalStateInterface } from "@/components/modal/modal-factory/types";
 import type { RecordModalProps } from "@/components/modal/record/RecordModal.vue";
@@ -90,7 +90,7 @@ const handleTableActions = async (payload: TheTableActionPayload) => {
 
     <div class="info__area">
       <div class="action__area">
-        <InputSearchUI size="lg" />
+        <InputSearch size="lg" />
         <TheButton
           class="add-button"
           design="primary"

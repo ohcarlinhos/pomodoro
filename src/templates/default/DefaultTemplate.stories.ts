@@ -1,8 +1,8 @@
 import DefaultTemplate from "./DefaultTemplate.vue";
-import TheMenu from "../../components/header/menu/TheMenu.vue";
-import InputSearchUI from "../../components/ui/input-search/InputSearchUI.vue";
+import TheMenu from "@/components/header/menu/TheMenu.vue";
+import InputSearch from "@/components/ui/InputSearch";
 
-import { menu } from "../../components/header/menu/util/mock";
+import { menu } from "@/components/header/menu/util/mock";
 
 import "./util/storybook.css";
 
@@ -21,7 +21,7 @@ export default {
 };
 
 export const Component = (args: unknown) => ({
-  components: { DefaultTemplate, TheMenu, InputSearchUI },
+  components: { DefaultTemplate, TheMenu, InputSearch },
   setup() {
     return { args };
   },

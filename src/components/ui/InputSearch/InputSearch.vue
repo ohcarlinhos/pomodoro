@@ -3,13 +3,13 @@ import { ref, computed } from "vue";
 import InputField from "@/components/ui/InputField";
 import { SearchIcon } from "../../icons";
 
-export interface InputSearchUIProps {
+export interface InputSearchProps {
   placeholder?: string;
   size?: string;
   rounded?: boolean;
 }
 
-const props = withDefaults(defineProps<InputSearchUIProps>(), {
+const props = withDefaults(defineProps<InputSearchProps>(), {
   placeholder: "Pesquisa",
   size: "",
   rounded: false,
@@ -48,5 +48,5 @@ const search = () => {
 </template>
 
 <style lang="scss" scoped>
-@import "./InputSearchUI.scss";
+@import "./InputSearch.scss";
 </style>

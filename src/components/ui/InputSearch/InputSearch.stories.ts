@@ -1,8 +1,8 @@
-import InputSearchUI from "./InputSearchUI.vue";
+import InputSearch from "./InputSearch.vue";
 
 export default {
-  title: "UI / Input / InputSearchUI",
-  component: InputSearchUI,
+  title: "UI / Input / InputSearch",
+  component: InputSearch,
   args: {
     placeholder: "Pesquisar",
   },
@@ -15,13 +15,13 @@ export default {
 };
 
 export const Component = (args: unknown) => ({
-  components: { InputSearchUI },
+  components: { InputSearch },
   setup() {
     return { args };
   },
   template: `
     <div class="default--storybook w-400">
-      <InputSearchUI v-bind="args" />
+      <InputSearch v-bind="args" />
     </div>
   `,
 });
