@@ -1,5 +1,7 @@
 import TheNav from "./TheNav.vue";
-import { navLinks } from "./util/mock";
+import { navLinks, routerLinks } from "./util/mock";
+
+import vueRouter from "storybook-vue3-router";
 
 export default {
   title: "NAV / TheNav",
@@ -7,7 +9,6 @@ export default {
   args: {
     label: "Link",
     a: true,
-    size: 5,
     links: () => [],
   },
   argTypes: {
@@ -19,25 +20,23 @@ export default {
       default: "light",
     },
   },
+  decorators: [vueRouter(routerLinks(5))],
 };
 
-export const Component = (args: {
-  label: string;
-  size: number;
-  a: boolean;
-}) => ({
+export const Component = (args: { label: string; a: boolean }) => ({
   components: { TheNav },
   setup() {
     return {
       args: {
         ...args,
-        links: navLinks(args.label, args.size, args.a),
+        links: navLinks(args.label, 5, args.a),
       },
     };
   },
   template: `
     <div class="default--storybook">  
       <TheNav v-bind="args" />
+      <RouterView />
     </div>
   `,
 });

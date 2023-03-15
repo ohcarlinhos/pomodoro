@@ -7,19 +7,21 @@ const lines = tableLines("Linha", 35);
 const actions = [...tableActions()];
 const columns = [...tableColumns()];
 
+const argsValues = {
+  perPage: 7,
+  firstPage: 1,
+  selectedPage: 1,
+  totalItems: 35,
+  design: "",
+  actions,
+  columns,
+  lines,
+};
+
 export default {
   title: "UI / Table / TheTable",
   component: TheTable,
-  args: {
-    perPage: 7,
-    firstPage: 1,
-    selectedPage: 1,
-    totalItems: 35,
-    design: "",
-    actions,
-    columns,
-    lines,
-  },
+  args: argsValues,
   argTypes: {},
   parameters: {
     backgrounds: {
@@ -28,7 +30,7 @@ export default {
   },
 };
 
-export const Component = (args: unknown) => ({
+export const Component = (args: typeof argsValues) => ({
   components: { TheTable },
   setup() {
     return {
@@ -44,7 +46,7 @@ export const Component = (args: unknown) => ({
   `,
 });
 
-export const Example = (args: unknown) => ({
+export const Example = (args: typeof argsValues) => ({
   components: { TheTable },
   setup() {
     return { args };
@@ -63,7 +65,7 @@ export const EmptyText = () => ({
   template: `
     <div class="table-ui--storybook">
       <div class="table">
-        <TheTable v-bind="args" />
+        <TheTable :columns="[]"/>
       </div>
     </div>
   `,
