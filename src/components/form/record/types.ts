@@ -1,16 +1,16 @@
-import type { SelectUIOption } from "@/components/ui/select/SelectUI.types";
+import type { TheSelectOption } from "@/components/ui/TheSelect/TheSelect.types";
 
 export interface RecordForm {
   name: string;
-  category: SelectUIOption | null;
+  category: TheSelectOption | null;
   date: string;
   whenFinished: string;
   minutes: number;
   seconds: number;
-  tags: SelectUIOption[];
+  tags: TheSelectOption[];
 }
 
 export interface RecordFormOptions {
-  categories: SelectUIOption[];
-  tags: SelectUIOption[];
+  categories: TheSelectOption[];
+  tags: TheSelectOption[];
 }

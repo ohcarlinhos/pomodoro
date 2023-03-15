@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import type { SelectUIOption } from "./SelectUI.types";
+import type { TheSelectOption } from "./TheSelect.types";
 
-type SelectUIProps = {
+type TheSelectProps = {
   modelValue: string | number | null;
   id: string;
   label: string;
   type?: string;
-  options: SelectUIOption[];
+  options: TheSelectOption[];
   optionText?: string;
 };
 
-const props = withDefaults(defineProps<SelectUIProps>(), {
+const props = withDefaults(defineProps<TheSelectProps>(), {
   modelValue: "",
   type: "text",
   options: () => [],
@@ -49,5 +49,5 @@ const selectValue = computed({
 </template>
 
 <style lang="scss" scoped>
-@import "./SelectUI.scss";
+@import "./TheSelect.scss";
 </style>

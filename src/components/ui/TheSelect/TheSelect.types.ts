@@ -1,4 +1,4 @@
-export interface SelectUIOption {
+export interface TheSelectOption {
   label: string;
   value: string;
 }

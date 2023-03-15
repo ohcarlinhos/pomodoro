@@ -1,4 +1,4 @@
-import type { SelectUIOption } from "@/components/ui/select/SelectUI.types";
+import type { TheSelectOption } from "@/components/ui/TheSelect/TheSelect.types";
 import type { CategoryAPI } from "@/services/types";
 import { zeroLeft } from "@/util/functions";
 import type { RecordForm } from "./types";
@@ -15,8 +15,8 @@ export const recordFormDefault = (): RecordForm => ({
 
 export const categoriesSelectAdapter = (
   categories: CategoryAPI[]
-): SelectUIOption[] => {
-  return categories.map<SelectUIOption>((category) => {
+): TheSelectOption[] => {
+  return categories.map<TheSelectOption>((category) => {
     return {
       label: category.name,
       value: category.uuid,
@@ -24,7 +24,7 @@ export const categoriesSelectAdapter = (
   });
 };
 
-export const tagsOptions = (): SelectUIOption[] => [
+export const tagsOptions = (): TheSelectOption[] => [
   {
     label: "vue.js",
     value: "vue.js",
@@ -43,7 +43,7 @@ export const tagsOptions = (): SelectUIOption[] => [
   },
 ];
 
-export const selectOptionsToString = (list: SelectUIOption[]) => {
+export const selectOptionsToString = (list: TheSelectOption[]) => {
   let string = "";
 
   list.forEach((item, index) => {
@@ -69,5 +69,5 @@ export const makeTagByString = (tagsQuery: string) => {
     .split(",")
     .map((t) => t.trim())
     .filter((t) => t)
-    .map((t) => ({ label: t, value: t })) || []) as SelectUIOption[];
+    .map((t) => ({ label: t, value: t })) || []) as TheSelectOption[];
 };
