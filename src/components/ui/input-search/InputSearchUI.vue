@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import InputField from "../input/InputField.vue";
+import InputField from "@/components/ui/InputField";
 import { SearchIcon } from "../../icons";
 
 export interface InputSearchUIProps {

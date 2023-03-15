@@ -3,7 +3,7 @@ import { computed, onMounted, reactive } from "vue";
 import { useToast } from "vue-toastification";
 
 import TheCard from "@/components/ui/card";
-import InputField from "@/components/ui/input/InputField.vue";
+import InputField from "@/components/ui/InputField";
 import TheButton from "@/components/ui/TheButton";
 import Select2UI from "@/components/ui/select-2";
 

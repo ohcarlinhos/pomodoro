@@ -3,7 +3,7 @@ import { useToast } from "vue-toastification";
 import { useRouter } from "vue-router";
 
 import TheCard from "@/components/ui/card";
-import InputUI from "@/components/ui/input";
+import InputField from "@/components/ui/InputField";
 import TheButton from "@/components/ui/TheButton";
 
 import type { LoginForm } from ".";
@@ -52,7 +52,7 @@ const submit = async (outside = false) => {
   <TheCard title="Acessar Painel">
     <template #body>
       <form class="form" @submit.prevent="submit()">
-        <InputUI
+        <InputField
           v-model="loginForm.email"
           id="email"
           type="email"
@@ -60,7 +60,7 @@ const submit = async (outside = false) => {
           required
         />
 
-        <InputUI
+        <InputField
           v-model="loginForm.password"
           id="password"
           type="password"

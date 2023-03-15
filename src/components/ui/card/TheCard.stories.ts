@@ -1,6 +1,6 @@
 import TheCard from "./TheCard.vue";
 import TheButton from "../TheButton";
-import InputField from "../input/InputField.vue";
+import InputField from "../InputField";
 
 import "./storybook/style.css";
 
