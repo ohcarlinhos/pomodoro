@@ -8,7 +8,7 @@ const actions = [...tableActions()];
 const columns = [...tableColumns()];
 
 export default {
-  title: "Table / SimpleTable",
+  title: "UI / Table / SimpleTable",
   component: SimpleTable,
   args: {
     actions,

@@ -8,7 +8,7 @@ const actions = [...tableActions()];
 const columns = [...tableColumns()];
 
 export default {
-  title: "UI / TheTable",
+  title: "UI / Table / TheTable",
   component: TheTable,
   args: {
     perPage: 7,

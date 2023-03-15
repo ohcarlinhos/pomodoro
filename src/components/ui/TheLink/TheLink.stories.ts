@@ -1,7 +1,7 @@
 import TheLink from "./TheLink.vue";
 
 export default {
-  title: "NAV / TheLink",
+  title: "UI / TheLink",
   component: TheLink,
   args: {
     id: "link",

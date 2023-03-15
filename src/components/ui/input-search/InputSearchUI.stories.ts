@@ -1,7 +1,7 @@
 import InputSearchUI from "./InputSearchUI.vue";
 
 export default {
-  title: "UI / InputSearchUI",
+  title: "UI / Input / InputSearchUI",
   component: InputSearchUI,
   args: {
     placeholder: "Pesquisar",

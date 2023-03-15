@@ -1,7 +1,7 @@
 import InputField from "./InputField.vue";
 
 export default {
-  title: "UI / InputField",
+  title: "UI / Input / InputField",
   component: InputField,
   args: {
     id: "default",
