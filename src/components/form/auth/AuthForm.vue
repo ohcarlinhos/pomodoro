@@ -2,7 +2,7 @@
 import { useToast } from "vue-toastification";
 import { useRouter } from "vue-router";
 
-import TheCard from "@/components/ui/card";
+import TheCard from "@/components/ui/TheCard";
 import InputField from "@/components/ui/InputField";
 import TheButton from "@/components/ui/TheButton";
 
