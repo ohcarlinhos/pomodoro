@@ -9,7 +9,7 @@ import InputSearch from "@/components/ui/InputSearch";
 import TheButton from "@/components/ui/TheButton";
 import type { ModalStateInterface } from "@/components/modal/ModalFactory";
 import type { RecordModalProps } from "@/components/modal/RecordModal";
-import TimerAndLocalRecords from "@/components/timer/timer-and-local-records";
+import TimerAndLocalRecords from "@/components/timer/TimerAndLocalRecords";
 
 import type {
   TheTableActionPayload,

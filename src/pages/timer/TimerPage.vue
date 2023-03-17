@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TimerAndLocalRecords from "@/components/timer/timer-and-local-records";
+import TimerAndLocalRecords from "@/components/timer/TimerAndLocalRecords";
 import TheFooter from "@/components/ui/TheFooter";
 </script>
 
