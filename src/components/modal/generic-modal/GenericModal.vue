@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import TheButton from "@/components/ui/TheButton";
+import TheButton, { TheButtonProps } from "@/components/ui/TheButton";
 
 export interface GenericModalProps {
   title: string;
   body: string;
-  button?: string;
+  button?: TheButtonProps;
   size?: string;
   alignCenter?: boolean;
   buttonAction?: () => void;
@@ -13,7 +13,6 @@ export interface GenericModalProps {
 const props = withDefaults(defineProps<GenericModalProps>(), {
   title: "",
   body: "",
-  button: "",
   size: "",
   alignCenter: false,
   buttonAction: () => {
@@ -31,7 +30,7 @@ const props = withDefaults(defineProps<GenericModalProps>(), {
     <div class="modal__body">
       {{ body }}
     </div>
-    <TheButton v-if="button" :label="button" radius @click="buttonAction" />
+    <TheButton v-if="button" v-bind="button" radius @click="buttonAction" />
   </div>
 </template>
 

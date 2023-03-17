@@ -1,4 +1,4 @@
-import GenericModal from "./GenericModal.vue";
+import GenericModal, { GenericModalProps } from "./GenericModal.vue";
 
 export default {
   title: "Modal / GenericModal",
@@ -6,10 +6,13 @@ export default {
   args: {
     title: "Hey! I'm a modal!",
     body: "Mussum Ipsum, cacilds vidis litro abertis. Casamentiss faiz malandris se pirulitá.Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.Não sou faixa preta cumpadi, sou preto inteiris, inteiris.Leite de capivaris, leite de mula manquis sem cabeça.",
-    button: "Do something!",
+    button: {
+      label: "Do something!",
+      design: "primary",
+    },
     alignCenter: false,
     size: "",
-  },
+  } as GenericModalProps,
   argTypes: {},
   parameters: {
     backgrounds: {
