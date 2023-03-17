@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import RecordForm from "@/components/form/record/RecordForm.vue";
-import type { ActionModal } from "@/components/modal/modal-factory";
+import type { ActionModal } from "@/components/modal/ModalFactory";
 
 export interface RecordModalProps {
   name?: string;

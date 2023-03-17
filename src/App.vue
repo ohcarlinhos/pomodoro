@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ModalFactory from "@/components/modal/modal-factory/ModalFactory.vue";
+import ModalFactory from "@/components/modal/ModalFactory";
 import GeneralPages from "@/pages/GeneralPages.vue";
 
 import { useTitle } from "@vueuse/core";
