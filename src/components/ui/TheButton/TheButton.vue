@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-export type TheButtonProps = {
+export interface TheButtonProps {
   label?: string;
   design?: string;
   full?: boolean;
   sharp?: boolean;
   disabled?: boolean;
   size?: string;
-};
+}
 
 const props = withDefaults(defineProps<TheButtonProps>(), {
   label: "",
