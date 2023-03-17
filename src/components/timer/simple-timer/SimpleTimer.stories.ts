@@ -1,10 +1,12 @@
-// Disabled due to incompatibility of "VueUse" with the storybook.
-import TheComponent from ".";
+import SimpleTimer from ".";
 
 export default {
-  title: "Timer / DigitalTimer",
-  component: TheComponent,
-  args: {},
+  title: "Timer / SimpleTimer",
+  component: SimpleTimer,
+  args: {
+    minutes: 25,
+    seconds: 0,
+  },
   argTypes: {},
   parameters: {
     backgrounds: {
@@ -14,7 +16,7 @@ export default {
 };
 
 export const Component = (args: unknown) => ({
-  components: { TheComponent },
+  components: { SimpleTimer },
   setup() {
     return {
       args,
@@ -22,7 +24,7 @@ export const Component = (args: unknown) => ({
   },
   template: `
     <div class="default--storybook w-350">
-      <TheComponent v-bind="args" />
+      <SimpleTimer v-bind="args" />
     </div>
   `,
 });
