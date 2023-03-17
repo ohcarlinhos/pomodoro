@@ -10,7 +10,7 @@ import { alarmSound, clickSound } from "./sounds";
 import SimpleTimer, {
   type SimpleTimerClickPayload,
   type SimpleTimerDonePayload,
-} from "@/components/timer/simple-timer";
+} from "@/components/timer/SimpleTimer";
 
 export interface DigitalTimerProps {
   doneAction?: (payload: SimpleTimerDonePayload) => void;
