@@ -4,7 +4,7 @@ import { OhVueIcon, addIcons } from "oh-vue-icons";
 
 import dayjs from "dayjs";
 
-import { util } from ".";
+import { tableColumns, tableActions, makeTableLinesByLocalRecords } from ".";
 
 import localizedFormatDayJs from "dayjs/plugin/localizedFormat";
 import localeDayJs from "dayjs/locale/pt-br";
@@ -16,8 +16,8 @@ import SimpleTable, {
   type SimpleTableProps,
 } from "@/components/ui/SimpleTable";
 
-import DigitalTimer from "@/components/timer/digital-timer";
-import type { SimpleTimerDonePayload } from "@/components/timer/simple-timer";
+import DigitalTimer from "@/components/timer/DigitalTimer";
+import type { SimpleTimerDonePayload } from "@/components/timer/SimpleTimer";
 
 import { useLocalRecordsStore } from "@/stores/localRecords";
 import { useStorage, useTitle } from "@vueuse/core";
@@ -45,14 +45,14 @@ const table = reactive<SimpleTableProps>({
 });
 
 onMounted(async () => {
-  table.columns = util.tableColumns();
-  table.actions = util.tableActions();
+  table.columns = tableColumns();
+  table.actions = tableActions();
 
   if (localRecordsLines.value.length === 0) showTable.value = false;
 });
 
 const localRecordsLines = computed(() => {
-  return util.makeTableLinesByLocalRecords(localRecords.getRecords);
+  return makeTableLinesByLocalRecords(localRecords.getRecords);
 });
 
 const doneAction = (payload: SimpleTimerDonePayload) => {

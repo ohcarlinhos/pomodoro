@@ -1,2 +1,2 @@
 export { default } from "./TimerAndLocalRecords.vue";
-export * as util from "./TimerAndLocalRecords.util";
+export * from "./TimerAndLocalRecords.util";
