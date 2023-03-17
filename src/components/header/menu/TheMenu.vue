@@ -6,15 +6,15 @@ import TheNav from "@/components/header/TheNav";
 import type { TheLinkProps } from "@/components/ui/TheLink";
 import type { UserMenu } from "./types";
 
-export interface MenuProps {
+export interface TheMenuProps {
   logo: TheLogoProps;
   user?: UserMenu | null;
   userClickAction?: () => void;
   links?: TheLinkProps[];
-  hasNav: boolean;
+  hasNav?: boolean;
 }
 
-const props = withDefaults(defineProps<MenuProps>(), {
+const props = withDefaults(defineProps<TheMenuProps>(), {
   user: null,
   userClickAction: () => {
     return;

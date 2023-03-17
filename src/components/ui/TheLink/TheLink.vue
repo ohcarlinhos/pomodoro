@@ -7,12 +7,14 @@ export type TheLinkProps = {
   url: string;
   a?: boolean;
   disabled?: boolean;
+  target?: string;
 };
 
 const props = withDefaults(defineProps<TheLinkProps>(), {
   label: "Link",
-  a: false,
+  a: true,
   disabled: false,
+  target: "",
 });
 
 const ariaLink = computed(() => ({
@@ -27,17 +29,24 @@ const ariaLink = computed(() => ({
       {{ label }}
     </span>
 
-    <a v-else-if="a" :href="url" class="link" :aria-label="ariaLink.able">
-      {{ label }}
-    </a>
-
     <RouterLink
-      v-else
+      v-else-if="!a"
       :to="{ name: url }"
       :aria-label="ariaLink.able"
+      :target="target"
       class="link"
     >
       {{ label }}
     </RouterLink>
+
+    <a
+      v-else
+      :href="url"
+      :aria-label="ariaLink.able"
+      :target="target"
+      class="link"
+    >
+      {{ label }}
+    </a>
   </span>
 </template>

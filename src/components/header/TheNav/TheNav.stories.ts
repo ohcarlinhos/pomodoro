@@ -1,7 +1,6 @@
+import vueRouter from "storybook-vue3-router";
 import TheNav from "./TheNav.vue";
 import { navLinks, routerLinks } from "./util/mock";
-
-import vueRouter from "storybook-vue3-router";
 
 export default {
   title: "NAV / TheNav",

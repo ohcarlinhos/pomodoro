@@ -1,4 +1,14 @@
-import TheLink from "./TheLink.vue";
+import { RouteRecordRaw } from "vue-router";
+import vueRouter from "storybook-vue3-router";
+import TheLink, { TheLinkProps } from "./TheLink.vue";
+
+const routerLink: RouteRecordRaw = {
+  path: `/exemple`,
+  name: `#`,
+  component: {
+    template: `<p class="example__container">Route Example</p>`,
+  },
+};
 
 export default {
   title: "UI / TheLink",
@@ -6,10 +16,11 @@ export default {
   args: {
     id: "link",
     label: "Just a simple link...",
-    url: "#target",
-    a: false,
+    target: "_blank",
+    url: "#",
+    a: true,
     disabled: false,
-  },
+  } as TheLinkProps,
   argTypes: {
     label: { type: "string" },
     url: { type: "string" },
@@ -21,6 +32,7 @@ export default {
       default: "light",
     },
   },
+  decorators: [vueRouter([routerLink])],
 };
 
 export const Component = (args: unknown) => ({
