@@ -16,7 +16,7 @@ const modalList = [
   {
     name: "generic",
     component: defineAsyncComponent({
-      loader: () => import("../generic-modal/GenericModal.vue"),
+      loader: () => import("../GenericModal"),
     }),
   },
   {
