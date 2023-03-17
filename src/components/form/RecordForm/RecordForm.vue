@@ -22,7 +22,7 @@ import {
 import { useCategoriesStore } from "@/stores/categories";
 import { recordsAPI } from "@/services";
 import type { RecordUpdateAPI } from "@/services/types";
-import type { ActionModal } from "@/components/modal/modal-factory";
+import type { ActionModal } from "@/components/modal/ModalFactory";
 
 export interface RecordFormProps {
   finalAction?: ActionModal;
@@ -198,5 +198,5 @@ const setDateAndWhenFinished = () => {
 </template>
 
 <style lang="scss" scoped>
-@import "./style.scss";
+@import "./RecordForm.scss";
 </style>

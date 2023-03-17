@@ -2,14 +2,14 @@
 import { computed } from "vue";
 import type { TheSelectOption } from "./TheSelect.types";
 
-type TheSelectProps = {
+export interface TheSelectProps {
   modelValue: string | number | null;
   id: string;
   label: string;
   type?: string;
   options: TheSelectOption[];
   optionText?: string;
-};
+}
 
 const props = withDefaults(defineProps<TheSelectProps>(), {
   modelValue: "",

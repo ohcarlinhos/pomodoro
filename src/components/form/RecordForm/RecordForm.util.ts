@@ -1,7 +1,7 @@
-import type { TheSelectOption } from "@/components/ui/TheSelect/TheSelect.types";
+import type { TheSelectOption } from "@/components/ui/TheSelect";
 import type { CategoryAPI } from "@/services/types";
 import { zeroLeft } from "@/util/functions";
-import type { RecordForm } from "./types";
+import type { RecordForm } from "./RecordForm.types";
 
 export const recordFormDefault = (): RecordForm => ({
   name: "",

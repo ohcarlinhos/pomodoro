@@ -22,7 +22,7 @@ const modalList = [
   {
     name: "record-form",
     component: defineAsyncComponent({
-      loader: () => import("../record/RecordModal.vue"),
+      loader: () => import("../RecordModal"),
     }),
   },
 ];

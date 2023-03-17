@@ -1,4 +1,4 @@
-import type { TheSelectOption } from "@/components/ui/TheSelect/TheSelect.types";
+import type { TheSelectOption } from "@/components/ui/TheSelect";
 
 export interface RecordForm {
   name: string;
