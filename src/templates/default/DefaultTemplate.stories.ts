@@ -1,8 +1,8 @@
 import DefaultTemplate from "./DefaultTemplate.vue";
-import TheMenu from "@/components/header/menu/TheMenu.vue";
+import TheMenu from "@/components/header/TheMenu";
 import InputSearch from "@/components/ui/InputSearch";
 
-import { menu } from "@/components/header/menu/util/mock";
+import { menu } from "@/components/header/TheMenu/util/mock";
 
 import "./util/storybook.css";
 

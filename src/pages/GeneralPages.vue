@@ -5,7 +5,7 @@ import { computed, onMounted, reactive, ref, watch } from "vue";
 import { RouterView, useRoute } from "vue-router";
 
 import DefaultTemplate from "@/templates/default";
-import TheMenu from "@/components/header/menu";
+import TheMenu from "@/components/header/TheMenu";
 import { appConfig, type NavLink } from "@/config";
 import { authService } from "@/services";
 
