@@ -9,7 +9,7 @@ interface ArgsTheNavStorie {
 }
 
 export default {
-  title: "NAV / TheNav",
+  title: "Header / TheNav",
   component: TheNav,
   args: {
     label: "Link",
