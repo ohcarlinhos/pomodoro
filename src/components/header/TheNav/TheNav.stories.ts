@@ -1,15 +1,21 @@
 import vueRouter from "storybook-vue3-router";
-import TheNav from "./TheNav.vue";
+import TheNav, { TheNavProps } from "./TheNav.vue";
 import { navLinks, routerLinks } from "./util/mock";
+
+interface ArgsTheNavStorie {
+  label: string;
+  a: boolean;
+  props: TheNavProps;
+}
 
 export default {
   title: "NAV / TheNav",
   component: TheNav,
   args: {
     label: "Link",
-    a: true,
-    links: () => [],
-  },
+    a: false,
+    props: { links: [] },
+  } as ArgsTheNavStorie,
   argTypes: {
     label: "string",
     a: "boolean",
@@ -22,12 +28,11 @@ export default {
   decorators: [vueRouter(routerLinks(5))],
 };
 
-export const Component = (args: { label: string; a: boolean }) => ({
+export const Component = (args: ArgsTheNavStorie) => ({
   components: { TheNav },
   setup() {
     return {
       args: {
-        ...args,
         links: navLinks(args.label, 5, args.a),
       },
     };

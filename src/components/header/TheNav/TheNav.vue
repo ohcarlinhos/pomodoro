@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import TheLink, { type TheLinkProps } from "@/components/ui/TheLink";
 
-withDefaults(defineProps<{ links: TheLinkProps[] }>(), {
+export interface TheNavProps {
+  links: TheLinkProps[];
+}
+
+withDefaults(defineProps<TheNavProps>(), {
   links: () => [],
 });
 </script>
