@@ -114,6 +114,7 @@ const toggleTable = () => {
         <SimpleTable
           v-bind="table"
           :lines="localRecordsLines"
+          data-testid="timer--local-table"
           @table:action="handleAction"
         />
       </div>

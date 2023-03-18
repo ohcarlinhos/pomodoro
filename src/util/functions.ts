@@ -36,18 +36,18 @@ export const secondsToString = (seconds: number) => {
 
   if (hour) {
     calcSec -= hour * 60 * 60;
-    string += `${hour} h `;
+    string += `${hour}h `;
   }
 
   const min = Math.floor(calcSec / 60);
 
   if (min) {
     calcSec -= min * 60;
-    string += `${min} m `;
+    string += `${min}m `;
   } else sec = seconds;
 
   sec = calcSec;
-  if (sec) string += `${sec} s`;
+  if (sec) string += `${sec}s`;
 
   return string;
 };
