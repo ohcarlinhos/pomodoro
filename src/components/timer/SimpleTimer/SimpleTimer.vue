@@ -140,7 +140,7 @@ const timerCounter = computed(() => {
 
 <template>
   <div class="timer__container" data-testid="simple-timer">
-    <span class="timer"> {{ timerCounter }} </span>
+    <span class="timer" data-testid="timer-counter"> {{ timerCounter }} </span>
 
     <div class="buttons">
       <TheButton
