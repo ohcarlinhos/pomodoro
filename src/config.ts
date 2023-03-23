@@ -1,5 +1,5 @@
 import type { TheLinkProps } from "@/components/ui/TheLink";
-import { menu, general, developer } from "./config.json";
+import { developer, links, footer } from "./config.json";
 
 export interface NavLink extends TheLinkProps {
   session?: boolean;
@@ -7,16 +7,17 @@ export interface NavLink extends TheLinkProps {
 }
 
 export const appConfig = {
-  general: {
-    ...general,
-  },
   menu: {
     logo: {
-      ...menu.logo,
+      title: "menu.logo.title",
+      alt: "menu.logo.alt",
+      uppercase: false,
+      url: "home",
     },
-    links: [...menu.links] as NavLink[],
+    links: [...links] as NavLink[],
     user: {
       ...developer,
     },
   },
+  footer,
 };

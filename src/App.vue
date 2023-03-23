@@ -1,12 +1,14 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+import { useTitle } from "@vueuse/core";
+
 import ModalFactory from "@/components/modal/ModalFactory";
 import GeneralPages from "@/pages/GeneralPages.vue";
 
-import { useTitle } from "@vueuse/core";
-import { appConfig } from "./config";
-
+const { t } = useI18n();
 const title = useTitle();
-title.value = appConfig.general.title;
+
+title.value = t("general.title");
 </script>
 
 <template>
@@ -15,11 +17,6 @@ title.value = appConfig.general.title;
 </template>
 
 <style>
-@import "the-new-css-reset/css/reset.css";
-@import "../src/assets/root.css";
-
-@import "vue-multiselect/dist/vue-multiselect.css";
-
 #app {
   display: flex;
   min-height: 100vh;

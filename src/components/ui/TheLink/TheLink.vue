@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { useI18n } from "vue-i18n";
+import { handleI18n } from "@/i18n/util";
 
 export type TheLinkProps = {
   id: string | number;
@@ -17,16 +19,22 @@ const props = withDefaults(defineProps<TheLinkProps>(), {
   target: "",
 });
 
+const { t } = useI18n();
+
+const labelHandled = computed(() => {
+  return handleI18n(props.label);
+});
+
 const ariaLink = computed(() => ({
-  able: `Acessar ${props.label}`,
-  disable: `Endereço de ${props.label} desativado.`,
+  able: t("aria.link.able", { label: labelHandled.value }),
+  disable: t("aria.link.disable", { label: labelHandled.value }),
 }));
 </script>
 
 <template>
   <span :class="{ disabled }">
     <span v-if="disabled" class="link" :aria-label="ariaLink.disable">
-      {{ label }}
+      {{ labelHandled }}
     </span>
 
     <RouterLink
@@ -36,7 +44,7 @@ const ariaLink = computed(() => ({
       :target="target"
       class="link"
     >
-      {{ label }}
+      {{ labelHandled }}
     </RouterLink>
 
     <a
@@ -46,7 +54,7 @@ const ariaLink = computed(() => ({
       :target="target"
       class="link"
     >
-      {{ label }}
+      {{ labelHandled }}
     </a>
   </span>
 </template>

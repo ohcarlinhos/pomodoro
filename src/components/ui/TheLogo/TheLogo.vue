@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { computed } from "@vue/reactivity";
+import { handleI18n } from "@/i18n/util";
+
 export interface TheLogoProps {
   title: string;
   url?: string;
@@ -7,26 +10,31 @@ export interface TheLogoProps {
   uppercase?: boolean;
 }
 
-withDefaults(defineProps<TheLogoProps>(), {
+const props = withDefaults(defineProps<TheLogoProps>(), {
   url: "",
   alt: "",
   uppercase: false,
 });
+
+const text = computed(() => ({
+  title: handleI18n(props.title),
+  alt: handleI18n(props.alt),
+}));
 </script>
 
 <template>
   <div class="logo__container">
     <RouterLink
       :to="{ name: url }"
-      :title="alt || title"
+      :title="text.alt || text.title"
       :class="{ disabled: !url }"
       class="logo__url"
     >
       <img
         v-if="logoImage"
         :src="logoImage"
-        :alt="alt || title"
-        :title="alt || title"
+        :alt="text.alt || text.title"
+        :title="text.alt || text.title"
         class="logo__image"
       />
       <h1
@@ -34,7 +42,7 @@ withDefaults(defineProps<TheLogoProps>(), {
         class="logo__title"
         :class="{ uppercase: uppercase }"
       >
-        {{ title }}
+        {{ text.title }}
       </h1>
     </RouterLink>
   </div>

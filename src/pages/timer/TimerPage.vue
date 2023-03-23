@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import TimerAndLocalRecords from "@/components/timer/TimerAndLocalRecords";
 import TheFooter from "@/components/ui/TheFooter";
+import { appConfig } from "@/config";
 </script>
 
 <template>
@@ -9,15 +10,7 @@ import TheFooter from "@/components/ui/TheFooter";
       <TimerAndLocalRecords />
     </div>
     <div class="page__footer">
-      <!-- <span>
-        Developed by
-        <a href="https://github.com/caarlos1" target="_blank">@caarlos1</a>
-      </span> -->
-      <TheFooter
-        link-auth="https://github.com/caarlos1"
-        copy="Developed by"
-        auth="@caarlos1"
-      />
+      <TheFooter v-bind="appConfig.footer" />
     </div>
   </div>
 </template>

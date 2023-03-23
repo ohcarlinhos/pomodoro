@@ -1,26 +1,24 @@
 {
-  "general": {
-    "title": "Pomodoro - Timer Online"
-  },
-  "menu": {
-    "logo": {
-      "title": "Timer",
-      "alt": "Pomodoro Timer Online",
-      "logoImage": "",
-      "uppercase": false,
-      "url": "home"
+  "links": [
+    { "id": 1, "label": "menu.link.timer", "url": "home" },
+    { "id": 2, "label": "menu.link.panel", "url": "panel", "session": true },
+    {
+      "id": 3,
+      "label": "menu.link.login",
+      "url": "login",
+      "hideOnSession": true
     },
-    "links": [
-      { "id": 1, "label": "Timer", "url": "home" },
-      { "id": 2, "label": "Painel", "url": "panel", "session": true },
-      { "id": 3, "label": "Acessar", "url": "login", "hideOnSession": true },
-      { "id": 3, "label": "Sair", "url": "exit", "session": true }
-    ]
-  },
+    { "id": 3, "label": "menu.link.exit", "url": "exit", "session": true }
+  ],
   "developer": {
-    "image": "https://gravatar.com/avatar/9a82ba52769cbc22951a7cf516124307?s=250",
     "name": "Carlos Roberto (@caarlos1)",
-    "clickable": true,
-    "profile": "https://github.com/caarlos1"
+    "image": "https://gravatar.com/avatar/9a82ba52769cbc22951a7cf516124307?s=250",
+    "url": "https://github.com/caarlos1",
+    "clickable": true
+  },
+  "footer": {
+    "linkAuth": "https://github.com/caarlos1",
+    "copy": "general.footer.copy",
+    "auth": "@caarlos1"
   }
 }

@@ -1,7 +1,9 @@
 {
   "general": {
     "title": "Pomodoro - Timer Online",
-    "footer": "Desenvolvido por"
+    "footer": {
+      "copy": "Desenvolvido por"
+    }
   },
   "menu": {
     "logo": {
