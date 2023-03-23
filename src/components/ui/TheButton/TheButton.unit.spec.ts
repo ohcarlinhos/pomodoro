@@ -3,15 +3,18 @@ import TheButton from "./TheButton.vue";
 
 describe("TheButton", () => {
   it("should render a button with correct label", () => {
-    const wrapper = render(TheButton, { props: { label: "Simple Text" } });
-    wrapper.getByText("Simple Text");
+    const { getByText } = render(TheButton, {
+      props: { label: "Simple Text" },
+    });
+
+    getByText("Simple Text");
   });
 
-  it("should render a slot item", () => {
-    const wrapper = render(TheButton, {
+  it("should render a buton with default slot label", () => {
+    const { getByText } = render(TheButton, {
       slots: { default: "<p>Slot Example</p>" },
     });
 
-    wrapper.getByText("Slot Example");
+    getByText("Slot Example");
   });
 });
