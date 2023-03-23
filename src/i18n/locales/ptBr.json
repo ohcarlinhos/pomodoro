@@ -1,0 +1,27 @@
+{
+  "general": {
+    "title": "Pomodoro - Timer Online",
+    "footer": "Desenvolvido por"
+  },
+  "menu": {
+    "logo": {
+      "title": "Timer",
+      "alt": "Pomodoro Timer Online"
+    },
+    "link": {
+      "timer": "Timer",
+      "panel": "Painel",
+      "login": "Acessar",
+      "exit": "Sair"
+    }
+  },
+  "timer": {
+    "other": "Outro"
+  },
+  "aria": {
+    "link": {
+      "able": "Acessar {label}",
+      "disable": "Endereço de {label} desativado."
+    }
+  }
+}
