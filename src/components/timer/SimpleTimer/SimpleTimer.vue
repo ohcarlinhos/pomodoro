@@ -8,7 +8,7 @@ import { OhVueIcon, addIcons } from "oh-vue-icons";
 
 import { MdPause, MdPlayarrow, MdStop, MdCheck } from "oh-vue-icons/icons/md";
 
-import type { SimpleTimerDonePayload } from ".";
+import type { SimpleTimerDonePayload } from "./types";
 
 export interface SimpleTimerProps {
   increment?: boolean;
@@ -139,33 +139,36 @@ const timerCounter = computed(() => {
 </script>
 
 <template>
-  <div class="timer__container">
-    <span class="timer"> {{ timerCounter }} </span>
+  <div class="timer__container" data-testid="simple-timer">
+    <span class="timer" data-testid="timer-counter"> {{ timerCounter }} </span>
 
     <div class="buttons">
       <TheButton
-        @click="start"
-        size="sm"
-        :label="startButton"
         :design="startButtonDesign"
+        :label="startButton"
+        data-testid="timer-start"
+        size="sm"
+        @click="start"
       >
         <OhVueIcon :name="startButtonIcon" />
       </TheButton>
       <TheButton
-        @click="done(true)"
-        size="sm"
-        label="Concluir"
-        design="confirm"
         :disabled="!timer.secondsPast"
+        label="Concluir"
+        data-testid="timer-done"
+        design="confirm"
+        size="sm"
+        @click="done(true)"
       >
         <OhVueIcon name="md-check" />
       </TheButton>
       <TheButton
-        @click="reset"
-        size="sm"
-        label="Limpar"
-        design="remove"
         :disabled="!timer.secondsPast"
+        label="Limpar"
+        data-testid="timer-stop"
+        design="remove"
+        size="sm"
+        @click="reset"
       >
         <OhVueIcon name="md-stop" />
       </TheButton>

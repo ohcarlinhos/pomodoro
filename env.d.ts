@@ -1,8 +1,9 @@
 /// <reference types="vite/client" />
+/// <reference types="cypress" />
+/// <reference types="./cypress/support" />
 
 interface ImportMetaEnv {
   readonly VITE_API_URL: string;
-  // more env variables...
 }
 
 interface ImportMeta {

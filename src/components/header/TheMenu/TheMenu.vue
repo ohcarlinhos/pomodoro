@@ -9,22 +9,20 @@ import type { UserMenu } from "./types";
 export interface TheMenuProps {
   logo: TheLogoProps;
   user?: UserMenu | null;
-  userClickAction?: () => void;
   links?: TheLinkProps[];
   hasNav?: boolean;
 }
 
+const emit = defineEmits(["click-user"]);
+
 const props = withDefaults(defineProps<TheMenuProps>(), {
   user: null,
-  userClickAction: () => {
-    return;
-  },
   links: () => [],
   hasNav: false,
 });
 
 const clickUser = () => {
-  if (props.user && props.user.clickable) props.userClickAction();
+  if (props.user && props.user.clickable) emit("click-user");
 };
 </script>
 

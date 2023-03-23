@@ -2,7 +2,7 @@
 import { onMounted, reactive } from "vue";
 import { useToast } from "vue-toastification";
 
-import { tableColumns, makeTableLinesByRecords, tableActions } from ".";
+import { tableColumns, makeTableLinesByRecords, tableActions } from "./util";
 
 import TheTable, { type TheTableProps } from "@/components/ui/TheTable";
 import InputSearch from "@/components/ui/InputSearch";

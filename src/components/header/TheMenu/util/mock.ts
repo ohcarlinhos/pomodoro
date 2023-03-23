@@ -8,6 +8,5 @@ export const menu: TheMenuProps = {
     name: "Carlos Roberto",
     clickable: true,
   },
-  userClickAction: () => alert("Hi!"),
   hasNav: true,
 };

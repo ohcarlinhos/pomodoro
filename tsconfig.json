@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
-    "types": ["jest", "node", "ts-jest"],
+    "types": [
+      "jest",
+      "node",
+      "ts-jest",
+      "@intlify/unplugin-vue-i18n/messages"
+    ],
     "composite": true,
     "target": "ESNext",
     "module": "ESNext",
@@ -20,7 +25,8 @@
     "src/**/*",
     "src/**/*.vue",
     "src/config.json",
-    "vite.config.*"
+    "vite.config.*",
+    "src/i18n/locales/*.json"
   ],
   "exclude": ["src/**/__tests__/*"]
 }

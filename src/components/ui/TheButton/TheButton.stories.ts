@@ -1,4 +1,4 @@
-import TheButton from ".";
+import TheButton from "./TheButton.vue";
 
 export default {
   title: "UI / TheButton",

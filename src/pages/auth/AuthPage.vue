@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
-import AuthForm from "@/components/form/auth/AuthForm.vue";
-import { authService } from "@/services";
 import { useRouter } from "vue-router";
+import { authService } from "@/services";
+
+import AuthForm from "@/components/form/AuthForm";
 
 onMounted(() => {
   if (authService.hasSession()) {

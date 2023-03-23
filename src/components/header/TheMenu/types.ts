@@ -1,6 +1,6 @@
 export interface UserMenu {
   name: string;
   image: string;
-  profile?: string;
+  url?: string;
   clickable?: boolean;
 }

@@ -77,11 +77,12 @@ const setCustomTime = () => {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container" data-testid="digital-timer">
     <div class="buttons">
       <button
         v-for="b in timer.buttons"
         :key="b.label"
+        :data-testid="'timer-select-minutes-' + b.label"
         :disabled="timer.active"
         @click="setTime(b.value)"
       >
@@ -90,9 +91,10 @@ const setCustomTime = () => {
       <input
         v-model="timer.custom"
         v-maska="'###'"
-        type="text"
-        placeholder="Other"
         :disabled="timer.active"
+        :placeholder="$t('timer.other')"
+        data-testid="timer-select-minutes-other"
+        type="text"
         @input="setCustomTime"
         @click="setCustomTime"
       />
