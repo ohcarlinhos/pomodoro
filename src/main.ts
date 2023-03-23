@@ -1,9 +1,11 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
-
 import Toast, { POSITION, type PluginOptions } from "vue-toastification";
 import VueGtag from "vue-gtag";
 
+import { GTAG } from "./env";
+
+// Style Config
 import "the-new-css-reset/css/reset.css";
 import "vue-toastification/dist/index.css";
 import "vue-multiselect/dist/vue-multiselect.css";
@@ -23,7 +25,8 @@ const toastOptions: PluginOptions = {
 app.use(store);
 app.use(router);
 app.use(i18n);
-app.use(VueGtag, { config: { id: "G-M9CECX79MT" } }, router);
 app.use(Toast, toastOptions);
+
+if (GTAG) app.use(VueGtag, { config: { id: GTAG } }, router);
 
 app.mount("#app");

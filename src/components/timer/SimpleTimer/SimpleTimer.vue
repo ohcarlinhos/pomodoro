@@ -55,7 +55,10 @@ watch(
 
 /** Computeds */
 
-const startButton = computed(() => (timer.value.active ? "Pausar" : "Iniciar"));
+const startButton = computed(() =>
+  timer.value.active ? "timer.actions.pause" : "timer.actions.start"
+);
+
 const startButtonDesign = computed(() =>
   !timer.value.active ? "primary" : "warning"
 );
@@ -145,7 +148,8 @@ const timerCounter = computed(() => {
     <div class="buttons">
       <TheButton
         :design="startButtonDesign"
-        :label="startButton"
+        :label="$t(startButton)"
+        :title="$t(startButton)"
         data-testid="timer-start"
         size="sm"
         @click="start"
@@ -154,7 +158,8 @@ const timerCounter = computed(() => {
       </TheButton>
       <TheButton
         :disabled="!timer.secondsPast"
-        label="Concluir"
+        :label="$t('timer.actions.done')"
+        :title="$t('timer.actions.done')"
         data-testid="timer-done"
         design="confirm"
         size="sm"
@@ -164,7 +169,8 @@ const timerCounter = computed(() => {
       </TheButton>
       <TheButton
         :disabled="!timer.secondsPast"
-        label="Limpar"
+        :label="$t('timer.actions.stop')"
+        :title="$t('timer.actions.stop')"
         data-testid="timer-stop"
         design="remove"
         size="sm"

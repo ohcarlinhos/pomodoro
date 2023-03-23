@@ -4,7 +4,7 @@ import {
   type NavigationGuard,
 } from "vue-router";
 
-import { USE_PANEL } from "@/global";
+import { USE_PANEL } from "@/env";
 
 const beforeAuth: NavigationGuard = () => {
   if (!USE_PANEL) router.push({ name: "home" });

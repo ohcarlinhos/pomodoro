@@ -107,7 +107,7 @@ const toggleTable = () => {
         :name="
           showTable ? 'md-keyboardarrowup-round' : 'md-keyboardarrowdown-round'
         "
-        title="Show Table"
+        :title="showTable ? $t('timer.table.hide') : $t('timer.table.show')"
         scale="1.5"
         fill="var(--text-color)"
       />

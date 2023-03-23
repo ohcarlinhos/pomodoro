@@ -25,15 +25,15 @@ export const makeTableLinesByLocalRecords = (records: LocalRecordsStore[]) => {
 };
 
 export const tableColumns = (): TheTableColumn[] => [
-  { label: "Data" },
-  { label: "Finalizado às" },
-  { label: "Tempo" },
+  { label: "timer.table.date" },
+  { label: "timer.table.end" },
+  { label: "timer.table.duration" },
 ];
 
 export const tableActions = (): TheTableAction[] => [
   {
     id: 2,
-    label: "Excluir",
+    label: "timer.table.actions.delete",
     disabled: false,
     action: "delete",
     icon: "delete",

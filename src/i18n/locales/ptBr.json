@@ -1,9 +1,11 @@
 {
+  "locales": {
+    "pt-BR": "Português",
+    "en": "Inglês"
+  },
   "general": {
     "title": "Pomodoro - Timer Online",
-    "footer": {
-      "copy": "Desenvolvido por"
-    }
+    "footer": { "copy": "Desenvolvido por" }
   },
   "menu": {
     "logo": {
@@ -18,7 +20,24 @@
     }
   },
   "timer": {
-    "other": "Outro"
+    "actions": {
+      "start": "Iniciar",
+      "pause": "Pausar",
+      "done": "Concluir",
+      "stop": "Limpar"
+    },
+    "minutes": {
+      "placeholder": { "other": "Outro" },
+      "title": { "minutes": "{minutes} minutos", "other": "Personalizado" }
+    },
+    "table": {
+      "date": "Data",
+      "end": "Finalizado às",
+      "duration": "Tempo",
+      "actions": { "delete": "Excluir" },
+      "show": "Mostrar Tabela",
+      "hide": "Esconder Tabela"
+    }
   },
   "aria": {
     "link": {
