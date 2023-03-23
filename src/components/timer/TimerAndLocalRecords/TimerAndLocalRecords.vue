@@ -4,7 +4,11 @@ import { OhVueIcon, addIcons } from "oh-vue-icons";
 
 import dayjs from "dayjs";
 
-import { tableColumns, tableActions, makeTableLinesByLocalRecords } from ".";
+import {
+  tableColumns,
+  tableActions,
+  makeTableLinesByLocalRecords,
+} from "./TimerAndLocalRecords.util";
 
 import localizedFormatDayJs from "dayjs/plugin/localizedFormat";
 import localeDayJs from "dayjs/locale/pt-br";

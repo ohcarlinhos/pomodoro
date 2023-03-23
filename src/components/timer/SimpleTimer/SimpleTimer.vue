@@ -8,7 +8,7 @@ import { OhVueIcon, addIcons } from "oh-vue-icons";
 
 import { MdPause, MdPlayarrow, MdStop, MdCheck } from "oh-vue-icons/icons/md";
 
-import type { SimpleTimerDonePayload } from ".";
+import type { SimpleTimerDonePayload } from "./types";
 
 export interface SimpleTimerProps {
   increment?: boolean;
