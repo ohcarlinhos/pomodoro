@@ -1,4 +1,8 @@
 {
+  "locales": {
+    "pt-BR": "Português",
+    "en": "Inglês"
+  },
   "general": {
     "title": "Pomodoro - Timer Online",
     "footer": { "copy": "Desenvolvido por" }

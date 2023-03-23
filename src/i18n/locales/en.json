@@ -1,0 +1,48 @@
+{
+  "locales": {
+    "pt-BR": "Portuguese",
+    "en": "English"
+  },
+  "general": {
+    "title": "Pomodoro - Online Timer",
+    "footer": { "copy": "Developed by" }
+  },
+  "menu": {
+    "logo": {
+      "title": "Timer",
+      "alt": "Pomodoro Online Timer"
+    },
+    "link": {
+      "timer": "Timer",
+      "panel": "Dashboard",
+      "login": "Log In",
+      "exit": "Log Out"
+    }
+  },
+  "timer": {
+    "actions": {
+      "start": "Start",
+      "pause": "Pause",
+      "done": "Done",
+      "stop": "Clear"
+    },
+    "minutes": {
+      "placeholder": { "other": "Other" },
+      "title": { "minutes": "{minutes} minutes", "other": "Custom" }
+    },
+    "table": {
+      "date": "Date",
+      "end": "Finished at",
+      "duration": "Duration",
+      "actions": { "delete": "Delete" },
+      "show": "Show Table",
+      "hide": "Hide Table"
+    }
+  },
+  "aria": {
+    "link": {
+      "able": "Access {label}",
+      "disable": "{label} address disabled."
+    }
+  }
+}
