@@ -11,6 +11,7 @@ import type {
 import ThePagination from "@/components/ui/ThePagination";
 
 import { iconList } from "./icons";
+import { handleI18n } from "@/i18n/util";
 
 export interface TheTableProps {
   actions?: TheTableAction[];
@@ -76,9 +77,10 @@ const filterLines = computed(() => {
             v-for="column in columns"
             :key="column.label"
             :width="column.width"
+            :title="handleI18n(column.label)"
           >
             <div class="filters">
-              <span>{{ column.label }}</span>
+              <span>{{ handleI18n(column.label) }}</span>
               <div v-if="column.sort" class="column__filter">
                 <Component
                   :is="findComponent(column.order == 'desc' ? 'desc' : 'asc')"
@@ -99,7 +101,7 @@ const filterLines = computed(() => {
               <button
                 v-for="action in actions"
                 :key="action.id"
-                :title="action.label"
+                :title="handleI18n(action.label)"
               >
                 <div v-if="action.icon" class="action__icon">
                   <Component
@@ -107,7 +109,7 @@ const filterLines = computed(() => {
                     @click="handleAction({ action: action.action, line })"
                   />
                 </div>
-                <span v-else>{{ action.label }}</span>
+                <span v-else>{{ handleI18n(action.label) }}</span>
               </button>
             </div>
           </td>

@@ -84,6 +84,7 @@ const setCustomTime = () => {
         :key="b.label"
         :data-testid="'timer-select-minutes-' + b.label"
         :disabled="timer.active"
+        :title="$t('timer.minutes.title.minutes', { minutes: b.label })"
         @click="setTime(b.value)"
       >
         {{ b.label }}
@@ -92,7 +93,8 @@ const setCustomTime = () => {
         v-model="timer.custom"
         v-maska="'###'"
         :disabled="timer.active"
-        :placeholder="$t('timer.other')"
+        :placeholder="$t('timer.minutes.placeholder.other')"
+        :title="$t('timer.minutes.title.other')"
         data-testid="timer-select-minutes-other"
         type="text"
         @input="setCustomTime"
