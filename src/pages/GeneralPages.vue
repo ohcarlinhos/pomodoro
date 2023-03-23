@@ -11,7 +11,7 @@ import { authService } from "@/services";
 
 const route = useRoute();
 
-const clickUser = () => window.open(appConfig.menu.user.profile, "_blank");
+const clickUser = () => window.open(appConfig.menu.user.url, "_blank");
 const menuLinks = reactive<NavLink[]>([...appConfig.menu.links]);
 const userSession = ref(false);
 
@@ -40,9 +40,9 @@ const navLinks = computed(() => {
       <TheMenu
         v-if="USE_PANEL"
         v-bind="appConfig.menu"
-        :user-click-action="clickUser"
         :links="navLinks"
         :has-nav="USE_PANEL"
+        @click-user="clickUser"
       />
     </template>
 
