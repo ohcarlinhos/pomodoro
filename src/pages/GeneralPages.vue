@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { USE_PANEL } from "@/global";
-
 import { computed, onMounted, reactive, ref, watch } from "vue";
 import { RouterView, useRoute } from "vue-router";
+
+import { USE_PANEL } from "@/env";
 
 import DefaultTemplate from "@/templates/default";
 import TheMenu from "@/components/header/TheMenu";

@@ -1,6 +1,6 @@
-import router from "@/router";
 import axios from "axios";
-import { API_URL } from "@/global";
+import { API_URL } from "@/env";
+import router from "@/router";
 import { authService } from ".";
 
 const api = axios.create({
