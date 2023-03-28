@@ -3,13 +3,16 @@ import VueI18nPlugin from "@intlify/unplugin-vue-i18n/vite";
 
 import { defineConfig } from "vite";
 import Vue from "@vitejs/plugin-vue";
-import path from "path";
+import { dirname, resolve } from "path";
 
 export default defineConfig({
   plugins: [
     Vue(),
     VueI18nPlugin({
-      include: [path.resolve(__dirname, "./i18n/locales/**")],
+      include: resolve(
+        dirname(fileURLToPath(import.meta.url)),
+        "./src/i18n/locales/**"
+      ),
     }),
   ],
   resolve: {
