@@ -5,7 +5,7 @@
   },
   "general": {
     "title": "Pomodoro - Timer Online",
-    "footer": { "copy": "Desenvolvido por" }
+    "footer": { "copy": "Desenvolvido por", "coffee": " Me pague um café!" }
   },
   "menu": {
     "logo": {

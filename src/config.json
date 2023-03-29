@@ -17,8 +17,12 @@
     "clickable": true
   },
   "footer": {
-    "linkAuth": "https://github.com/caarlos1",
+    "url": "https://github.com/caarlos1",
     "copy": "general.footer.copy",
-    "auth": "@caarlos1"
+    "auth": "Carlos Roberto",
+    "coffee": {
+      "text": "general.footer.coffee",
+      "url": "https://ko-fi.com/caarlos"
+    }
   }
 }
