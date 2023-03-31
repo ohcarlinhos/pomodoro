@@ -22,7 +22,9 @@ jobs:
       - uses: actions/cache@v3
         id: yarn-cache
         with:
-          path: '**/node_modules'
+          path: |
+            ~/.cache/Cypress
+            node_modules
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
@@ -37,6 +39,7 @@ jobs:
       - name: Cypress Test
         uses: cypress-io/github-action@v5
         with:
+          install: false
           build: yarn build
           start: yarn preview
 
