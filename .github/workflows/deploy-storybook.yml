@@ -1,4 +1,4 @@
-name: push master / deploy action
+name: 'Deploy: Storybook'
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     env:
@@ -24,7 +24,7 @@ jobs:
       - uses: actions/cache@v3
         id: yarn-cache
         with:
-          path: '**/node_modules'
+          path: 'node_modules'
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
@@ -33,8 +33,8 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile
 
-      - name: Build Vue.js App
-        run: yarn build
+      - name: Build Storybook
+        run: yarn storybook
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0.0
@@ -45,7 +45,7 @@ jobs:
           deploy-message: "Deploy from GitHub Actions"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_STORYBOOK_SITE_ID }}
 
         timeout-minutes: 1
 
@@ -56,8 +56,8 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            O ${{ github.event_name }} para a master foi um sucesso.
-            Deploy finalizado com sucesso!
+            O deploy do storybook foi feito com sucesso!
+            Repositório: ${{ github.repository }}
 
       - name: Telegram Notify - Failure
         uses: appleboy/telegram-action@master
@@ -66,5 +66,5 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            O ${{ github.event_name }} para master falhou.
-            Não foi feito nenhum deploy!
+            Não foi possível fazer o deploy do storybook.
+            Repositório: ${{ github.repository }}
