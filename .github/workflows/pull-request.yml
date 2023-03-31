@@ -22,7 +22,9 @@ jobs:
       - uses: actions/cache@v3
         id: yarn-cache
         with:
-          path: '**/node_modules'
+          path: |
+            ~/.cache/Cypress
+            node_modules
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
@@ -32,7 +34,14 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Run Jest Test
-        uses: yarn jest
+        run: yarn jest
+      
+      - name: Cypress Test
+        uses: cypress-io/github-action@v5
+        with:
+          install: false
+          build: yarn build
+          start: yarn preview
 
       - name: Telegram Notify - Success
         uses: appleboy/telegram-action@master
