@@ -3,6 +3,8 @@ name: 'Cypress: Timer'
 on:
   pull_request:
   push:
+    # branches:
+    #   - master
 
 jobs:
   testing:
@@ -32,11 +34,18 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile
 
+      - name: Cypress Install
+        uses: cypress-io/github-action@v5
+        with:
+          runTests: false
+
+      - name: Cypress Info
+        run: npx cypress info
+
       - name: Cypress Test
         uses: cypress-io/github-action@v5
         with:
-          build: yarn build
-          start: yarn preview
+          install: false
 
       - name: Telegram Notify - Success
         uses: appleboy/telegram-action@master
