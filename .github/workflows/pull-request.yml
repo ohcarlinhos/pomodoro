@@ -31,8 +31,8 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile
 
-      - name: Run Jest Tests Coverage
-        uses: ArtiomTr/jest-coverage-report-action@v2
+      - name: Run Jest Test
+        uses: yarn jest
 
       - name: Telegram Notify - Success
         uses: appleboy/telegram-action@master
