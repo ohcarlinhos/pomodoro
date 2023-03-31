@@ -29,6 +29,7 @@ const text = computed(() => ({
     {{ text.copy }}
     <a v-if="url" :href="url" target="_blank">{{ auth }}.</a>
     <span v-else> {{ auth ? auth : "" }}.</span>
+    <br />
     <a
       v-if="coffee && text.coffee && coffee.url"
       :href="coffee.url"
