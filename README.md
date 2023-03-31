@@ -1,5 +1,8 @@
 # pomodoro-timer
 
+[![Deploy: Storybook](https://github.com/caarlos1/pomodoro-timer/actions/workflows/deploy-storybook.yml/badge.svg?branch=master)](https://github.com/caarlos1/pomodoro-timer/actions/workflows/deploy-storybook.yml)
+[![Deploy: Timer](https://github.com/caarlos1/pomodoro-timer/actions/workflows/deploy-master.yml/badge.svg?branch=master)](https://github.com/caarlos1/pomodoro-timer/actions/workflows/deploy-master.yml)
+
 ## Project Setup
 
 ```sh
