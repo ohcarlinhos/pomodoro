@@ -34,11 +34,11 @@ jobs:
       - name: Run Jest Test
         run: yarn jest
       
-      - name: Build Vue.js App
-        run: yarn build
-
       - name: Cypress Test
-        run: yarn test:e2e:ci
+        uses: cypress-io/github-action@v5
+        with:
+          build: yarn build
+          start: yarn preview
 
       - name: Telegram Notify - Success
         uses: appleboy/telegram-action@master
