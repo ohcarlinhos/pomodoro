@@ -32,13 +32,13 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Run Jest Test
-        uses: yarn jest
+        run: yarn jest
       
       - name: Build Vue.js App
         run: yarn build
 
       - name: Cypress Test
-        uses: yarn test:e2e:ci
+        run: yarn test:e2e:ci
 
       - name: Telegram Notify - Success
         uses: appleboy/telegram-action@master
