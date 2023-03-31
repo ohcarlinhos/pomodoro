@@ -53,7 +53,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            Todos os testes relacionados ao ${{ github.event_name }} passaram!.
+            Todos os testes relacionados ao ${{ github.event_name }} passaram!
             Testes: Jest, Cypress
             Repositório: ${{ github.repository }}
 
