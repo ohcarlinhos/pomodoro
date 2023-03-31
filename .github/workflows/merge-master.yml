@@ -1,0 +1,70 @@
+name: push master / deploy action
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install Dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn --frozen-lockfile
+
+      - name: Build Vue.js App
+        run: yarn build
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v2.0.0
+        with:
+          publish-dir: './dist'
+          production-branch: master
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+        timeout-minutes: 1
+
+      - name: Telegram Notify - Success
+        uses: appleboy/telegram-action@master
+        if: ${{ success() }}
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            O ${{ github.event_name }} para a master foi um sucesso.
+            Deploy finalizado com sucesso!
+
+      - name: Telegram Notify - Failure
+        uses: appleboy/telegram-action@master
+        if: ${{ failure() }}
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            O ${{ github.event_name }} para master falhou.
+            Não foi feito nenhum deploy!

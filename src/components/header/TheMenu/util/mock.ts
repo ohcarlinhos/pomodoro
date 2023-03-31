@@ -6,6 +6,7 @@ export const menu: TheMenuProps = {
   user: {
     image: "https://gravatar.com/avatar/9a82ba52769cbc22951a7cf516124307?s=250",
     name: "Carlos Roberto",
+    url: "",
     clickable: true,
   },
   hasNav: true,
