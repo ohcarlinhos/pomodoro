@@ -1,8 +1,7 @@
-name: 'Run Tests: Timer'
+name: 'Tests: Timer'
 
 on:
   pull_request:
-  push:
 
 jobs:
   run:
@@ -39,7 +38,6 @@ jobs:
 
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v5
-        if: github.branch == 'master'
         with:
           build: yarn build
           start: yarn preview
