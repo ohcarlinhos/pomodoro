@@ -1,3 +1,4 @@
+import vueRouter from "storybook-vue3-router";
 import DefaultTemplate from "./DefaultTemplate.vue";
 import TheMenu from "@/components/header/TheMenu";
 import InputSearch from "@/components/ui/InputSearch";
@@ -18,6 +19,7 @@ export default {
       default: "light",
     },
   },
+  decorators: [vueRouter()],
 };
 
 export const Component = (args: unknown) => ({
