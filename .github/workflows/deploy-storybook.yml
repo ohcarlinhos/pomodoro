@@ -34,7 +34,7 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Build Storybook
-        run: yarn storybook
+        run: yarn build-storybook
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0.0
