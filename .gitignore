@@ -17,6 +17,8 @@ coverage
 /cypress/videos/
 /cypress/screenshots/
 
+storybook-static
+
 # Editor directories and files
 .vscode/*
 !.vscode/snippets.code-snippets
