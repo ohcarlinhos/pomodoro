@@ -39,6 +39,7 @@ jobs:
 
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v5
+        if: github.branch == 'master'
         with:
           build: yarn build
           start: yarn preview
@@ -54,7 +55,6 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
             Todos os testes relacionados ao ${{ github.event_name }} passaram!
-            Testes: Jest, Cypress
             Repositório: ${{ github.repository }}
 
       - name: Telegram Notify - Failure
@@ -65,5 +65,4 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
             Foram econtrados problemas nos testes do ${{ github.event_name }}.
-            Testes: Jest, Cypress
             Repositório: ${{ github.repository }}
