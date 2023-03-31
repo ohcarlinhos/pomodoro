@@ -25,7 +25,9 @@ jobs:
       - uses: actions/cache@v3
         id: yarn-cache
         with:
-          path: node_modules
+          path: |
+            ~/.cache/Cypress
+            node_modules
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
@@ -33,9 +35,6 @@ jobs:
       - name: Install Dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile
-
-      - name: Cypress Install
-        run: cypress install
 
       - name: Cypress Test
         uses: cypress-io/github-action@v5
