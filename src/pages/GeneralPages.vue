@@ -6,13 +6,15 @@ import { USE_PANEL } from "@/env";
 
 import DefaultTemplate from "@/templates/default";
 import TheMenu from "@/components/header/TheMenu";
-import { appConfig, type NavLink } from "@/config";
+import { type NavLink } from "@/components/header/TheNav";
+import menu from "@/data/menu.json";
+
 import { authService } from "@/services";
 
 const route = useRoute();
 
-const clickUser = () => window.open(appConfig.menu.user.url, "_blank");
-const menuLinks = reactive<NavLink[]>([...appConfig.menu.links]);
+const clickUser = () => window.open(menu.user.url, "_blank");
+const menuLinks = reactive<NavLink[]>([...menu.links]);
 const userSession = ref(false);
 
 onMounted(() => {
@@ -39,7 +41,7 @@ const navLinks = computed(() => {
     <template #header>
       <TheMenu
         v-if="USE_PANEL"
-        v-bind="appConfig.menu"
+        v-bind="menu"
         :links="navLinks"
         :has-nav="USE_PANEL"
         @click-user="clickUser"

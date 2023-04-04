@@ -1,4 +1,10 @@
 {
+  "logo": {
+    "title": "menu.logo.title",
+    "alt": "menu.logo.alt",
+    "uppercase": false,
+    "url": "home"
+  },
   "links": [
     { "id": 1, "label": "menu.link.timer", "url": "home" },
     { "id": 2, "label": "menu.link.panel", "url": "panel", "session": true },
@@ -10,19 +16,10 @@
     },
     { "id": 3, "label": "menu.link.exit", "url": "exit", "session": true }
   ],
-  "developer": {
+  "user": {
     "name": "Carlos Roberto (@caarlos1)",
     "image": "https://gravatar.com/avatar/9a82ba52769cbc22951a7cf516124307?s=250",
     "url": "https://github.com/caarlos1",
     "clickable": true
-  },
-  "footer": {
-    "url": "https://github.com/caarlos1",
-    "copy": "general.footer.copy",
-    "auth": "Carlos Roberto",
-    "coffee": {
-      "text": "general.footer.coffee",
-      "url": "https://ko-fi.com/caarlos"
-    }
   }
 }
