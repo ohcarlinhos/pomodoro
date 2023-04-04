@@ -1,3 +1,4 @@
+import vueRouter from "storybook-vue3-router";
 import TheLogo from "./TheLogo.vue";
 import { logo } from "./util/mock";
 
@@ -13,6 +14,7 @@ export default {
       default: "light",
     },
   },
+  decorators: [vueRouter()],
 };
 
 export const Component = (args: unknown) => ({
