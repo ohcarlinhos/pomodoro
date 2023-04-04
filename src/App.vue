@@ -4,11 +4,17 @@ import { useTitle } from "@vueuse/core";
 
 import ModalFactory from "@/components/modal/ModalFactory";
 import GeneralPages from "@/pages/GeneralPages.vue";
+import { storageService } from "./services";
 
-const { t } = useI18n();
+const { t, locale, availableLocales } = useI18n();
+const lang = storageService.load("lang");
 const title = useTitle();
 
 title.value = t("general.title");
+
+if (lang && availableLocales.includes(lang)) {
+  locale.value = lang;
+}
 </script>
 
 <template>
