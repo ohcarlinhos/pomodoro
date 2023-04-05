@@ -2,7 +2,7 @@
 import TimerAndLocalRecords from "@/components/timer/TimerAndLocalRecords";
 import LanguageSelector from "@/components/ui/LanguageSelector";
 import TheFooter from "@/components/ui/TheFooter";
-import { appConfig } from "@/config";
+import footer from "@/data/footer.json";
 </script>
 
 <template>
@@ -12,7 +12,7 @@ import { appConfig } from "@/config";
       <TimerAndLocalRecords />
     </div>
     <div class="page__footer">
-      <TheFooter v-bind="appConfig.footer" />
+      <TheFooter v-bind="footer" />
     </div>
   </div>
 </template>

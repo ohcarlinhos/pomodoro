@@ -24,6 +24,7 @@
     "env.d.ts",
     "src/**/*",
     "src/**/*.vue",
+    "src/**/*.json",
     "src/config.json",
     "vite.config.*",
     "src/i18n/locales/*.json"
