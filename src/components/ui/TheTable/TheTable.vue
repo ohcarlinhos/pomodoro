@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<TheTableProps>(), {
   actions: () => [],
   columns: () => [],
   lines: () => [],
-  desing: "",
+  design: "",
   perPage: 10,
   firstPage: 1,
   selectedPage: 1,
@@ -118,7 +118,7 @@ const filterLines = computed(() => {
     </table>
 
     <div class="empty__text" v-if="filterLines.length == 0">
-      Nenhum registro encontrado.
+      {{ $t("ui.table.empty") }}
     </div>
   </div>
 

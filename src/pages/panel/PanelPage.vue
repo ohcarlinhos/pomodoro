@@ -90,11 +90,14 @@ const handleTableActions = async (payload: TheTableActionPayload) => {
 
     <div class="info__area">
       <div class="action__area">
-        <InputSearch size="lg" />
+        <InputSearch
+          :placeholder="$t('pages.panel.placeholder-search')"
+          size="lg"
+        />
         <TheButton
+          :label="$t('pages.panel.add-register')"
           class="add-button"
           design="primary"
-          label="Adicionar Registro"
           @click="openRecordModal"
         />
       </div>
