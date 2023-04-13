@@ -5,7 +5,10 @@
   },
   "general": {
     "title": "Pomodoro - Timer Online",
-    "footer": { "copy": "Desenvolvido por", "coffee": "🧀 Me pague um queijinho!" }
+    "footer": {
+      "copy": "Desenvolvido por",
+      "coffee": "🧀 Me pague um queijinho!"
+    }
   },
   "menu": {
     "logo": {
@@ -17,6 +20,17 @@
       "panel": "Painel",
       "login": "Acessar",
       "exit": "Sair"
+    }
+  },
+  "ui": {
+    "table": {
+      "empty": "Nenhum registro encontrado."
+    }
+  },
+  "pages": {
+    "panel": {
+      "add-register": "Adicionar Registro",
+      "placeholder-search": "Pesquisar"
     }
   },
   "timer": {

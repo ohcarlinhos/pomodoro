@@ -19,6 +19,17 @@
       "exit": "Log Out"
     }
   },
+  "ui": {
+    "table": {
+      "empty": "No records found."
+    }
+  },
+  "pages": {
+    "panel": {
+      "add-register": "Add Record",
+      "placeholder-search": "To look for"
+    }
+  },
   "timer": {
     "actions": {
       "start": "Start",

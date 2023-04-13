@@ -10,7 +10,7 @@ export interface InputSearchProps {
 }
 
 const props = withDefaults(defineProps<InputSearchProps>(), {
-  placeholder: "Pesquisa",
+  placeholder: "",
   size: "",
   rounded: false,
 });
