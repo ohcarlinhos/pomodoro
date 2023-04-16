@@ -3,7 +3,7 @@ import { createPinia } from "pinia";
 import Toast, { POSITION, type PluginOptions } from "vue-toastification";
 import VueGtag from "vue-gtag";
 
-import { GTAG } from "./env";
+const GTAG = import.meta.env.VITE_GTAG?.toString() ?? "";
 
 // Style Config
 import "the-new-css-reset/css/reset.css";
