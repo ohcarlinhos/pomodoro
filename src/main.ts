@@ -3,7 +3,7 @@ import { createPinia } from "pinia";
 import Toast, { POSITION, type PluginOptions } from "vue-toastification";
 import VueGtag from "vue-gtag";
 
-// Style Config
+// style config
 import "the-new-css-reset/css/reset.css";
 import "vue-toastification/dist/index.css";
 import "vue-multiselect/dist/vue-multiselect.css";
@@ -12,8 +12,10 @@ import "../src/assets/root.css";
 import App from "./App.vue";
 import router from "./router";
 import { i18n } from "./i18n";
-import { GTAG } from "./env";
+import envList, { GTAG } from "./env";
+import { storageService } from "./services";
 
+// config
 const app = createApp(App);
 export const store = createPinia();
 
@@ -29,3 +31,6 @@ app.use(Toast, toastOptions);
 if (GTAG) app.use(VueGtag, { config: { id: GTAG } }, router);
 
 app.mount("#app");
+
+// after mount
+storageService.save("env", JSON.stringify(envList));
