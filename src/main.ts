@@ -3,8 +3,6 @@ import { createPinia } from "pinia";
 import Toast, { POSITION, type PluginOptions } from "vue-toastification";
 import VueGtag from "vue-gtag";
 
-const GTAG = import.meta.env.VITE_GTAG?.toString() ?? "";
-
 // Style Config
 import "the-new-css-reset/css/reset.css";
 import "vue-toastification/dist/index.css";
@@ -14,6 +12,7 @@ import "../src/assets/root.css";
 import App from "./App.vue";
 import router from "./router";
 import { i18n } from "./i18n";
+import { GTAG } from "./env";
 
 const app = createApp(App);
 export const store = createPinia();
