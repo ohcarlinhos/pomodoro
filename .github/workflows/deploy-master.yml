@@ -13,6 +13,9 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
+      env:
+        VITE_GTAG: ${{ vars.GTAG }}
+
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
