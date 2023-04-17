@@ -1,29 +1,18 @@
-import { defineAsyncComponent } from "vue";
+import {
+  HiSolidSortAscending,
+  HiSolidSortDescending,
+  HiSolidPencilAlt,
+  HiSolidTrash,
+} from "oh-vue-icons/icons";
+
+export const EditIcon = HiSolidPencilAlt;
+export const DeleteIcon = HiSolidTrash;
+export const AscSortIcon = HiSolidSortAscending;
+export const DescSortIcon = HiSolidSortDescending;
 
 export const iconList = [
-  {
-    name: "edit",
-    component: defineAsyncComponent({
-      loader: () => import("../../icons/EditIcon.vue"),
-    }),
-  },
-  {
-    name: "delete",
-    component: defineAsyncComponent({
-      loader: () => import("../../icons/TrashIcon.vue"),
-    }),
-  },
-
-  {
-    name: "asc",
-    component: defineAsyncComponent({
-      loader: () => import("../../icons/AscIcon.vue"),
-    }),
-  },
-  {
-    name: "desc",
-    component: defineAsyncComponent({
-      loader: () => import("../../icons/DescIcon.vue"),
-    }),
-  },
+  { name: "edit", icon: EditIcon.name },
+  { name: "delete", icon: DeleteIcon.name },
+  { name: "asc", icon: AscSortIcon.name },
+  { name: "desc", icon: DescSortIcon.name },
 ];

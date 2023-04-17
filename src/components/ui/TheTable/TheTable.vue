@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { OhVueIcon, addIcons } from "oh-vue-icons";
 
 import type {
   TheTableColumn,
@@ -10,7 +11,13 @@ import type {
 } from "./TheTable.types";
 import ThePagination from "@/components/ui/ThePagination";
 
-import { iconList } from "./icons";
+import {
+  iconList,
+  EditIcon,
+  DeleteIcon,
+  AscSortIcon,
+  DescSortIcon,
+} from "./icons";
 import { handleI18n } from "@/i18n/util";
 
 export interface TheTableProps {
@@ -41,8 +48,10 @@ const props = withDefaults(defineProps<TheTableProps>(), {
 
 const emit = defineEmits(["table:action", "table:order"]);
 
-const findComponent = (iconName: string) => {
-  return iconList.find((list) => list.name == iconName)?.component;
+addIcons(EditIcon, DeleteIcon, AscSortIcon, DescSortIcon);
+
+const findIconName = (iconName: string) => {
+  return iconList.find((list) => list.name == iconName)?.icon ?? "";
 };
 
 const handleAction = (payload: TheTableActionPayload) => {
@@ -82,8 +91,8 @@ const filterLines = computed(() => {
             <div class="filters">
               <span>{{ handleI18n(column.label) }}</span>
               <div v-if="column.sort" class="column__filter">
-                <Component
-                  :is="findComponent(column.order == 'desc' ? 'desc' : 'asc')"
+                <OhVueIcon
+                  :name="findIconName(column.order == 'desc' ? 'desc' : 'asc')"
                   @click="handleOrder({ order: column.order!, column })"
                 />
               </div>
@@ -104,8 +113,8 @@ const filterLines = computed(() => {
                 :title="handleI18n(action.label)"
               >
                 <div v-if="action.icon" class="action__icon">
-                  <Component
-                    :is="findComponent(action.icon)"
+                  <OhVueIcon
+                    :name="findIconName(action.icon)"
                     @click="handleAction({ action: action.action, line })"
                   />
                 </div>

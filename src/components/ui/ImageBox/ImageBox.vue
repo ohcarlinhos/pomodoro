@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onDeactivated, reactive } from "vue";
-import { ImageIcon } from "../../icons";
+import { OhVueIcon, addIcons } from "oh-vue-icons";
+import { HiPhotograph } from "oh-vue-icons/icons";
 
 export interface ImageBoxProps {
   title?: string;
@@ -17,6 +18,9 @@ withDefaults(defineProps<ImageBoxProps>(), {
   minHeight: "inherit",
   srcImageOnMobile: false,
 });
+
+const PhotoIcon = HiPhotograph;
+addIcons(PhotoIcon);
 
 const windowView = reactive({
   width: 0,
@@ -38,13 +42,13 @@ handleResize();
 
 <template>
   <div
-    class="image-ui__container"
+    class="image-box__container"
     :title="title"
     :style="{ borderRadius: radius, minHeight: minHeight }"
   >
     <img
       v-if="srcImageOnMobile && windowView.width <= 992"
-      class="image-ui__image"
+      class="image-box__image"
       :src="url"
       alt=" "
       :title="title"
@@ -53,7 +57,7 @@ handleResize();
 
     <div
       v-else
-      class="image-ui__bg"
+      class="image-box__bg"
       :style="{
         backgroundImage: `url(${url})`,
         borderRadius: radius,
@@ -61,54 +65,10 @@ handleResize();
       }"
     ></div>
 
-    <ImageIcon class="image-ui__icon" />
+    <OhVueIcon :name="PhotoIcon.name" class="image-box__icon" fill="#9eadba" />
   </div>
 </template>
 
-<style scoped>
-.image-ui__container {
-  background: #dee4ed;
-  width: 100%;
-  display: flex;
-}
-.image-ui__image {
-  width: 100%;
-  z-index: 10;
-  padding: 0;
-  margin: 0;
-}
-.image-ui__bg {
-  z-index: 10;
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  aspect-ratio: 1/1;
-  background-size: 100%;
-  background-position: center center;
-  transition: all 300ms ease-in-out;
-}
-
-@media (min-width: 992px) {
-  .image-ui__bg:hover {
-    background-size: 110%;
-  }
-}
-
-.image-ui__default {
-  width: 100%;
-  display: flex;
-  aspect-ratio: 1/1;
-}
-
-.image-ui__icon {
-  width: 100%;
-  z-index: 5;
-  height: 25%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  fill: #9eadba;
-}
+<style lang="scss">
+@import "./ImageBox.scss";
 </style>

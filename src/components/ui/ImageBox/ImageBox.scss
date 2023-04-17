@@ -1,0 +1,44 @@
+.image-box__container {
+  background: #dee4ed;
+  width: 100%;
+  display: flex;
+}
+.image-box__image {
+  width: 100%;
+  z-index: 10;
+  padding: 0;
+  margin: 0;
+}
+.image-box__bg {
+  z-index: 10;
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  aspect-ratio: 1/1;
+  background-size: 100%;
+  background-position: center center;
+  transition: all 300ms ease-in-out;
+}
+
+@media (min-width: 992px) {
+  .image-box__bg:hover {
+    background-size: 110%;
+  }
+}
+
+.image-box__default {
+  width: 100%;
+  display: flex;
+  aspect-ratio: 1/1;
+}
+
+.image-box__icon {
+  width: 100%;
+  z-index: 5;
+  height: 25%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

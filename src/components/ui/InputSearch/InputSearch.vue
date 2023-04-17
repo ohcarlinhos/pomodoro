@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import InputField from "@/components/ui/InputField";
-import { SearchIcon } from "../../icons";
+import { OhVueIcon, addIcons } from "oh-vue-icons";
+import { HiSearch } from "oh-vue-icons/icons";
 
 export interface InputSearchProps {
   placeholder?: string;
@@ -16,6 +17,9 @@ const props = withDefaults(defineProps<InputSearchProps>(), {
 });
 
 const emit = defineEmits(["input-search:submit"]);
+
+const SearchIcon = HiSearch;
+addIcons(SearchIcon);
 
 const inputSearch = ref("");
 const canSubmit = computed(() => !!inputSearch.value);
@@ -42,7 +46,11 @@ const search = () => {
       :class="{ disabled: !canSubmit }"
       @click="search"
     >
-      <SearchIcon class="icon" />
+      <OhVueIcon
+        :name="SearchIcon.name"
+        class="icon"
+        fill="var(--text-color)"
+      />
     </button>
   </div>
 </template>
