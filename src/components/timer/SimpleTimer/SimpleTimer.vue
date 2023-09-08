@@ -35,6 +35,7 @@ const interval = ref<unknown>(null);
 
 const timer = useStorage("timer-status", {
   active: false,
+  seconds: 0,
   secondsPast: 0,
   lastDateNow: 0,
 });
