@@ -35,21 +35,21 @@ const interval = ref<unknown>(null);
 
 const timer = useStorage("timer-status", {
   active: false,
-  seconds: 0,
   secondsPast: 0,
+  lastDateNow: 0,
 });
 
 /** Lifecycle */
 
 onMounted(() => {
-  reCalcTimer();
+  reCalcTimerSeconds();
   timer.value.active = false;
 });
 
 watch(
   () => props.minutes,
   () => {
-    reCalcTimer();
+    reCalcTimerSeconds();
   }
 );
 
@@ -80,19 +80,34 @@ const seconds = computed(() => {
 
 /** Methods */
 
-const moveTimer = () => {
-  if (!props.increment && timer.value.secondsPast >= timer.value.seconds)
-    done();
-  else {
-    timer.value.secondsPast++;
-    emit("timer:counter", timerCounter.value);
+const incrementOrDecrementTimer = () => {
+  const isDecrement = !props.increment;
+
+  if (isDecrement) {
+    if (timer.value.secondsPast >= timer.value.seconds) doneTimerWork();
+    else {
+      let timePast = 0;
+
+      if (timer.value.lastDateNow) {
+        timePast = Date.now() - timer.value.lastDateNow;
+        timer.value.secondsPast =
+          Math.round(timePast / 1000) + timer.value.secondsPast;
+      } else timer.value.secondsPast++;
+
+      timer.value.lastDateNow = Date.now();
+      emit("timer:counter", timerCounter.value);
+    }
   }
 };
 
 const start = () => {
+  timer.value.lastDateNow = 0;
+
   if (!timer.value.active) initTimerInterval();
   else clearTimerInterval();
+
   const payload = { active: timer.value.active };
+
   emit("timer:counter", timerCounter.value);
   emit("timer:click", payload);
 };
@@ -103,8 +118,9 @@ const reset = () => {
   resetTimer();
 };
 
-const done = (manual = false) => {
+const doneTimerWork = (manual = false) => {
   if (timer.value.secondsPast == 0) return;
+
   const payload: SimpleTimerDonePayload = {
     date: new Date(),
     seconds: timer.value.secondsPast,
@@ -122,17 +138,18 @@ const clearTimerInterval = () => {
 };
 
 const initTimerInterval = () => {
-  interval.value = setInterval(moveTimer, 1000);
+  interval.value = setInterval(incrementOrDecrementTimer, 1000);
   timer.value.active = true;
 };
 
 const resetTimer = () => {
-  reCalcTimer();
+  reCalcTimerSeconds();
   timer.value.active = false;
   timer.value.secondsPast = 0;
+  timer.value.lastDateNow = 0;
 };
 
-const reCalcTimer = () => {
+const reCalcTimerSeconds = () => {
   timer.value.seconds = props.minutes * 60 + props.seconds;
 };
 
@@ -156,6 +173,7 @@ const timerCounter = computed(() => {
       >
         <OhVueIcon :name="startButtonIcon" />
       </TheButton>
+
       <TheButton
         :disabled="!timer.secondsPast"
         :label="$t('timer.actions.done')"
@@ -163,10 +181,11 @@ const timerCounter = computed(() => {
         data-testid="timer-done"
         design="confirm"
         size="sm"
-        @click="done(true)"
+        @click="doneTimerWork(true)"
       >
         <OhVueIcon name="md-check" />
       </TheButton>
+
       <TheButton
         :disabled="!timer.secondsPast"
         :label="$t('timer.actions.stop')"
